@@ -1,0 +1,1845 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Soma Tech.</title>
+   <link rel="icon" type="image/png" href="images/icon.png">
+  <link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;500;600;700&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+  <style>
+    :root {
+      --black: #0a0a0a;
+      --white: #ffffff;
+      --gray-50: #f8f8f8;
+      --gray-100: #f0f0f0;
+      --gray-200: #e4e4e4;
+      --gray-300: #c8c8c8;
+      --gray-400: #9a9a9a;
+      --gray-500: #6b6b6b;
+      --gray-600: #444444;
+      --blue: #2563eb;
+      --blue-light: #eff6ff;
+      --blue-mid: #3b82f6;
+      --font-display: 'Sora', sans-serif;
+      --font-body: 'DM Sans', sans-serif;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: var(--font-body);
+      background: var(--white);
+      color: var(--black);
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    /* ── NAVBAR ── */
+    nav {
+      position: fixed;
+      top: 0;
+      z-index: 1000;
+      background: rgba(255, 255, 255, 0.411);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--gray-200);
+      padding: 0 5%;
+      height: 64px;
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .logo{
+  display:flex;
+  align-items:center;
+  gap:10px;
+}
+
+.logo img{
+  width:60px;
+}
+    .logo-text{
+       font-family: 'Space Grotesk', sans-serif;
+       color: var(--gray-500);
+       font-size: 32px;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 32px;
+      list-style: none;
+    }
+
+    .nav-links a {
+      font-size: 0.875rem;
+      color: var(--gray-500);
+      text-decoration: none;
+      font-weight: 400;
+      transition: color 0.2s;
+    }
+
+    .nav-links a:hover { color: var(--black); }
+
+    .nav-dropdown {
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      cursor: pointer;
+      font-size: 0.875rem;
+      color: var(--gray-500);
+      font-weight: 400;
+      transition: color 0.2s;
+    }
+
+    .nav-dropdown:hover { color: var(--black); }
+
+    .nav-right {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .btn-demo {
+      background: var(--black);
+      color: var(--white);
+      border: none;
+      padding: 8px 18px;
+      border-radius: 8px;
+      font-size: 0.85rem;
+      font-family: var(--font-body);
+      font-weight: 500;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      transition: background 0.2s, transform 0.15s;
+    }
+
+    .btn-demo:hover { background: var(--gray-600); transform: translateY(-1px); }
+
+    .btn-login {
+      background: transparent;
+      color: var(--gray-500);
+      border: none;
+      padding: 8px 14px;
+      border-radius: 8px;
+      font-size: 0.85rem;
+      font-family: var(--font-body);
+      font-weight: 400;
+      cursor: pointer;
+      transition: color 0.2s;
+    }
+
+    .btn-login:hover { color: var(--black); }
+
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      cursor: pointer;
+      padding: 4px;
+    }
+
+    .hamburger span {
+      width: 22px;
+      height: 2px;
+      background: var(--black);
+      border-radius: 2px;
+      transition: all 0.3s;
+    }
+
+    /* ── HERO ── */
+    .hero {
+      background: var(--gray-50);
+      padding: 96px 5% 80px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+ 
+.hero::before{
+  content:'';
+  position:absolute;
+  top:-120px;
+  left:50%;
+  transform:translateX(-50%);
+  width:1000px;
+  height:350px;
+  background:radial-gradient(
+    circle,
+     rgba(180, 35, 247, 0.582),
+    rgba(235, 37, 176, 0.527),
+    rgba(219, 185, 31, 0.336),
+    transparent
+  );
+  filter:blur(40px);
+}
+    .hero h1 {
+      font-family: 'Inter', sans-serif;
+      font-size: clamp(2.4rem, 6vw, 4rem);
+      font-weight: 700;
+      line-height: 2;
+      letter-spacing: -0.03em;
+      color: var(--black); 
+      margin: 0 auto 20px;
+    }
+
+    .hero h1 .accent { color: black; }
+
+    .hero-sub {
+      font-size: 1rem;
+      color: var(--gray-500);
+      max-width: 500px;
+      margin: 0 auto 36px;
+      font-weight: 300;
+    }
+    .tags{
+  display:flex;
+  justify-content:center;
+  gap:10px;
+  flex-wrap:wrap;
+  margin-bottom:30px;
+}
+
+.tags span{
+  padding:6px 14px;
+  border-radius:10px;
+  font-size:.8rem;
+}
+.tag1{
+  color:#000000;
+  background: #f894f3;
+}
+.tag2{
+  color:#0d0d0e;
+  background: #1693a3;
+}
+.tag3{
+  color:#0b0b0c;
+  background: #a39516;
+}
+.tag4{
+  color:#1b1b1d;
+  background: #16a34a;
+}
+.tag5{
+  color:#1e1f20;
+  background: #a31697;
+}
+    .hero-search {
+      display: flex;
+      align-items: center;
+      background: var(--white);
+      border: 1.5px solid var(--gray-200);
+      border-radius: 12px;
+      padding: 6px 6px 6px 18px;
+      max-width: 480px;
+      margin: 0 auto 16px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.06);
+      gap: 8px;
+    }
+
+    .hero-search input {
+      flex: 1;
+      border: none;
+      outline: none;
+      font-size: 0.9rem;
+      color: var(--black);
+      font-family: var(--font-body);
+      background: transparent;
+    }
+
+    .hero-search input::placeholder { color: var(--gray-400); }
+
+    .btn-try {
+      background: var(--black);
+      color: var(--white);
+      border: none;
+      padding: 9px 20px;
+      border-radius: 8px;
+      font-size: 0.85rem;
+      font-family: var(--font-body);
+      font-weight: 500;
+      cursor: pointer;
+      white-space: nowrap;
+      transition: background 0.2s;
+    }
+
+    .btn-try:hover { background: var(--gray-600); }
+
+    .hero-hint {
+      font-size: 0.78rem;
+      color: var(--gray-400);
+      margin-bottom: 60px;
+    }
+
+    .hero-hint i { font-size: 0.7rem; margin: 0 2px; }
+
+    /* ── CARDS SECTION ── */
+    .cards-row {
+      display: flex;
+      gap: 16px;
+      justify-content: center;
+      max-width: 760px;
+      margin: 0 auto;
+      padding: 0 16px;
+      flex-wrap: wrap;
+    }
+
+    .dash-card {
+      background: var(--white);
+      border: 1px solid var(--gray-200);
+      border-radius: 14px;
+      padding: 18px 20px;
+      width: 200px;
+      box-shadow: 0 2px 16px rgba(0,0,0,0.05);
+      text-align: left;
+      transition: transform 0.2s, box-shadow 0.2s;
+      animation: floatCard 5s ease-in-out infinite;
+    }
+
+    .dash-card:nth-child(2) { animation-delay: -1.5s; }
+    .dash-card:nth-child(3) { animation-delay: -3s; }
+
+    @keyframes floatCard {
+      0%, 100% { transform: translateY(0px); }
+      50% { transform: translateY(-6px); }
+    }
+
+    .dash-card:hover { transform: translateY(-8px) !important; box-shadow: 0 12px 40px rgba(0,0,0,0.1); }
+
+    .card-header {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 12px;
+    }
+
+    .card-icon {
+      width: 28px;
+      height: 28px;
+      border-radius: 6px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.85rem;
+    }
+
+    .icon-admin { background: #f0f4ff; color: var(--blue); }
+    .icon-finance { background: #f0fff4; color: #16a34a; }
+    .icon-student { background: #fff7f0; color: #ea580c; }
+
+    .card-title {
+      font-size: 0.75rem;
+      font-weight: 600;
+      color: var(--gray-600);
+      font-family: var(--font-display);
+    }
+
+    .card-lines { display: flex; flex-direction: column; gap: 5px; }
+
+    .card-line {
+      height: 7px;
+      background: var(--gray-100);
+      border-radius: 4px;
+    }
+
+    .card-line.short { width: 60%; }
+    .card-line.med { width: 80%; }
+    .card-line.full { width: 100%; }
+
+    .mini-chart {
+      margin-top: 10px;
+      height: 32px;
+      position: relative;
+    }
+
+    .mini-chart svg { width: 100%; height: 100%; }
+
+    /* ── SECTION DIVIDER ── */
+    .section-note {
+      text-align: center;
+      padding: 60px 5% 20px;
+      font-size: 0.85rem;
+      color: var(--gray-400);
+      max-width: 560px;
+      margin: 0 auto;
+    }
+
+    .section-note p { line-height: 1.8; }
+
+    .btn-cta-outline {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      border: 1.5px solid var(--black);
+      color: var(--black);
+      background: transparent;
+      padding: 10px 22px;
+      border-radius: 9px;
+      font-size: 0.875rem;
+      font-family: var(--font-body);
+      font-weight: 500;
+      cursor: pointer;
+      margin-top: 18px;
+      transition: background 0.2s, color 0.2s;
+    }
+
+    .btn-cta-outline:hover { background: var(--black); color: var(--white); }
+
+    /* ── TRUSTED ── */
+    .trusted {
+      background: var(--white);
+      padding: 40px 5%;
+      text-align: center;
+      border-top: 1px solid var(--gray-100);
+      border-bottom: 1px solid var(--gray-100);
+    }
+
+    .trusted p {
+      font-size: 0.8rem;
+      color: var(--gray-400);
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      font-weight: 500;
+      margin-bottom: 20px;
+    }
+
+    .trust-badges {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 40px;
+      flex-wrap: wrap;
+    }
+
+    .trust-badge {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      color: var(--gray-400);
+      font-size: 0.82rem;
+      font-weight: 500;
+    }
+
+    .trust-badge i { font-size: 1rem; }
+
+    /* ── WHAT IS SOMA ── */
+    .what-soma {
+      padding: 100px 5%;
+      max-width: 1100px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: center;
+    }
+
+    .what-soma-text h2 {
+      font-family: var(--font-display);
+      font-size: clamp(1.8rem, 3.5vw, 2.6rem);
+      font-weight: 700;
+      letter-spacing: -0.03em;
+      line-height: 1.2;
+      margin-bottom: 20px;
+    }
+
+    .what-soma-text p {
+      color: var(--gray-500);
+      font-size: 0.95rem;
+      line-height: 1.8;
+      margin-bottom: 14px;
+    }
+
+    .what-soma-visual {
+      position: relative;
+    }
+
+    .soma-chat {
+      background: var(--gray-50);
+      border: 1px solid var(--gray-200);
+      border-radius: 16px;
+      padding: 24px;
+      box-shadow: 0 4px 30px rgba(0,0,0,0.06);
+    }
+
+    .chat-bar {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      background: var(--white);
+      border: 1px solid var(--gray-200);
+      border-radius: 10px;
+      padding: 10px 14px;
+      font-size: 0.85rem;
+      color: var(--gray-500);
+      margin-bottom: 16px;
+    }
+
+    .chat-bubble {
+      background: var(--white);
+      border: 1px solid var(--gray-200);
+      border-radius: 12px;
+      padding: 14px 16px;
+      font-size: 0.83rem;
+      color: var(--gray-600);
+      line-height: 1.6;
+      margin-bottom: 10px;
+    }
+
+    .chat-bubble strong { color: var(--black); font-weight: 500; }
+
+    .chat-source {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 0.75rem;
+      color: var(--gray-400);
+      margin-top: 8px;
+    }
+
+    /* ── CAPABILITIES ── */
+    .capabilities {
+      padding: 100px 5%;
+      background: var(--gray-50);
+    }
+
+    .capabilities-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .section-label {
+      font-size: 0.78rem;
+      color: var(--blue);
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      margin-bottom: 12px;
+    }
+
+    .capabilities-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 40px;
+      margin-top: 60px;
+      align-items: start;
+    }
+
+    .capabilities-left h2 {
+      font-family: var(--font-display);
+      font-size: clamp(1.8rem, 3vw, 2.4rem);
+      font-weight: 700;
+      letter-spacing: -0.03em;
+      line-height: 1.2;
+      margin-bottom: 16px;
+    }
+
+    .capabilities-left p {
+      color: var(--gray-500);
+      font-size: 0.92rem;
+      line-height: 1.8;
+    }
+
+    .cap-item {
+      border-top: 1px solid var(--gray-200);
+      padding: 24px 0;
+    }
+
+    .cap-item:last-child { border-bottom: 1px solid var(--gray-200); }
+
+    .cap-header {
+      display: flex;
+      align-items: flex-start;
+      gap: 16px;
+      margin-bottom: 8px;
+    }
+
+    .cap-icon {
+      width: 40px;
+      height: 40px;
+      border-radius: 10px;
+      background: var(--white);
+      border: 1px solid var(--gray-200);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--blue);
+      font-size: 1rem;
+      flex-shrink: 0;
+    }
+
+    .cap-title {
+      font-family: var(--font-display);
+      font-size: 1rem;
+      font-weight: 600;
+      color: var(--black);
+      margin-bottom: 4px;
+    }
+
+    .cap-desc {
+      font-size: 0.85rem;
+      color: var(--gray-500);
+      line-height: 1.7;
+    }
+
+    .read-more {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      font-size: 0.8rem;
+      color: var(--blue);
+      text-decoration: none;
+      font-weight: 500;
+      margin-top: 8px;
+      transition: gap 0.2s;
+    }
+
+    .read-more:hover { gap: 8px; }
+
+    /* ── STATS BANNER ── */
+    .stats-banner {
+      background: var(--black);
+      padding: 64px 5%;
+    }
+
+    .stats-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 3fr;
+      gap: 0;
+      border-radius: 16px;
+      overflow: hidden;
+    }
+
+    .stat-featured {
+      background: #111;
+      padding: 32px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .stat-number-big {
+      font-family: var(--font-display);
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: var(--white);
+      margin-bottom: 4px;
+    }
+
+    .stat-label-big {
+      font-size: 0.8rem;
+      color: var(--gray-400);
+      line-height: 1.4;
+      margin-bottom: 16px;
+    }
+
+    .stat-desc {
+      font-size: 0.78rem;
+      color: var(--gray-500);
+      line-height: 1.6;
+    }
+
+    .stats-cols {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      background: #161616;
+    }
+
+    .stat-col {
+      padding: 32px;
+      border-left: 1px solid #222;
+    }
+
+    .stat-num {
+      font-family: var(--font-display);
+      font-size: 2rem;
+      font-weight: 700;
+      color: var(--white);
+      margin-bottom: 6px;
+    }
+
+    .stat-text {
+      font-size: 0.8rem;
+      color: var(--gray-400);
+      line-height: 1.5;
+    }
+
+    /* ── SHOP ── */
+    .shop {
+      padding: 100px 5%;
+      background: var(--white);
+    }
+
+    .shop-inner { max-width: 1100px; margin: 0 auto; }
+
+    .section-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      margin-bottom: 48px;
+      flex-wrap: wrap;
+      gap: 16px;
+    }
+
+    .section-header h2 {
+      font-family: var(--font-display);
+      font-size: clamp(1.6rem, 3vw, 2.2rem);
+      font-weight: 700;
+      letter-spacing: -0.03em;
+    }
+
+    .section-header p {
+      color: var(--gray-500);
+      font-size: 0.88rem;
+      margin-top: 6px;
+    }
+
+    .view-cart-btn {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--white);
+      border: 1.5px solid var(--gray-200);
+      border-radius: 9px;
+      padding: 9px 18px;
+      font-size: 0.85rem;
+      font-family: var(--font-body);
+      font-weight: 500;
+      cursor: pointer;
+      color: var(--black);
+      transition: border-color 0.2s;
+      position: relative;
+    }
+
+    .view-cart-btn:hover { border-color: var(--black); }
+
+    .cart-count {
+      background: var(--blue);
+      color: var(--white);
+      border-radius: 50%;
+      width: 18px;
+      height: 18px;
+      font-size: 0.65rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+    }
+
+    .products-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 24px;
+    }
+
+    .product-card {
+      border: 1.5px solid var(--gray-200);
+      border-radius: 16px;
+      overflow: hidden;
+      transition: transform 0.2s, box-shadow 0.2s;
+      cursor: pointer;
+      background: var(--white);
+    }
+
+    .product-card:hover { transform: translateY(-4px); box-shadow: 0 12px 40px rgba(0,0,0,0.08); }
+
+    .product-img {
+      background: var(--gray-50);
+      height: 200px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--gray-300);
+      font-size: 3rem;
+      border-bottom: 1px solid var(--gray-100);
+    }
+    .product-img img{
+      height: 200px;
+    }
+    .product-info {
+      padding: 16px 18px;
+    }
+
+    .product-name {
+      font-family: var(--font-display);
+      font-size: 0.95rem;
+      font-weight: 600;
+      color: var(--black);
+      margin-bottom: 4px;
+    }
+
+    .product-desc {
+      font-size: 0.78rem;
+      color: var(--gray-500);
+      margin-bottom: 14px;
+    }
+
+    .product-footer {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .product-price {
+      font-family: var(--font-display);
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: var(--black);
+    }
+
+    .add-to-cart {
+      background: var(--black);
+      color: var(--white);
+      border: none;
+      padding: 7px 14px;
+      border-radius: 7px;
+      font-size: 0.78rem;
+      font-family: var(--font-body);
+      font-weight: 500;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+
+    .add-to-cart:hover { background: var(--blue); }
+
+    .add-to-cart.added {
+      background: var(--blue);
+    }
+
+    /* ── CART DRAWER ── */
+    .cart-overlay {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.4);
+      z-index: 2000;
+    }
+
+    .cart-overlay.open { display: block; }
+
+    .cart-drawer {
+      position: fixed;
+      top: 0;
+      right: -440px;
+      width: min(440px, 100vw);
+      height: 100vh;
+      background: var(--white);
+      z-index: 2001;
+      transition: right 0.35s cubic-bezier(0.4,0,0.2,1);
+      display: flex;
+      flex-direction: column;
+      box-shadow: -8px 0 40px rgba(0,0,0,0.12);
+    }
+
+    .cart-drawer.open { right: 0; }
+
+    .cart-head {
+      padding: 24px;
+      border-bottom: 1px solid var(--gray-200);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .cart-head h3 {
+      font-family: var(--font-display);
+      font-size: 1rem;
+      font-weight: 600;
+    }
+
+    .cart-close {
+      background: var(--gray-100);
+      border: none;
+      width: 32px;
+      height: 32px;
+      border-radius: 8px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.85rem;
+      color: var(--gray-600);
+    }
+
+    .cart-items { flex: 1; overflow-y: auto; padding: 16px 24px; }
+
+    .cart-empty {
+      text-align: center;
+      padding: 60px 0;
+      color: var(--gray-400);
+      font-size: 0.88rem;
+    }
+
+    .cart-empty i { font-size: 2rem; margin-bottom: 12px; display: block; }
+
+    .cart-item {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      padding: 14px 0;
+      border-bottom: 1px solid var(--gray-100);
+    }
+
+    .cart-item-icon {
+      width: 52px;
+      height: 52px;
+      background: var(--gray-50);
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--gray-400);
+      font-size: 1.4rem;
+      flex-shrink: 0;
+    }
+
+    .cart-item-info { flex: 1; }
+
+    .cart-item-name {
+      font-size: 0.875rem;
+      font-weight: 500;
+      color: var(--black);
+    }
+
+    .cart-item-price {
+      font-size: 0.8rem;
+      color: var(--gray-500);
+    }
+
+    .cart-item-remove {
+      background: none;
+      border: none;
+      color: var(--gray-400);
+      cursor: pointer;
+      font-size: 0.8rem;
+      padding: 4px;
+    }
+
+    .cart-item-remove:hover { color: #dc2626; }
+
+    .cart-footer {
+      padding: 20px 24px 28px;
+      border-top: 1px solid var(--gray-200);
+    }
+
+    .cart-total {
+      display: flex;
+      justify-content: space-between;
+      font-size: 0.88rem;
+      color: var(--gray-500);
+      margin-bottom: 6px;
+    }
+
+    .cart-grand {
+      display: flex;
+      justify-content: space-between;
+      font-family: var(--font-display);
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: var(--black);
+      margin-bottom: 18px;
+    }
+
+    .btn-checkout {
+      width: 100%;
+      background: var(--black);
+      color: var(--white);
+      border: none;
+      padding: 14px;
+      border-radius: 10px;
+      font-size: 0.9rem;
+      font-family: var(--font-body);
+      font-weight: 500;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+
+    .btn-checkout:hover { background: var(--blue); }
+
+    /* ── SUGGESTION HUB ── */
+    .suggestion {
+      padding: 100px 5%;
+      background: var(--gray-50);
+    }
+
+    .suggestion-inner { max-width: 680px; margin: 0 auto; }
+
+    .suggestion-inner h2 {
+      font-family: var(--font-display);
+      font-size: clamp(1.6rem, 3vw, 2.2rem);
+      font-weight: 700;
+      letter-spacing: -0.03em;
+      margin-bottom: 10px;
+      text-align: center;
+    }
+
+    .suggestion-inner > p {
+      text-align: center;
+      color: var(--gray-500);
+      font-size: 0.9rem;
+      margin-bottom: 40px;
+    }
+
+    .tab-row {
+      display: flex;
+      gap: 8px;
+      margin-bottom: 28px;
+      background: var(--white);
+      border: 1px solid var(--gray-200);
+      border-radius: 10px;
+      padding: 4px;
+    }
+
+    .tab-btn {
+      flex: 1;
+      padding: 9px;
+      border: none;
+      background: transparent;
+      border-radius: 7px;
+      font-size: 0.82rem;
+      font-family: var(--font-body);
+      font-weight: 500;
+      color: var(--gray-500);
+      cursor: pointer;
+      transition: all 0.2s;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+    }
+
+    .tab-btn.active {
+      background: var(--black);
+      color: var(--white);
+    }
+
+    .suggestion-form {
+      background: var(--white);
+      border: 1px solid var(--gray-200);
+      border-radius: 16px;
+      padding: 28px;
+    }
+
+    .form-group { margin-bottom: 18px; }
+
+    .form-group label {
+      display: block;
+      font-size: 0.8rem;
+      font-weight: 600;
+      color: var(--gray-600);
+      margin-bottom: 7px;
+    }
+
+    .form-group input,
+    .form-group textarea,
+    .form-group select {
+      width: 100%;
+      border: 1.5px solid var(--gray-200);
+      border-radius: 9px;
+      padding: 10px 14px;
+      font-size: 0.875rem;
+      font-family: var(--font-body);
+      color: var(--black);
+      outline: none;
+      transition: border-color 0.2s;
+      background: var(--white);
+    }
+
+    .form-group input:focus,
+    .form-group textarea:focus,
+    .form-group select:focus { border-color: var(--blue); }
+
+    .form-group textarea { resize: vertical; min-height: 100px; }
+
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+
+    .btn-submit {
+      width: 100%;
+      background: var(--black);
+      color: var(--white);
+      border: none;
+      padding: 13px;
+      border-radius: 10px;
+      font-size: 0.9rem;
+      font-family: var(--font-body);
+      font-weight: 500;
+      cursor: pointer;
+      margin-top: 4px;
+      transition: background 0.2s;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+    }
+
+    .btn-submit:hover { background: var(--blue); }
+
+    .success-msg {
+      display: none;
+      background: #f0fff4;
+      border: 1px solid #86efac;
+      border-radius: 10px;
+      padding: 14px 18px;
+      font-size: 0.85rem;
+      color: #15803d;
+      margin-top: 14px;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .success-msg.show { display: flex; }
+
+    /* ── FOOTER ── */
+    footer {
+      background: var(--white);
+      border-top: 1px solid var(--gray-100);
+      padding: 60px 5% 32px;
+    }
+
+    .footer-inner { max-width: 1100px; margin: 0 auto; }
+
+    .footer-top {
+      display: grid;
+      grid-template-columns: 1.6fr repeat(3, 1fr);
+      gap: 40px;
+      margin-bottom: 48px;
+    }
+
+    .footer-brand .logo-wrap {
+      display: flex;
+      align-items: center;
+      gap: 9px;
+      margin-bottom: 14px;
+    }
+
+    .footer-brand p {
+      font-size: 0.83rem;
+      color: var(--gray-500);
+      line-height: 1.7;
+      max-width: 240px;
+    }
+
+    .footer-col h4 {
+      font-family: var(--font-display);
+      font-size: 0.8rem;
+      font-weight: 600;
+      color: var(--black);
+      text-transform: uppercase;
+      letter-spacing: 0.07em;
+      margin-bottom: 16px;
+    }
+
+    .footer-col ul {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .footer-col ul li a {
+      font-size: 0.83rem;
+      color: var(--gray-500);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    .footer-col ul li a:hover { color: var(--black); }
+
+    .footer-bottom {
+      border-top: 1px solid var(--gray-100);
+      padding-top: 24px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    .footer-bottom p {
+      font-size: 0.78rem;
+      color: var(--gray-400);
+    }
+
+    .footer-socials {
+      display: flex;
+      gap: 14px;
+    }
+
+    .footer-socials a {
+      color: var(--gray-400);
+      font-size: 0.9rem;
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    .footer-socials a:hover { color: var(--black); }
+
+    /* ── MOBILE NAV DRAWER ── */
+    .mobile-nav {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: var(--white);
+      z-index: 999;
+      flex-direction: column;
+      padding: 20px 5%;
+    }
+
+    .mobile-nav.open { display: flex; }
+
+    .mobile-nav-head {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 32px;
+    }
+
+    .mobile-nav-close {
+      background: var(--gray-100);
+      border: none;
+      width: 36px;
+      height: 36px;
+      border-radius: 9px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1rem;
+      color: var(--gray-600);
+    }
+
+    .mobile-nav ul { list-style: none; display: flex; flex-direction: column; gap: 0; }
+
+    .mobile-nav ul li a {
+      display: block;
+      padding: 14px 0;
+      font-size: 1.1rem;
+      font-weight: 500;
+      color: var(--black);
+      text-decoration: none;
+      border-bottom: 1px solid var(--gray-100);
+    }
+
+    .mobile-nav-btns { margin-top: 32px; display: flex; flex-direction: column; gap: 10px; }
+
+    .mobile-nav-btns .btn-demo { justify-content: center; width: 100%; padding: 13px; font-size: 0.95rem; border-radius: 10px; }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 900px) {
+      .nav-links { display: none; }
+      .hamburger { display: flex; }
+      .what-soma { grid-template-columns: 1fr; gap: 40px; padding: 60px 5%; }
+      .capabilities-grid { grid-template-columns: 1fr; }
+      .stats-inner { grid-template-columns: 1fr; }
+      .stats-cols { grid-template-columns: repeat(3,1fr); }
+      .footer-top { grid-template-columns: 1fr 1fr; }
+      .footer-top > *:first-child { grid-column: 1 / -1; }
+    }
+
+    @media (max-width: 600px) {
+      .hero { padding: 64px 5% 60px; }
+      .cards-row { flex-direction: column; align-items: center; }
+      .dash-card { width: 100%; max-width: 300px; }
+      .stats-cols { grid-template-columns: 1fr; }
+      .stat-col { border-left: none; border-top: 1px solid #222; }
+      .footer-top { grid-template-columns: 1fr; }
+      .footer-top > *:first-child { grid-column: auto; }
+      .form-row { grid-template-columns: 1fr; }
+      .products-grid { grid-template-columns: 1fr 1fr; }
+      .section-header { flex-direction: column; align-items: flex-start; }
+    }
+
+    @media (max-width: 400px) {
+      .products-grid { grid-template-columns: 1fr; }
+    }
+
+    /* ── ANIMATIONS ── */
+    .fade-in {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+
+    .fade-in.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+  </style>
+</head>
+<body>
+
+<!-- NAVBAR -->
+<nav>
+  <div class="logo">
+    <img src="images/logo.png">
+    <span class="logo-text" >soma</span>
+  </div>
+
+  <ul class="nav-links">
+    <li><span class="nav-dropdown">Products <i class="fa-solid fa-chevron-down" style="font-size:0.6rem"></i></span></li>
+    <li><a href="#capabilities">Solutions</a></li>
+    <li><a href="#shop">Shop</a></li>
+    <li><a href="#suggestion">Feedback</a></li>
+  </ul>
+
+  <div class="nav-right">
+    <button class="btn-login" onclick="document.querySelector('.cart-overlay').classList.add('open');document.querySelector('.cart-drawer').classList.add('open')">
+      <i class="fa-solid fa-bag-shopping"></i>
+    </button>
+    <button class="btn-demo"><i class="fa-regular fa-calendar"></i> Get a demo</button>
+    <button class="btn-login">Login →</button>
+    <div class="hamburger" onclick="document.querySelector('.mobile-nav').classList.add('open')">
+      <span></span><span></span><span></span>
+    </div>
+  </div>
+</nav>
+
+<!-- MOBILE NAV -->
+<div class="mobile-nav">
+  <div class="mobile-nav-head">
+    <div class="nav-logo">
+      <div class="logo-mark">
+        <svg viewBox="0 0 24 24" fill="none"><path d="M17 7C17 7 15.5 5 12 5C8.5 5 7 7.5 7 9C7 12 10 13 12 13.5C14 14 17 15 17 17.5C17 19 15.5 21 12 21C8.5 21 7 19 7 19" stroke="white" stroke-width="2" stroke-linecap="round"/></svg>
+      </div>
+      <span class="logo-text">soma</span>
+    </div>
+    <button class="mobile-nav-close" onclick="document.querySelector('.mobile-nav').classList.remove('open')">
+      <i class="fa-solid fa-xmark"></i>
+    </button>
+  </div>
+  <ul>
+    <li><a href="#" onclick="document.querySelector('.mobile-nav').classList.remove('open')">Products</a></li>
+    <li><a href="#capabilities" onclick="document.querySelector('.mobile-nav').classList.remove('open')">Solutions</a></li>
+    <li><a href="#shop" onclick="document.querySelector('.mobile-nav').classList.remove('open')">Shop</a></li>
+    <li><a href="#suggestion" onclick="document.querySelector('.mobile-nav').classList.remove('open')">Feedback</a></li>
+  </ul>
+  <div class="mobile-nav-btns">
+    <button class="btn-demo"><i class="fa-regular fa-calendar"></i> Get a demo</button>
+  </div>
+</div>
+
+<!-- HERO -->
+<section class="hero">
+  <h1>
+    <br>
+    <span class="accent">Your Portal To Possibilities</span>
+  </h1>
+  <p class="hero-sub">
+  One intelligent system powering administration, learning, communication, and student success across your institution.
+</p>
+
+  <div class="hero-search">
+    <i class="fa-solid fa-magnifying-glass" style="color:var(--gray-300);font-size:0.85rem"></i>
+    <input type="text" placeholder="How many students passed Mathematics last term?" />
+    <button class="btn-try">Ask Soma</button>
+  </div>
+  <p class="hero-hint"><i class="fa-solid fa-star"></i> Access real-time data across your entire school <i class="fa-solid fa-star"></i></p>
+
+  <!-- CARDS -->
+  <div class="cards-row">
+    <div class="dash-card">
+      <div class="card-header">
+        <div class="card-icon icon-admin">
+          <i class="fa-solid fa-building-columns"></i>
+        </div>
+        <span class="card-title">Admin Management</span>
+      </div>
+      <div class="card-lines">
+        <div class="card-line full"></div>
+        <div class="card-line med"></div>
+        <div class="card-line short"></div>
+        <div class="card-line full"></div>
+        <div class="card-line med"></div>
+      </div>
+    </div>
+
+    <div class="dash-card">
+      <div class="card-header">
+        <div class="card-icon icon-finance">
+          <i class="fa-solid fa-chart-line"></i>
+        </div>
+        <span class="card-title">Finance Overview</span>
+      </div>
+      <div class="card-lines">
+        <div class="card-line med"></div>
+        <div class="card-line full"></div>
+        <div class="card-line short"></div>
+      </div>
+      <div class="mini-chart">
+        <svg viewBox="0 0 160 40" preserveAspectRatio="none">
+          <polyline points="0,32 20,28 40,22 60,26 80,14 100,18 120,10 140,16 160,8"
+            fill="none" stroke="#16a34a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          <circle cx="140" cy="16" r="3" fill="#16a34a"/>
+        </svg>
+      </div>
+    </div>
+
+    <div class="dash-card">
+      <div class="card-header">
+        <div class="card-icon icon-student">
+          <i class="fa-solid fa-user-graduate"></i>
+        </div>
+        <span class="card-title">Student Activity</span>
+      </div>
+      <div class="card-lines">
+        <div class="card-line full"></div>
+        <div class="card-line short"></div>
+        <div class="card-line med"></div>
+      </div>
+      <div class="mini-chart">
+        <svg viewBox="0 0 160 40" preserveAspectRatio="none">
+          <polyline points="0,30 20,22 40,26 60,16 80,20 100,12 120,18 140,10 160,14"
+            fill="none" stroke="#2563eb" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          <circle cx="140" cy="10" r="3" fill="#2563eb"/>
+        </svg>
+      </div>
+    </div>
+  </div>
+</section>
+<div class="tags">
+  <span class="tag1">Admin</span>
+  <span class="tag2">Finance</span>
+  <span class="tag5">Communication</span>
+  <span class="tag4">Academics</span>
+  <span class="tag3">Sports</span>
+</div>
+<!-- NOTE -->
+<div class="section-note fade-in">
+  <p>The answers to your staff's daily questions are scattered across registers, spreadsheets, and filing cabinets. Soma brings it all into one intelligent search bar for your school.</p>
+  <button class="btn-cta-outline"><i class="fa-regular fa-calendar"></i> Get a demo</button>
+</div>
+
+<!-- TRUSTED -->
+<div class="trusted fade-in">
+  <p>Trusted by 10+ schools in Zimbabwe</p>
+  <div class="trust-badges">
+    <div class="trust-badge"><i class="fa-solid fa-school"></i> Harare Academy</div>
+    <div class="trust-badge"><i class="fa-solid fa-school"></i> St Bernards School</div>
+    <div class="trust-badge"><i class="fa-solid fa-school"></i> Midlands College</div>
+    <div class="trust-badge"><i class="fa-solid fa-school"></i> National Medical School</div>
+    <div class="trust-badge"><i class="fa-solid fa-school"></i> + 6 more</div>
+  </div>
+</div>
+
+<!-- WHAT IS SOMA -->
+<section class="what-soma fade-in">
+  <div class="what-soma-text">
+    <div class="section-label">What is Soma</div>
+    <h2>One platform.<br>Every part of your school.</h2>
+    <p>Soma is an AI-powered school management system built for Zimbabwean institutions. It connects administration, finance, teachers, and students into a single, intelligent workspace.</p>
+    <p>Ask questions in plain language. Get real answers. No more digging through registers or calling the bursar's office for a fee balance.</p>
+    <button class="btn-cta-outline">Learn more <i class="fa-solid fa-arrow-right"></i></button>
+  </div>
+  <div class="what-soma-visual">
+    <div class="soma-chat">
+      <div class="chat-bar">
+        <i class="fa-solid fa-magnifying-glass" style="color:var(--gray-300);font-size:0.8rem"></i>
+        How many students have outstanding fees this term?
+      </div>
+      <div class="chat-bubble">
+        <strong>Soma says:</strong> There are <strong>47 students</strong> with outstanding fees for Term 2, 2025. The total outstanding balance is <strong>$12,400</strong>. Form 4 has the highest proportion at 38%.
+        <div class="chat-source">
+          <i class="fa-solid fa-file-invoice-dollar" style="color:var(--blue)"></i>
+          Finance Module · Updated today
+        </div>
+      </div>
+      <div class="chat-bubble" style="background:var(--gray-50)">
+        <strong>Soma says:</strong> Would you like me to generate a fee reminder notice for those students?
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CAPABILITIES -->
+<section class="capabilities" id="capabilities">
+  <div class="capabilities-inner">
+    <div class="section-label">Our Capabilities</div>
+    <div class="capabilities-grid fade-in">
+      <div class="capabilities-left">
+        <h2>Everything your school needs, intelligently connected.</h2>
+        <p>We offer a full array of AI-powered tools to help your school run efficiently — from the classroom to the accounts department.</p>
+      </div>
+      <div class="capabilities-right">
+        <div class="cap-item">
+          <div class="cap-header">
+            <div class="cap-icon"><i class="fa-solid fa-users-gear"></i></div>
+            <div>
+              <div class="cap-title">Admin & Staff Management</div>
+              <div class="cap-desc">Manage staff records, timetables, leave applications, and HR workflows from one place. Generate reports instantly.</div>
+            </div>
+          </div>
+          <a href="#" class="read-more">Read more <i class="fa-solid fa-arrow-right"></i></a>
+        </div>
+
+        <div class="cap-item">
+          <div class="cap-header">
+            <div class="cap-icon"><i class="fa-solid fa-wallet"></i></div>
+            <div>
+              <div class="cap-title">Finance & Fee Management</div>
+              <div class="cap-desc">Track fee payments, generate statements, manage budgets, and send automated reminders to parents with ease.</div>
+            </div>
+          </div>
+          <a href="#" class="read-more">Read more <i class="fa-solid fa-arrow-right"></i></a>
+        </div>
+
+        <div class="cap-item">
+          <div class="cap-header">
+            <div class="cap-icon"><i class="fa-solid fa-graduation-cap"></i></div>
+            <div>
+              <div class="cap-title">Student Information System</div>
+              <div class="cap-desc">Maintain complete student records including grades, attendance, health, and co-curricular activities in one profile.</div>
+            </div>
+          </div>
+          <a href="#" class="read-more">Read more <i class="fa-solid fa-arrow-right"></i></a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- STATS BANNER -->
+<section class="stats-banner fade-in">
+  <div class="stats-inner">
+    <div class="stat-featured">
+      <div class="stat-number-big">#1</div>
+      <div class="stat-label-big">School Management Platform in Zimbabwe</div>
+      <div class="stat-desc">Built from the ground up for Zimbabwean schools — understanding the local curriculum, fee structures, and reporting needs.</div>
+    </div>
+    <div class="stats-cols">
+      <div class="stat-col">
+        <div class="stat-num">10+</div>
+        <div class="stat-text">Schools actively running on Soma</div>
+      </div>
+      <div class="stat-col">
+        <div class="stat-num">5k+</div>
+        <div class="stat-text">Student records managed through Soma</div>
+      </div>
+      <div class="stat-col">
+        <div class="stat-num">98%</div>
+        <div class="stat-text">Uptime so your school never stops</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SHOP -->
+<section class="shop" id="shop">
+  <div class="shop-inner">
+    <div class="section-header fade-in">
+      <div>
+        <div class="section-label">Soma Merch</div>
+        <h2>Wear the movement</h2>
+        <p>Premium school-tech streetwear. Limited stock.</p>
+      </div>
+      <button class="view-cart-btn" onclick="document.querySelector('.cart-overlay').classList.add('open');document.querySelector('.cart-drawer').classList.add('open')">
+        <i class="fa-solid fa-bag-shopping"></i>
+        Cart
+        <span class="cart-count" id="cartCount">0</span>
+      </button>
+    </div>
+
+    <div class="products-grid fade-in">
+      <!-- Hoodie -->
+      <div class="product-card">
+        <div class="product-img">
+          <img src="images/img (6).png" alt="">
+        </div>
+        <div class="product-info">
+          <div class="product-name">Soma Hoodie</div>
+          <div class="product-desc">Heavyweight fleece. Embroidered logo. Unisex fit.</div>
+          <div class="product-footer">
+            <span class="product-price">$25</span>
+            <button class="add-to-cart" onclick="addToCart(this,'Soma Hoodie',25,'fa-solid fa-shirt')">Add to cart</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Backpack -->
+      <div class="product-card">
+        <div class="product-img">
+          <img src="images/img (1).png" alt="">
+        </div>
+        <div class="product-info">
+          <div class="product-name">Soma Backpack</div>
+          <div class="product-desc">Water-resistant. Laptop sleeve. Padded straps.</div>
+          <div class="product-footer">
+            <span class="product-price">$20</span>
+            <button class="add-to-cart" onclick="addToCart(this,'Soma Backpack',20,'fa-solid fa-bag-shopping')">Add to cart</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- T-Shirt -->
+      <div class="product-card">
+        <div class="product-img">
+          <img src="images/img (5).png" alt="">
+        </div>
+        <div class="product-info">
+          <div class="product-name">Soma T-Shirt</div>
+          <div class="product-desc">100% cotton. Classic cut. Screen-printed logo.</div>
+          <div class="product-footer">
+            <span class="product-price">$15</span>
+            <button class="add-to-cart" onclick="addToCart(this,'Soma T-Shirt',15,'fa-solid fa-shirt')">Add to cart</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Windbreaker -->
+      <div class="product-card">
+        <div class="product-img">
+          <img src="images/img (4).png" alt="">
+        </div>
+        <div class="product-info">
+          <div class="product-name">Windbreaker Jacket</div>
+          <div class="product-desc">Lightweight shell. Full-zip. Packable design.</div>
+          <div class="product-footer">
+            <span class="product-price">$30</span>
+            <button class="add-to-cart" onclick="addToCart(this,'Windbreaker Jacket',30,'fa-solid fa-wind')">Add to cart</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CART DRAWER -->
+<div class="cart-overlay" onclick="closeCart()"></div>
+<div class="cart-drawer">
+  <div class="cart-head">
+    <h3><i class="fa-solid fa-bag-shopping" style="margin-right:8px;color:var(--gray-400)"></i> Your Cart</h3>
+    <button class="cart-close" onclick="closeCart()"><i class="fa-solid fa-xmark"></i></button>
+  </div>
+  <div class="cart-items" id="cartItems">
+    <div class="cart-empty">
+      <i class="fa-solid fa-bag-shopping"></i>
+      Your cart is empty
+    </div>
+  </div>
+  <div class="cart-footer">
+    <div class="cart-total"><span>Subtotal</span><span id="cartSubtotal">$0.00</span></div>
+    <div class="cart-grand"><span>Total</span><span id="cartTotal">$0.00</span></div>
+    <button class="btn-checkout">Checkout <i class="fa-solid fa-arrow-right"></i></button>
+  </div>
+</div>
+
+<!-- SUGGESTION HUB -->
+<section class="suggestion" id="suggestion">
+  <div class="suggestion-inner">
+    <div class="section-label" style="text-align:center">Community</div>
+    <h2>Suggestion Hub</h2>
+    <p>Help us build Soma better. Report a bug, request a feature, or suggest a new product.</p>
+
+    <div class="tab-row">
+      <button class="tab-btn active" onclick="setTab(this,'bug')"><i class="fa-solid fa-bug"></i> Bug Report</button>
+      <button class="tab-btn" onclick="setTab(this,'feature')"><i class="fa-solid fa-wand-magic-sparkles"></i> Feature</button>
+      <button class="tab-btn" onclick="setTab(this,'product')"><i class="fa-solid fa-box-open"></i> Product</button>
+    </div>
+
+    <div class="suggestion-form fade-in">
+      <div class="form-row">
+        <div class="form-group">
+          <label>Your Name</label>
+          <input type="text" id="sugName" placeholder="Tinashe Moyo" />
+        </div>
+        <div class="form-group">
+          <label>Your Email</label>
+          <input type="email" id="sugEmail" placeholder="tinashe@school.co.zw" />
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label id="sugTitleLabel">Bug Title</label>
+        <input type="text" id="sugTitle" placeholder="e.g. Fee statement not loading" />
+      </div>
+
+      <div class="form-group">
+        <label>Priority / Importance</label>
+        <select id="sugPriority">
+          <option value="">Select priority</option>
+          <option>Low — Nice to have</option>
+          <option>Medium — Affects workflow</option>
+          <option>High — Blocking usage</option>
+          <option>Critical — System down</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label id="sugDescLabel">Describe the issue</label>
+        <textarea id="sugDesc" placeholder="Tell us what happened, what you expected, and steps to reproduce..."></textarea>
+      </div>
+
+      <button class="btn-submit" onclick="submitSuggestion()">
+        <i class="fa-solid fa-paper-plane"></i> Submit
+      </button>
+
+      <div class="success-msg" id="successMsg">
+        <i class="fa-solid fa-circle-check"></i>
+        Thank you! Your submission has been received. We'll review it shortly.
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <div class="logo-wrap">
+          <div class="logo-mark">
+            <svg viewBox="0 0 24 24" fill="none"><path d="M17 7C17 7 15.5 5 12 5C8.5 5 7 7.5 7 9C7 12 10 13 12 13.5C14 14 17 15 17 17.5C17 19 15.5 21 12 21C8.5 21 7 19 7 19" stroke="white" stroke-width="2" stroke-linecap="round"/></svg>
+          </div>
+          <span class="logo-text">soma</span>
+        </div>
+        <p>AI-powered school management built for Zimbabwean institutions. Simplify, connect, and grow.</p>
+      </div>
+
+      <div class="footer-col">
+        <h4>Product</h4>
+        <ul>
+          <li><a href="#">Features</a></li>
+          <li><a href="#">Pricing</a></li>
+          <li><a href="#">Security</a></li>
+          <li><a href="#">Changelog</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4>Guides</h4>
+        <ul>
+          <li><a href="#">Getting started</a></li>
+          <li><a href="#">Admin setup</a></li>
+          <li><a href="#">Finance module</a></li>
+          <li><a href="#">Student records</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4>Company</h4>
+        <ul>
+          <li><a href="#">About</a></li>
+          <li><a href="#">Blog</a></li>
+          <li><a href="#">Contact</a></li>
+          <li><a href="#">Privacy Policy</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <p>© 2025 Soma Technologies. All rights reserved.</p>
+      <div class="footer-socials">
+        <a href="#"><i class="fa-brands fa-x-twitter"></i></a>
+        <a href="#"><i class="fa-brands fa-linkedin-in"></i></a>
+        <a href="#"><i class="fa-brands fa-instagram"></i></a>
+        <a href="#"><i class="fa-brands fa-github"></i></a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // Cart state
+  let cart = [];
+  let currentTab = 'bug';
+
+  function addToCart(btn, name, price, icon) {
+    const existing = cart.find(i => i.name === name);
+    if (existing) {
+      existing.qty += 1;
+    } else {
+      cart.push({ name, price, icon, qty: 1 });
+    }
+    btn.textContent = 'Added ✓';
+    btn.classList.add('added');
+    setTimeout(() => { btn.textContent = 'Add to cart'; btn.classList.remove('added'); }, 1500);
+    updateCart();
+  }
+
+  function updateCart() {
+    const total = cart.reduce((s, i) => s + i.price * i.qty, 0);
+    const count = cart.reduce((s, i) => s + i.qty, 0);
+    document.getElementById('cartCount').textContent = count;
+    document.getElementById('cartSubtotal').textContent = '$' + total.toFixed(2);
+    document.getElementById('cartTotal').textContent = '$' + total.toFixed(2);
+
+    const container = document.getElementById('cartItems');
+    if (cart.length === 0) {
+      container.innerHTML = '<div class="cart-empty"><i class="fa-solid fa-bag-shopping"></i>Your cart is empty</div>';
+      return;
+    }
+    container.innerHTML = cart.map((item, i) => `
+      <div class="cart-item">
+        <div class="cart-item-icon"><i class="${item.icon}"></i></div>
+        <div class="cart-item-info">
+          <div class="cart-item-name">${item.name} ${item.qty > 1 ? '×'+item.qty : ''}</div>
+          <div class="cart-item-price">$${(item.price * item.qty).toFixed(2)}</div>
+        </div>
+        <button class="cart-item-remove" onclick="removeItem(${i})"><i class="fa-solid fa-xmark"></i></button>
+      </div>
+    `).join('');
+  }
+
+  function removeItem(i) {
+    cart.splice(i, 1);
+    updateCart();
+  }
+
+  function closeCart() {
+    document.querySelector('.cart-overlay').classList.remove('open');
+    document.querySelector('.cart-drawer').classList.remove('open');
+  }
+
+  // Suggestion tabs
+  const tabLabels = {
+    bug: { title: 'Bug Title', desc: 'Describe the issue', placeholder: 'Tell us what happened and how to reproduce it...' },
+    feature: { title: 'Feature Name', desc: 'Describe the feature', placeholder: 'What problem does this feature solve? How should it work?' },
+    product: { title: 'Product Idea', desc: 'Describe the product', placeholder: "What's the product, who is it for, and why do you want it?" }
+  };
+
+  function setTab(btn, tab) {
+    currentTab = tab;
+    document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    const l = tabLabels[tab];
+    document.getElementById('sugTitleLabel').textContent = l.title;
+    document.getElementById('sugDescLabel').textContent = l.desc;
+    document.getElementById('sugDesc').placeholder = l.placeholder;
+    document.getElementById('successMsg').classList.remove('show');
+  }
+
+  function submitSuggestion() {
+    const name = document.getElementById('sugName').value.trim();
+    const email = document.getElementById('sugEmail').value.trim();
+    const title = document.getElementById('sugTitle').value.trim();
+    const desc = document.getElementById('sugDesc').value.trim();
+    if (!name || !email || !title || !desc) {
+      alert('Please fill in all fields before submitting.');
+      return;
+    }
+    // Reset
+    document.getElementById('sugName').value = '';
+    document.getElementById('sugEmail').value = '';
+    document.getElementById('sugTitle').value = '';
+    document.getElementById('sugPriority').value = '';
+    document.getElementById('sugDesc').value = '';
+    document.getElementById('successMsg').classList.add('show');
+  }
+
+  // Intersection observer for fade-in
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+  }, { threshold: 0.1 });
+
+  document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+</script>
+</body>
+</html>
