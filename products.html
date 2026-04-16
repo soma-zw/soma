@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Products — Soma Education Technologies</title>
+  <link rel="icon" type="image/png" href="images/icon.png">
+  <link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;500;600;700&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+  <link rel="stylesheet" href="shared.css"/>
+  <style>
+    .product-section { padding:80px 5%; border-bottom:1px solid var(--gray-100); }
+    .product-section:last-of-type { border-bottom:none; }
+    .product-inner { max-width:1100px; margin:0 auto; display:grid; grid-template-columns:1fr 1fr; gap:80px; align-items:center; }
+    .product-inner.flip { direction:rtl; }
+    .product-inner.flip > * { direction:ltr; }
+    .product-text h2 { font-family:var(--font-display); font-size:clamp(1.6rem,3vw,2.2rem); font-weight:700; letter-spacing:-0.03em; margin-bottom:12px; line-height:1.25; }
+    .product-text .tagline { font-size:0.9rem; color:var(--blue); font-weight:600; margin-bottom:16px; }
+    .product-text p { color:var(--gray-500); font-size:0.95rem; line-height:1.85; margin-bottom:14px; }
+    .product-features { list-style:none; margin:20px 0; display:flex; flex-direction:column; gap:10px; }
+    .product-features li { display:flex; align-items:flex-start; gap:10px; font-size:0.88rem; color:var(--gray-600); }
+    .product-features li i { color:var(--blue); margin-top:3px; width:14px; flex-shrink:0; }
+    .product-visual { background:var(--gray-50); border:1px solid var(--gray-200); border-radius:20px; padding:40px; display:flex; align-items:center; justify-content:center; min-height:300px; flex-direction:column; gap:16px; }
+    .product-visual-icon { font-size:3.5rem; color:var(--blue); }
+    .product-visual-label { font-size:0.8rem; color:var(--gray-400); text-align:center; max-width:200px; line-height:1.5; }
+    .platform-banner { background:var(--gray-50); padding:60px 5%; text-align:center; border-top:1px solid var(--gray-100); }
+    .platform-banner h2 { font-family:var(--font-display); font-size:clamp(1.4rem,3vw,2rem); font-weight:700; margin-bottom:12px; }
+    .platform-banner p { color:var(--gray-500); max-width:540px; margin:0 auto 32px; font-size:0.9rem; line-height:1.8; }
+    .platform-badges { display:flex; justify-content:center; gap:16px; flex-wrap:wrap; }
+    .platform-badge { display:flex; align-items:center; gap:8px; background:var(--white); border:1.5px solid var(--gray-200); border-radius:10px; padding:12px 20px; font-size:0.85rem; font-weight:500; color:var(--gray-600); }
+    .platform-badge i { color:var(--blue); }
+    @media(max-width:900px) { .product-inner { grid-template-columns:1fr; gap:40px; } .product-inner.flip { direction:ltr; } }
+  </style>
+</head>
+<body>
+<!-- NAV -->
+<nav>
+  <a href="index.html" class="logo"><img src="images/logo.png" onerror="this.style.display='none'"><span class="logo-text">soma</span></a>
+  <ul class="nav-links">
+    <li>
+      <span class="nav-dropdown" onclick="toggleDropdown(this)">Products <i class="fa-solid fa-chevron-down" style="font-size:0.6rem"></i>
+        <div class="dropdown-menu">
+          <span style="font-size:0.7rem;font-weight:700;text-transform:uppercase;letter-spacing:0.08em;color:var(--gray-400);padding:6px 14px 4px;display:block;">Software</span>
+          <a href="products.html#portal">Soma Portal</a>
+          <a href="products.html#connect">Soma Connect</a>
+          <a href="products.html#x">Soma X</a>
+          <a href="products.html#ai">Soma AI</a>
+          <div class="dropdown-divider"></div>
+          <span style="font-size:0.7rem;font-weight:700;text-transform:uppercase;letter-spacing:0.08em;color:var(--gray-400);padding:6px 14px 4px;display:block;">Documentation</span>
+          <a href="documentation.html">Getting Started</a>
+          <a href="documentation.html#terms">Terms of Service</a>
+          <a href="privacy.html">Privacy Policy</a>
+          <a href="documentation.html#api">API Reference</a>
+        </div>
+      </span>
+    </li>
+    <li>
+      <span class="nav-dropdown" onclick="toggleDropdown(this)">Company <i class="fa-solid fa-chevron-down" style="font-size:0.6rem"></i>
+        <div class="dropdown-menu">
+          <a href="about.html">About Soma</a>
+          <a href="founders.html">Founders</a>
+          <a href="blog.html">Blog</a>
+        </div>
+      </span>
+    </li>
+    <li><a href="solutions.html">Solutions</a></li>
+    <li><a href="pricing.html">Pricing</a></li>
+    <li><a href="contact.html">Contact</a></li>
+  </ul>
+  <div class="nav-right">
+    <a href="contact.html#demo" class="btn-demo"><i class="fa-regular fa-calendar"></i> Get a demo</a>
+    <a href="login.html" class="btn-login">Login →</a>
+    <div class="hamburger" onclick="document.querySelector('.mobile-nav').classList.add('open')"><span></span><span></span><span></span></div>
+  </div>
+</nav>
+<div class="mobile-nav">
+  <div class="mobile-nav-head"><a href="index.html" class="logo"><span class="logo-text">soma</span></a><button class="mobile-nav-close" onclick="document.querySelector('.mobile-nav').classList.remove('open')"><i class="fa-solid fa-xmark"></i></button></div>
+  <ul>
+    <li><a href="products.html" onclick="document.querySelector('.mobile-nav').classList.remove('open')">Products</a></li>
+    <li><a href="solutions.html" onclick="document.querySelector('.mobile-nav').classList.remove('open')">Solutions</a></li>
+    <li><a href="pricing.html" onclick="document.querySelector('.mobile-nav').classList.remove('open')">Pricing</a></li>
+    <li><a href="about.html" onclick="document.querySelector('.mobile-nav').classList.remove('open')">About</a></li>
+    <li><a href="founders.html" onclick="document.querySelector('.mobile-nav').classList.remove('open')">Founders</a></li>
+    <li><a href="contact.html" onclick="document.querySelector('.mobile-nav').classList.remove('open')">Contact</a></li>
+  </ul>
+  <div class="mobile-nav-btns"><a href="contact.html#demo" class="btn-demo"><i class="fa-regular fa-calendar"></i> Get a demo</a></div>
+</div>
+
+
+  </div>
+</nav>
+<div class="mobile-nav">
+  <div class="mobile-nav-head"><a href="index.html" class="logo"><span class="logo-text">soma</span></a><button class="mobile-nav-close" onclick="document.querySelector('.mobile-nav').classList.remove('open')"><i class="fa-solid fa-xmark"></i></button></div>
+  <ul><li><a href="#portal">Soma Portal</a></li><li><a href="#connect">Soma Connect</a></li><li><a href="#x">Soma X</a></li><li><a href="pricing.html">Pricing</a></li><li><a href="contact.html">Contact</a></li></ul>
+  <div class="mobile-nav-btns"><a href="contact.html#demo" class="btn-demo"><i class="fa-regular fa-calendar"></i> Get a demo</a></div>
+</div>
+
+
+<section class="product-section" id="portal" style="padding-top:100px;">
+  <div class="product-inner fade-in">
+    <div class="product-text">
+      <div class="section-label">For Headmasters & Teachers</div>
+      <h2>Soma Portal</h2>
+      <div class="tagline">The command centre for your school</div>
+      <p>Soma Portal is a powerful Electron desktop application and web dashboard that gives headmasters, deputy heads, class teachers, and bursars everything they need to run the school — in one window.</p>
+      <ul class="product-features">
+        <li><i class="fa-solid fa-check"></i> Live student records: grades, attendance, health, co-curriculars</li>
+        <li><i class="fa-solid fa-check"></i> Exam results entry with auto-calculated grade boundaries (ZIMSEC, Cambridge)</li>
+        <li><i class="fa-solid fa-check"></i> Fee management: statements, payments, outstanding balances</li>
+        <li><i class="fa-solid fa-check"></i> Staff management: HR, timetables, leave tracking</li>
+        <li><i class="fa-solid fa-check"></i> Automated parent notifications</li>
+        <li><i class="fa-solid fa-check"></i> Role-based access: headmaster, teacher, bursar views</li>
+      </ul>
+      <a href="contact.html#demo" class="btn-cta-outline">Request a demo <i class="fa-solid fa-arrow-right"></i></a>
+    </div>
+    <div class="product-visual">
+      <i class="product-visual-icon fa-solid fa-building-columns"></i>
+      <div class="product-visual-label">Available as desktop app (Windows/macOS) and web browser</div>
+    </div>
+  </div>
+</section>
+
+<section class="product-section" id="connect">
+  <div class="product-inner flip fade-in">
+    <div class="product-text">
+      <div class="section-label">For Parents</div>
+      <h2>Soma Connect</h2>
+      <div class="tagline">Stay connected to your child's school life</div>
+      <p>Soma Connect is a mobile app for parents that puts everything they need to know about their child — in their pocket. Real-time updates, direct messaging, fee information, and academic results without a single phone call to the school office.</p>
+      <ul class="product-features">
+        <li><i class="fa-solid fa-check"></i> View your child's current results and progress</li>
+        <li><i class="fa-solid fa-check"></i> Check fee statements and outstanding balances</li>
+        <li><i class="fa-solid fa-check"></i> Receive push notifications from the school</li>
+        <li><i class="fa-solid fa-check"></i> Direct messaging with class teachers</li>
+        <li><i class="fa-solid fa-check"></i> Link multiple children across different schools</li>
+        <li><i class="fa-solid fa-check"></i> Available on Android & iOS</li>
+      </ul>
+      <a href="contact.html#demo" class="btn-cta-outline">Learn more <i class="fa-solid fa-arrow-right"></i></a>
+    </div>
+    <div class="product-visual">
+      <i class="product-visual-icon fa-solid fa-mobile-screen"></i>
+      <div class="product-visual-label">React Native app for Android and iOS</div>
+    </div>
+  </div>
+</section>
+
+<section class="product-section" id="x">
+  <div class="product-inner fade-in">
+    <div class="product-text">
+      <div class="section-label">For Students</div>
+      <h2>Soma X</h2>
+      <div class="tagline">Your school, your way</div>
+      <p>Soma X is the student-facing experience: a smart browser, study tools, AI assistance, and access to your academic profile — all in one app designed for how Zimbabwean students actually learn and work.</p>
+      <ul class="product-features">
+        <li><i class="fa-solid fa-check"></i> AI-powered study assistant</li>
+        <li><i class="fa-solid fa-check"></i> Smart browser with tab management and incognito mode</li>
+        <li><i class="fa-solid fa-check"></i> View your results and class position</li>
+        <li><i class="fa-solid fa-check"></i> Bookmarks, history, and a personalised dashboard</li>
+        <li><i class="fa-solid fa-check"></i> Creative projects and competitions (Soma Creative Lab)</li>
+        <li><i class="fa-solid fa-check"></i> Built for Zimbabwe's ZIMSEC curriculum</li>
+      </ul>
+      <a href="contact.html#demo" class="btn-cta-outline">Learn more <i class="fa-solid fa-arrow-right"></i></a>
+    </div>
+    <div class="product-visual">
+      <i class="product-visual-icon fa-solid fa-graduation-cap"></i>
+      <div class="product-visual-label">React Native mobile app for students</div>
+    </div>
+  </div>
+</section>
+
+<section class="product-section" id="ai">
+  <div class="product-inner flip fade-in">
+    <div class="product-text">
+      <div class="section-label">Across All Products</div>
+      <h2>Soma AI</h2>
+      <div class="tagline">Intelligence woven into every product</div>
+      <p>Soma AI isn't a separate product — it's the intelligence layer running across the entire platform. Ask questions in plain English, get automated reports, receive smart suggestions, and let the system surface insights you'd never find manually.</p>
+      <ul class="product-features">
+        <li><i class="fa-solid fa-check"></i> Natural language queries: "How many students failed Maths this term?"</li>
+        <li><i class="fa-solid fa-check"></i> Automatic grade comment generation for report cards</li>
+        <li><i class="fa-solid fa-check"></i> Fee reminder automation</li>
+        <li><i class="fa-solid fa-check"></i> AI study assistant for Soma X students</li>
+        <li><i class="fa-solid fa-check"></i> Predictive attendance and performance flags</li>
+      </ul>
+      <a href="solutions.html" class="btn-cta-outline">See all capabilities <i class="fa-solid fa-arrow-right"></i></a>
+    </div>
+    <div class="product-visual">
+      <i class="product-visual-icon fa-solid fa-wand-magic-sparkles"></i>
+      <div class="product-visual-label">Powered by Gemini and built into every Soma product</div>
+    </div>
+  </div>
+</section>
+
+<div class="platform-banner fade-in">
+  <h2>One shared backend. Always in sync.</h2>
+  <p>All Soma products connect to a single Supabase backend. A fee payment recorded in Portal appears instantly in a parent's Connect app. A grade entered by a teacher is visible to the student in Soma X — in real time.</p>
+  <div class="platform-badges">
+    <div class="platform-badge"><i class="fa-solid fa-desktop"></i> Windows Desktop</div>
+    <div class="platform-badge"><i class="fa-brands fa-apple"></i> macOS Desktop</div>
+    <div class="platform-badge"><i class="fa-brands fa-android"></i> Android</div>
+    <div class="platform-badge"><i class="fa-brands fa-apple"></i> iOS</div>
+    <div class="platform-badge"><i class="fa-solid fa-globe"></i> Web Browser</div>
+  </div>
+</div>
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-top">
+      <div class="footer-brand"><div class="logo-wrap"><a href="index.html" class="logo"><span class="logo-text" style="font-size:22px">soma</span></a></div><p>AI-powered school management built for Zimbabwean institutions.</p><div class="footer-zw-badge"><span class="flag">🇿🇼</span> Built in Zimbabwe, for Zimbabwe</div></div>
+      <div class="footer-col"><h4>Products</h4><ul><li><a href="#portal">Soma Portal</a></li><li><a href="#connect">Soma Connect</a></li><li><a href="#x">Soma X</a></li><li><a href="#ai">Soma AI</a></li></ul></div>
+      <div class="footer-col"><h4>Company</h4><ul><li><a href="about.html">About</a></li><li><a href="founders.html">Founders</a></li><li><a href="pricing.html">Pricing</a></li></ul></div>
+      <div class="footer-col"><h4>Contact</h4><ul><li><a href="contact.html">Get in touch</a></li><li><a href="contact.html#demo">Book a demo</a></li></ul></div>
+    </div>
+    <div class="footer-bottom">
+      <p>© <span id="footerYear"></span> Soma Education Technologies. Harare, Zimbabwe.</p>
+      <div class="footer-socials"><a href="#"><i class="fa-brands fa-x-twitter"></i></a><a href="#"><i class="fa-brands fa-linkedin-in"></i></a></div>
+    </div>
+  </div>
+</footer>
+<script>
+  document.getElementById('footerYear').textContent = new Date().getFullYear();
+  function toggleDropdown(el) {
+    const menu = el.querySelector('.dropdown-menu');
+    const isOpen = menu.classList.contains('open');
+    document.querySelectorAll('.dropdown-menu.open').forEach(m => m.classList.remove('open'));
+    if (!isOpen) menu.classList.add('open');
+  }
+  document.addEventListener('click', e => {
+    if (!e.target.closest('.nav-dropdown')) {
+      document.querySelectorAll('.dropdown-menu.open').forEach(m => m.classList.remove('open'));
+    }
+  });
+
+  const obs = new IntersectionObserver(e=>e.forEach(x=>{if(x.isIntersecting)x.target.classList.add('visible')}),{threshold:0.1});
+  document.querySelectorAll('.fade-in').forEach(el=>obs.observe(el));
+</script>
+</body></html>

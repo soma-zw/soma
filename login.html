@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Login — Soma Education Technologies</title>
+  <link rel="icon" type="image/png" href="images/icon.png">
+  <link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;500;600;700&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+  <style>
+    :root {
+      --black: #0a0a0a; --white: #ffffff; --gray-50: #f8f8f8;
+      --gray-100: #f0f0f0; --gray-200: #e4e4e4; --gray-400: #9a9a9a;
+      --gray-500: #6b6b6b; --gray-600: #444444; --blue: #2563eb;
+      --font-display: 'Sora', sans-serif; --font-body: 'DM Sans', sans-serif;
+    }
+    *, *::before, *::after { box-sizing:border-box; margin:0; padding:0; }
+    body {
+      font-family: var(--font-body); background: var(--gray-50);
+      min-height: 100vh; display: flex; flex-direction: column;
+      align-items: center; justify-content: center; padding: 24px;
+    }
+    .login-wrap {
+      width: 100%; max-width: 420px;
+    }
+    .login-logo {
+      display: flex; align-items: center; gap: 10px;
+      text-decoration: none; justify-content: center; margin-bottom: 40px;
+    }
+    .login-logo span {
+      font-family: var(--font-display); color: var(--gray-500);
+      font-size: 28px; font-weight: 600;
+    }
+    .login-card {
+      background: var(--white); border: 1px solid var(--gray-200);
+      border-radius: 20px; padding: 40px; box-shadow: 0 4px 24px rgba(0,0,0,0.06);
+    }
+    .login-card h1 {
+      font-family: var(--font-display); font-size: 1.5rem; font-weight: 700;
+      margin-bottom: 6px; letter-spacing: -0.02em;
+    }
+    .login-card .subtitle {
+      font-size: 0.875rem; color: var(--gray-500); margin-bottom: 32px;
+    }
+    .form-group { margin-bottom: 18px; }
+    .form-group label {
+      display: block; font-size: 0.8rem; font-weight: 600;
+      color: var(--gray-600); margin-bottom: 7px;
+    }
+    .form-group input {
+      width: 100%; border: 1.5px solid var(--gray-200); border-radius: 10px;
+      padding: 11px 14px; font-size: 0.9rem; font-family: var(--font-body);
+      color: var(--black); outline: none; transition: border-color 0.2s;
+      background: var(--white);
+    }
+    .form-group input:focus { border-color: var(--blue); }
+    .input-with-icon { position: relative; }
+    .input-with-icon input { padding-left: 40px; }
+    .input-with-icon .field-icon {
+      position: absolute; left: 13px; top: 50%; transform: translateY(-50%);
+      color: var(--gray-400); font-size: 0.85rem; pointer-events: none;
+    }
+    .input-with-icon .toggle-pw {
+      position: absolute; right: 13px; top: 50%; transform: translateY(-50%);
+      color: var(--gray-400); font-size: 0.85rem; cursor: pointer;
+      background: none; border: none; padding: 0; transition: color 0.2s;
+    }
+    .toggle-pw:hover { color: var(--black); }
+    .btn-login-submit {
+      width: 100%; background: var(--black); color: var(--white);
+      border: none; padding: 13px; border-radius: 10px;
+      font-size: 0.9rem; font-family: var(--font-body); font-weight: 500;
+      cursor: pointer; transition: background 0.2s; margin-top: 8px;
+      display: flex; align-items: center; justify-content: center; gap: 8px;
+    }
+    .btn-login-submit:hover { background: var(--gray-600); }
+    .error-msg {
+      display: none; background: #fef2f2; border: 1px solid #fecaca;
+      border-radius: 10px; padding: 12px 16px; font-size: 0.85rem;
+      color: #dc2626; margin-top: 16px; align-items: flex-start; gap: 10px;
+    }
+    .error-msg.show { display: flex; }
+    .error-msg i { margin-top: 2px; flex-shrink: 0; }
+    .error-msg .error-text h4 { font-weight: 600; margin-bottom: 3px; font-size: 0.85rem; }
+    .error-msg .error-text p { font-size: 0.8rem; color: #b91c1c; line-height: 1.5; }
+    .login-footer {
+      text-align: center; margin-top: 28px; font-size: 0.82rem; color: var(--gray-400);
+    }
+    .login-footer a { color: var(--gray-500); text-decoration: none; }
+    .login-footer a:hover { color: var(--black); }
+    .login-footer .sep { margin: 0 8px; }
+    .soma-id-info {
+      background: var(--gray-50); border: 1px solid var(--gray-200);
+      border-radius: 10px; padding: 14px 16px; margin-bottom: 24px;
+      font-size: 0.82rem; color: var(--gray-500); line-height: 1.6;
+      display: flex; gap: 10px; align-items: flex-start;
+    }
+    .soma-id-info i { color: var(--blue); margin-top: 2px; flex-shrink: 0; }
+  </style>
+</head>
+<body>
+  <div class="login-wrap">
+    <a href="index.html" class="login-logo">
+      <img src="images/logo.png" width="100px">
+    </a>
+
+    <div class="login-card">
+      <h1>Welcome back</h1>
+      <p class="subtitle">Sign in to your Soma school account</p>
+
+      <div class="soma-id-info">
+        <i class="fa-solid fa-circle-info"></i>
+        <div>Your Soma ID is provided by your school administrator when your account is created. It typically looks like <strong>SCH-XXXX-####</strong>.</div>
+      </div>
+
+      <div class="form-group">
+        <label for="somaId">Soma ID</label>
+        <div class="input-with-icon">
+          <i class="fa-solid fa-id-card field-icon"></i>
+          <input type="text" id="somaId" placeholder="SCH-XXXX-0001" autocomplete="off" oninput="clearError()"/>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="password">Password</label>
+        <div class="input-with-icon">
+          <i class="fa-solid fa-lock field-icon"></i>
+          <input type="password" id="password" placeholder="Enter your password" id="password" oninput="clearError()" onkeydown="if(event.key==='Enter') attemptLogin()"/>
+          <button class="toggle-pw" onclick="togglePw()" tabindex="-1" type="button">
+            <i class="fa-regular fa-eye" id="eyeIcon"></i>
+          </button>
+        </div>
+      </div>
+
+      <button class="btn-login-submit" onclick="attemptLogin()">
+        <i class="fa-solid fa-arrow-right-to-bracket"></i> Sign in
+      </button>
+
+      <div class="error-msg" id="errorMsg">
+        <i class="fa-solid fa-circle-exclamation"></i>
+        <div class="error-text">
+          <h4>Invalid Soma ID</h4>
+          <p>We couldn't find an account with that Soma ID and password. Please check your credentials or contact your school administrator.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="login-footer">
+      <a href="contact.html">Need help?</a>
+      <span class="sep">·</span>
+      <a href="privacy.html">Privacy Policy</a>
+      <span class="sep">·</span>
+      <a href="index.html">← Back to Soma</a>
+    </div>
+  </div>
+
+  <script>
+    function attemptLogin() {
+      const id = document.getElementById('somaId').value.trim();
+      const pw = document.getElementById('password').value.trim();
+      if (!id || !pw) {
+        document.getElementById('errorMsg').classList.add('show');
+        return;
+      }
+      // No valid accounts exist yet — always show invalid
+      document.getElementById('errorMsg').classList.add('show');
+    }
+    function clearError() {
+      document.getElementById('errorMsg').classList.remove('show');
+    }
+    function togglePw() {
+      const input = document.getElementById('password');
+      const icon = document.getElementById('eyeIcon');
+      if (input.type === 'password') {
+        input.type = 'text';
+        icon.className = 'fa-regular fa-eye-slash';
+      } else {
+        input.type = 'password';
+        icon.className = 'fa-regular fa-eye';
+      }
+    }
+  </script>
+</body>
+</html>

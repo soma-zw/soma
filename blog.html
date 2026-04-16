@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Blog — Soma Education Technologies</title>
+  <link rel="icon" type="image/png" href="images/icon.png">
+  <link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;500;600;700&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+  <link rel="stylesheet" href="shared.css"/>
+  <style>
+    .blog-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:28px; margin:60px 0; }
+    .blog-card { border:1.5px solid var(--gray-200); border-radius:16px; overflow:hidden; transition:transform 0.2s,box-shadow 0.2s; background:var(--white); }
+    .blog-card:hover { transform:translateY(-4px); box-shadow:0 12px 40px rgba(0,0,0,0.08); }
+    .blog-card-img { height:200px; overflow:hidden; position:relative; }
+    .blog-card-img img { width:100%; height:100%; object-fit:cover; display:block; transition:transform 0.4s; }
+    .blog-card:hover .blog-card-img img { transform:scale(1.04); }
+    .blog-card-body { padding:20px; }
+    .blog-meta { display:flex; align-items:center; gap:10px; margin-bottom:10px; }
+    .blog-tag { background:var(--blue-light); color:var(--blue); border-radius:20px; padding:3px 10px; font-size:0.72rem; font-weight:600; }
+    .blog-date { font-size:0.75rem; color:var(--gray-400); }
+    .blog-title { font-family:var(--font-display); font-size:1rem; font-weight:600; line-height:1.4; margin-bottom:8px; }
+    .blog-excerpt { font-size:0.82rem; color:var(--gray-500); line-height:1.7; margin-bottom:16px; }
+    .blog-author { display:flex; align-items:center; gap:8px; font-size:0.78rem; color:var(--gray-500); }
+    .blog-author-avatar { width:26px; height:26px; border-radius:50%; object-fit:cover; }
+    .blog-author-initials { width:26px; height:26px; border-radius:50%; background:var(--black); color:var(--white); display:flex; align-items:center; justify-content:center; font-size:0.65rem; font-weight:700; flex-shrink:0; }
+    .featured-post { background:var(--black); color:var(--white); border-radius:20px; padding:0; margin-bottom:60px; display:grid; grid-template-columns:1fr 1fr; overflow:hidden; }
+    .featured-post-text { padding:48px; display:flex; flex-direction:column; justify-content:center; }
+    .featured-post .blog-tag { background:rgba(255,255,255,0.15); color:var(--white); width:fit-content; margin-bottom:12px; }
+    .featured-post h2 { font-family:var(--font-display); font-size:clamp(1.4rem,2.5vw,2rem); font-weight:700; line-height:1.3; margin-bottom:16px; }
+    .featured-post p { color:var(--gray-400); font-size:0.9rem; line-height:1.8; margin-bottom:24px; flex:1; }
+    .featured-post .blog-author { color:var(--gray-400); }
+    .featured-post .blog-author-initials { background:var(--blue); }
+    .featured-img { height:100%; min-height:320px; overflow:hidden; }
+    .featured-img img { width:100%; height:100%; object-fit:cover; display:block; }
+    @media(max-width:900px) { .blog-grid { grid-template-columns:1fr 1fr; } .featured-post { grid-template-columns:1fr; } .featured-img { min-height:220px; } }
+    @media(max-width:600px) { .blog-grid { grid-template-columns:1fr; } }
+  </style>
+</head>
+<body>
+<nav>
+  <a href="index.html" class="logo"><img src="images/logo.png" onerror="this.style.display='none'"><span class="logo-text">soma</span></a>
+  <ul class="nav-links">
+    <li>
+      <span class="nav-dropdown" onclick="toggleDropdown(this)">
+        Products <i class="fa-solid fa-chevron-down chevron"></i>
+        <div class="dropdown-menu">
+          <span class="dropdown-section-label">Software</span>
+          <a href="products.html#portal">Soma Portal</a>
+          <a href="products.html#connect">Soma Connect</a>
+          <a href="products.html#x">Soma X</a>
+          <a href="products.html#ai">Soma AI</a>
+          <div class="dropdown-divider"></div>
+          <span class="dropdown-section-label">Documentation</span>
+          <a href="terms.html">Terms of Service</a>
+          <a href="privacy.html">Privacy Policy</a>
+        </div>
+      </span>
+    </li>
+    <li>
+      <span class="nav-dropdown" onclick="toggleDropdown(this)">
+        Company <i class="fa-solid fa-chevron-down chevron"></i>
+        <div class="dropdown-menu">
+          <a href="about.html">About Soma</a>
+          <a href="founders.html">Founders</a>
+          <a href="blog.html">Blog</a>
+        </div>
+      </span>
+    </li>
+    <li><a href="solutions.html">Solutions</a></li>
+    <li><a href="pricing.html">Pricing</a></li>
+    <li><a href="contact.html">Contact</a></li>
+  </ul>
+  <div class="nav-right">
+    <a href="contact.html#demo" class="btn-demo"><i class="fa-regular fa-calendar"></i> Get a demo</a>
+    <a href="login.html" class="btn-login">Login →</a>
+    <div class="hamburger" onclick="document.querySelector('.mobile-nav').classList.add('open')"><span></span><span></span><span></span></div>
+  </div>
+</nav>
+<div class="mobile-nav">
+  <div class="mobile-nav-head"><a href="index.html" class="logo"><span class="logo-text">soma</span></a><button class="mobile-nav-close" onclick="document.querySelector('.mobile-nav').classList.remove('open')"><i class="fa-solid fa-xmark"></i></button></div>
+  <ul>
+    <li><a href="products.html">Products</a></li>
+    <li><a href="solutions.html">Solutions</a></li>
+    <li><a href="pricing.html">Pricing</a></li>
+    <li><a href="about.html">About</a></li>
+    <li><a href="contact.html">Contact</a></li>
+  </ul>
+  <div class="mobile-nav-btns"><a href="contact.html#demo" class="btn-demo"><i class="fa-regular fa-calendar"></i> Get a demo</a></div>
+</div>
+
+<div class="page-top-wrap">
+  <div class="page-top">
+    <div class="section-label">Blog</div>
+    <h1>Building in public</h1>
+    <p>Updates from the Soma team — product launches, school stories, and thoughts on edtech in Africa.</p>
+  </div>
+</div>
+
+<div class="page-content">
+  <div class="featured-post fade-in">
+    <div class="featured-post-text">
+      <div class="blog-tag">Founder Story</div>
+      <h2>Why we built Soma — and why we're doing it in Zimbabwe</h2>
+      <p>We didn't start Soma because edtech was a hot space. We started it because we watched schools drown in paperwork while the solutions designed for them were built for someone else entirely.</p>
+      <div class="blog-author">
+        <div class="blog-author-initials">TC</div>
+        <span>Tanatswa Chiyangwa · March 2026</span>
+      </div>
+      <a href="about.html" class="btn-cta-outline" style="border-color:var(--gray-400);color:var(--gray-300);margin-top:24px;">Read our story <i class="fa-solid fa-arrow-right"></i></a>
+    </div>
+    <div class="featured-img">
+      <img src="https://images.unsplash.com/photo-1580582932707-520aed937b7b?w=700&q=80" alt="Students in a Zimbabwean school" loading="lazy"/>
+    </div>
+  </div>
+
+  <div class="blog-grid">
+    <div class="blog-card fade-in">
+      <div class="blog-card-img">
+        <img src="https://images.unsplash.com/photo-1497633762265-9d179a990aa6?w=500&q=80" alt="School going paperless" loading="lazy"/>
+      </div>
+      <div class="blog-card-body">
+        <div class="blog-meta"><span class="blog-tag">Case Study</span><span class="blog-date">April 2026</span></div>
+        <div class="blog-title">How St Bernard's Primary went paperless in 5 days</div>
+        <div class="blog-excerpt">From physical registers to live digital records — how one Harare school made the switch and what we learned from the transition.</div>
+        <div class="blog-author">
+          <div class="blog-author-initials" style="background:#0d9488;">NM</div>
+          <span>Nyasha Moyo, Head of Partnerships</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="blog-card fade-in">
+      <div class="blog-card-img">
+        <img src="https://images.unsplash.com/photo-1434030216411-0b793f4b4173?w=500&q=80" alt="Student studying with ZIMSEC books" loading="lazy"/>
+      </div>
+      <div class="blog-card-body">
+        <div class="blog-meta"><span class="blog-tag">Academics</span><span class="blog-date">March 2026</span></div>
+        <div class="blog-title">Building ZIMSEC grading into Soma Portal</div>
+        <div class="blog-excerpt">The technical decisions behind supporting ZIMSEC Primary, O-Level, A-Level, and Cambridge IGCSE grade boundaries in one system.</div>
+        <div class="blog-author">
+          <div class="blog-author-initials">TC</div>
+          <span>Tanatswa Chiyangwa, Co-Founder</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="blog-card fade-in">
+      <div class="blog-card-img">
+        <img src="https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?w=500&q=80" alt="Mobile app on phone" loading="lazy"/>
+      </div>
+      <div class="blog-card-body">
+        <div class="blog-meta"><span class="blog-tag">Product</span><span class="blog-date">February 2026</span></div>
+        <div class="blog-title">Launching Soma Connect — a parent app built for Zimbabwe</div>
+        <div class="blog-excerpt">What parents told us they actually need from their child's school, and how that shaped the design of our mobile app.</div>
+        <div class="blog-author">
+          <div class="blog-author-initials" style="background:var(--blue);">AT</div>
+          <span>Arthur Tachiona, Co-Founder</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="blog-card fade-in">
+      <div class="blog-card-img">
+        <img src="https://images.unsplash.com/photo-1555066931-4365d14bab8c?w=500&q=80" alt="Code on a screen" loading="lazy"/>
+      </div>
+      <div class="blog-card-body">
+        <div class="blog-meta"><span class="blog-tag">Engineering</span><span class="blog-date">January 2026</span></div>
+        <div class="blog-title">Why we built Soma on Supabase</div>
+        <div class="blog-excerpt">How a single Supabase backend powers four different apps, real-time sync, and RLS-based access control across an entire school.</div>
+        <div class="blog-author">
+          <div class="blog-author-initials">TC</div>
+          <span>Tanatswa Chiyangwa, Co-Founder</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="blog-card fade-in">
+      <div class="blog-card-img">
+        <img src="https://images.unsplash.com/photo-1509099836639-18ba1795216d?w=500&q=80" alt="Africa map and school" loading="lazy"/>
+      </div>
+      <div class="blog-card-body">
+        <div class="blog-meta"><span class="blog-tag">Vision</span><span class="blog-date">December 2025</span></div>
+        <div class="blog-title">The case for African-built edtech</div>
+        <div class="blog-excerpt">Why adapting Western platforms for African schools fundamentally doesn't work — and what a truly local alternative looks like.</div>
+        <div class="blog-author">
+          <div class="blog-author-initials" style="background:#7c3aed;">FK</div>
+          <span>Farai Khumalo, Education Consultant</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="blog-card fade-in">
+      <div class="blog-card-img">
+        <img src="https://images.unsplash.com/photo-1677442135703-1787eea5ce01?w=500&q=80" alt="AI and technology" loading="lazy"/>
+      </div>
+      <div class="blog-card-body">
+        <div class="blog-meta"><span class="blog-tag">AI</span><span class="blog-date">November 2025</span></div>
+        <div class="blog-title">How we're using AI in Soma — and what we're not doing</div>
+        <div class="blog-excerpt">AI comment generation, natural language queries, and Gemini integration in Soma X — the practical decisions behind each one.</div>
+        <div class="blog-author">
+          <div class="blog-author-initials" style="background:#b45309;">TM</div>
+          <span>Tatenda Mhute, Product Lead</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-top">
+      <div class="footer-brand"><div class="logo-wrap"><a href="index.html" class="logo"><span class="logo-text" style="font-size:22px">soma</span></a></div><p>AI-powered school management built for Zimbabwean institutions.</p><div class="footer-zw-badge"><span class="flag">🇿🇼</span> Built in Zimbabwe, for Zimbabwe</div></div>
+      <div class="footer-col"><h4>Product</h4><ul><li><a href="products.html">All Products</a></li><li><a href="pricing.html">Pricing</a></li></ul></div>
+      <div class="footer-col"><h4>Company</h4><ul><li><a href="about.html">About</a></li><li><a href="founders.html">Founders</a></li></ul></div>
+      <div class="footer-col"><h4>Contact</h4><ul><li><a href="contact.html">Get in touch</a></li></ul></div>
+    </div>
+    <div class="footer-bottom">
+      <p>© <span id="footerYear"></span> Soma Education Technologies. Harare, Zimbabwe.</p>
+      <div class="footer-socials"><a href="#"><i class="fa-brands fa-x-twitter"></i></a><a href="#"><i class="fa-brands fa-linkedin-in"></i></a></div>
+    </div>
+  </div>
+</footer>
+<script>
+  document.getElementById('footerYear').textContent = new Date().getFullYear();
+  const obs = new IntersectionObserver(e=>e.forEach(x=>{if(x.isIntersecting)x.target.classList.add('visible')}),{threshold:0.1});
+  document.querySelectorAll('.fade-in').forEach(el=>obs.observe(el));
+  function toggleDropdown(el) {
+    const isOpen = el.classList.contains('open');
+    document.querySelectorAll('.nav-dropdown.open').forEach(d => d.classList.remove('open'));
+    if (!isOpen) el.classList.add('open');
+  }
+  document.addEventListener('click', function(e) {
+    if (!e.target.closest('.nav-dropdown')) {
+      document.querySelectorAll('.nav-dropdown.open').forEach(d => d.classList.remove('open'));
+    }
+  });
+</script>
+</body></html>

@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Solutions — Soma Education Technologies</title>
+  <link rel="icon" type="image/png" href="images/icon.png">
+  <link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;500;600;700&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+  <link rel="stylesheet" href="shared.css"/>
+  <style>
+    .solutions-nav { display:flex; gap:12px; flex-wrap:wrap; justify-content:center; margin:40px 0; }
+    .sol-nav-btn { padding:9px 20px; border:1.5px solid var(--gray-200); border-radius:8px; background:var(--white); font-size:0.85rem; font-family:var(--font-body); font-weight:500; color:var(--gray-500); cursor:pointer; transition:all 0.2s; text-decoration:none; }
+    .sol-nav-btn:hover, .sol-nav-btn.active { background:var(--black); color:var(--white); border-color:var(--black); }
+    .solution-block { padding:80px 0; border-bottom:1px solid var(--gray-100); }
+    .solution-block:last-of-type { border-bottom:none; }
+    .sol-header { margin-bottom:40px; }
+    .sol-header h2 { font-family:var(--font-display); font-size:clamp(1.6rem,3vw,2.2rem); font-weight:700; letter-spacing:-0.03em; margin-bottom:12px; }
+    .sol-header p { color:var(--gray-500); max-width:600px; font-size:0.95rem; line-height:1.8; }
+    .sol-features-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:20px; }
+    .sol-feature { background:var(--gray-50); border:1px solid var(--gray-200); border-radius:14px; padding:24px; }
+    .sol-feature i { font-size:1.4rem; color:var(--blue); margin-bottom:12px; display:block; }
+    .sol-feature h4 { font-family:var(--font-display); font-size:0.9rem; font-weight:600; margin-bottom:8px; }
+    .sol-feature p { font-size:0.82rem; color:var(--gray-500); line-height:1.7; }
+    @media(max-width:900px) { .sol-features-grid { grid-template-columns:1fr 1fr; } }
+    @media(max-width:600px) { .sol-features-grid { grid-template-columns:1fr; } }
+  </style>
+</head>
+<body>
+<nav>
+  <a href="index.html" class="logo"><img src="images/logo.png" onerror="this.style.display='none'"><span class="logo-text">soma</span></a>
+  <ul class="nav-links">
+    <li>
+      <span class="nav-dropdown" onclick="toggleDropdown(this)">
+        Products <i class="fa-solid fa-chevron-down chevron"></i>
+        <div class="dropdown-menu">
+          <span class="dropdown-section-label">Software</span>
+          <a href="products.html#portal">Soma Portal</a>
+          <a href="products.html#connect">Soma Connect</a>
+          <a href="products.html#x">Soma X</a>
+          <a href="products.html#ai">Soma AI</a>
+          <div class="dropdown-divider"></div>
+          <span class="dropdown-section-label">Documentation</span>
+          <a href="terms.html">Terms of Service</a>
+          <a href="privacy.html">Privacy Policy</a>
+        </div>
+      </span>
+    </li>
+    <li>
+      <span class="nav-dropdown" onclick="toggleDropdown(this)">
+        Company <i class="fa-solid fa-chevron-down chevron"></i>
+        <div class="dropdown-menu">
+          <a href="about.html">About Soma</a>
+          <a href="founders.html">Founders</a>
+          <a href="blog.html">Blog</a>
+        </div>
+      </span>
+    </li>
+    <li><a href="solutions.html">Solutions</a></li>
+    <li><a href="pricing.html">Pricing</a></li>
+    <li><a href="contact.html">Contact</a></li>
+  </ul>
+  <div class="nav-right">
+    <a href="contact.html#demo" class="btn-demo"><i class="fa-regular fa-calendar"></i> Get a demo</a>
+    <a href="login.html" class="btn-login">Login →</a>
+    <div class="hamburger" onclick="document.querySelector('.mobile-nav').classList.add('open')"><span></span><span></span><span></span></div>
+  </div>
+</nav>
+<div class="mobile-nav">
+  <div class="mobile-nav-head"><a href="index.html" class="logo"><span class="logo-text">soma</span></a><button class="mobile-nav-close" onclick="document.querySelector('.mobile-nav').classList.remove('open')"><i class="fa-solid fa-xmark"></i></button></div>
+  <ul>
+    <li><a href="products.html">Products</a></li>
+    <li><a href="solutions.html">Solutions</a></li>
+    <li><a href="pricing.html">Pricing</a></li>
+    <li><a href="about.html">About</a></li>
+    <li><a href="founders.html">Founders</a></li>
+    <li><a href="contact.html">Contact</a></li>
+  </ul>
+  <div class="mobile-nav-btns"><a href="contact.html#demo" class="btn-demo"><i class="fa-regular fa-calendar"></i> Get a demo</a></div>
+</div>
+ 
+<div class="page-content">
+  <div class="solutions-nav">
+    <a href="#admin" class="sol-nav-btn">Admin & Staff</a>
+    <a href="#finance" class="sol-nav-btn">Finance & Fees</a>
+    <a href="#students" class="sol-nav-btn">Student Records</a>
+    <a href="#academics" class="sol-nav-btn">Academics</a>
+    <a href="#parents" class="sol-nav-btn">Parent Communication</a>
+    <a href="#ai" class="sol-nav-btn">AI & Insights</a>
+  </div>
+
+  <div class="solution-block" id="admin">
+    <div class="sol-header fade-in">
+      <div class="section-label">Administration</div>
+      <h2>Admin & Staff Management</h2>
+      <p>Give your headmaster and deputies a complete view of the school. Staff records, timetables, leave, HR — all in one place.</p>
+    </div>
+    <div class="sol-features-grid fade-in">
+      <div class="sol-feature"><i class="fa-solid fa-users-gear"></i><h4>Staff Directory</h4><p>Complete staff profiles with contact info, qualifications, teaching subjects, and employment history.</p></div>
+      <div class="sol-feature"><i class="fa-solid fa-calendar-days"></i><h4>Timetable Builder</h4><p>Build and publish school timetables. Teachers see their schedule in the portal instantly.</p></div>
+      <div class="sol-feature"><i class="fa-solid fa-file-invoice"></i><h4>Leave Management</h4><p>Submit and approve leave applications digitally. Track leave history per staff member.</p></div>
+      <div class="sol-feature"><i class="fa-solid fa-chart-bar"></i><h4>Instant Reports</h4><p>Generate management reports in seconds — staff attendance, performance data, class statistics.</p></div>
+      <div class="sol-feature"><i class="fa-solid fa-bell"></i><h4>Staff Notifications</h4><p>Push important notices to all or specific staff members in one click.</p></div>
+      <div class="sol-feature"><i class="fa-solid fa-shield-halved"></i><h4>Role-Based Access</h4><p>Headmaster, deputy, class teacher, and bursar views — each with appropriate data access.</p></div>
+    </div>
+  </div>
+
+  <div class="solution-block" id="finance">
+    <div class="sol-header fade-in">
+      <div class="section-label">Finance</div>
+      <h2>Finance & Fee Management</h2>
+      <p>Eliminate the fee book. Track every payment, generate statements, and send automated reminders — all from Soma.</p>
+    </div>
+    <div class="sol-features-grid fade-in">
+      <div class="sol-feature"><i class="fa-solid fa-wallet"></i><h4>Fee Tracking</h4><p>Record payments per student. See at a glance who's paid, who's outstanding, and how much.</p></div>
+      <div class="sol-feature"><i class="fa-solid fa-file-invoice-dollar"></i><h4>Automated Statements</h4><p>Generate individual or class-wide fee statements in PDF format with one click.</p></div>
+      <div class="sol-feature"><i class="fa-solid fa-bell"></i><h4>Reminder Automation</h4><p>Set up automated fee reminders to parents via the Soma Connect app or email.</p></div>
+      <div class="sol-feature"><i class="fa-solid fa-chart-line"></i><h4>Revenue Dashboards</h4><p>Live charts showing term-to-date collections, outstanding totals, and trends by class.</p></div>
+      <div class="sol-feature"><i class="fa-solid fa-coins"></i><h4>Multi-Currency</h4><p>Support for USD and ZiG billing — critical for Zimbabwe's dual-currency school environment.</p></div>
+      <div class="sol-feature"><i class="fa-solid fa-lock"></i><h4>Audit Trail</h4><p>Every payment entry is timestamped and attributed to the user who recorded it.</p></div>
+    </div>
+  </div>
+
+  <div class="solution-block" id="students">
+    <div class="sol-header fade-in">
+      <div class="section-label">Students</div>
+      <h2>Student Information System</h2>
+      <p>One complete profile for every student — academic, medical, financial, and co-curricular records in one place.</p>
+    </div>
+    <div class="sol-features-grid fade-in">
+      <div class="sol-feature"><i class="fa-solid fa-user-graduate"></i><h4>Student Profiles</h4><p>Photo, contact details, parent/guardian info, enrolment history — all in one profile.</p></div>
+      <div class="sol-feature"><i class="fa-solid fa-clipboard-list"></i><h4>Attendance Tracking</h4><p>Daily attendance recorded per class. Automated flags for persistent absenteeism.</p></div>
+      <div class="sol-feature"><i class="fa-solid fa-heart-pulse"></i><h4>Health Records</h4><p>Allergies, medical conditions, and health incidents recorded securely and accessibly.</p></div>
+      <div class="sol-feature"><i class="fa-solid fa-trophy"></i><h4>Co-Curricular</h4><p>Track sports, clubs, prefect positions, and awards alongside academic records.</p></div>
+      <div class="sol-feature"><i class="fa-solid fa-magnifying-glass"></i><h4>Powerful Search</h4><p>Find any student, any record, across any class in seconds.</p></div>
+      <div class="sol-feature"><i class="fa-solid fa-file-export"></i><h4>Data Export</h4><p>Export student data to CSV/PDF for ZIMSEC submissions or internal reporting.</p></div>
+    </div>
+  </div>
+
+  <div class="solution-block" id="academics">
+    <div class="sol-header fade-in">
+      <div class="section-label">Academics</div>
+      <h2>Results & Academic Management</h2>
+      <p>Purpose-built for Zimbabwe's grading systems. ZIMSEC Primary, O-Level, A-Level, and Cambridge IGCSE — all supported.</p>
+    </div>
+    <div class="sol-features-grid fade-in">
+      <div class="sol-feature"><i class="fa-solid fa-pencil"></i><h4>Results Entry</h4><p>Teachers enter marks per subject. Grades auto-calculated against the correct boundary system.</p></div>
+      <div class="sol-feature"><i class="fa-solid fa-list-ol"></i><h4>Class Rankings</h4><p>Automatic class and stream position calculations per term.</p></div>
+      <div class="sol-feature"><i class="fa-solid fa-sliders"></i><h4>Grade Boundaries</h4><p>Per-class boundary overrides for schools with custom grading policies.</p></div>
+      <div class="sol-feature"><i class="fa-solid fa-comment-dots"></i><h4>Auto Comments</h4><p>AI-generated report comments based on performance, editable by the teacher.</p></div>
+      <div class="sol-feature"><i class="fa-solid fa-print"></i><h4>Report Cards</h4><p>Generate complete student report cards ready for printing or PDF distribution.</p></div>
+      <div class="sol-feature"><i class="fa-solid fa-chart-pie"></i><h4>Subject Analytics</h4><p>Class-wide pass rates, averages, and subject comparisons at a glance.</p></div>
+    </div>
+  </div>
+</div>
+
+<div style="background:var(--gray-50);padding:60px 5%;text-align:center;border-top:1px solid var(--gray-100);">
+  <div class="section-label" style="text-align:center">Ready to see it live?</div>
+  <h2 style="font-family:var(--font-display);font-size:clamp(1.4rem,3vw,2rem);font-weight:700;margin-bottom:16px;">Every module. One platform.</h2>
+  <p style="color:var(--gray-500);max-width:500px;margin:0 auto 28px;font-size:0.9rem;line-height:1.8;">Book a demo and we'll walk you through every module with real data from a live Zimbabwean school.</p>
+  <a href="contact.html#demo" class="btn-demo" style="display:inline-flex;"><i class="fa-regular fa-calendar"></i> Book a demo</a>
+</div>
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-top">
+      <div class="footer-brand"><div class="logo-wrap"><a href="index.html" class="logo"><span class="logo-text" style="font-size:22px">soma</span></a></div><p>AI-powered school management built for Zimbabwean institutions.</p><div class="footer-zw-badge"><span class="flag">🇿🇼</span> Built in Zimbabwe, for Zimbabwe</div></div>
+      <div class="footer-col"><h4>Solutions</h4><ul><li><a href="#admin">Admin</a></li><li><a href="#finance">Finance</a></li><li><a href="#students">Students</a></li><li><a href="#academics">Academics</a></li></ul></div>
+      <div class="footer-col"><h4>Product</h4><ul><li><a href="products.html">All Products</a></li><li><a href="pricing.html">Pricing</a></li></ul></div>
+      <div class="footer-col"><h4>Contact</h4><ul><li><a href="contact.html">Get in touch</a></li><li><a href="contact.html#demo">Book a demo</a></li></ul></div>
+    </div>
+    <div class="footer-bottom">
+      <p>© <span id="footerYear"></span> Soma Education Technologies. Harare, Zimbabwe.</p>
+      <div class="footer-socials"><a href="#"><i class="fa-brands fa-x-twitter"></i></a><a href="#"><i class="fa-brands fa-linkedin-in"></i></a></div>
+    </div>
+  </div>
+</footer>
+<script>
+  document.getElementById('footerYear').textContent = new Date().getFullYear();
+  const obs = new IntersectionObserver(e=>e.forEach(x=>{if(x.isIntersecting)x.target.classList.add('visible')}),{threshold:0.1});
+  document.querySelectorAll('.fade-in').forEach(el=>obs.observe(el));
+</script>
+</body></html>

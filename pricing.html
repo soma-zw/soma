@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Pricing — Soma Education Technologies</title>
+  <link rel="icon" type="image/png" href="images/icon.png">
+  <link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;500;600;700&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+  <link rel="stylesheet" href="shared.css"/>
+  <style>
+    .pricing-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:24px; margin:60px 0; }
+    .price-card { border:1.5px solid var(--gray-200); border-radius:20px; padding:36px; background:var(--white); position:relative; transition:transform 0.2s, box-shadow 0.2s; }
+    .price-card:hover { transform:translateY(-4px); box-shadow:0 16px 48px rgba(0,0,0,0.08); }
+    .price-card.featured { border-color:var(--black); background:var(--black); color:var(--white); }
+    .price-badge { position:absolute; top:-12px; left:50%; transform:translateX(-50%); background:var(--blue); color:var(--white); border-radius:20px; padding:4px 14px; font-size:0.72rem; font-weight:600; white-space:nowrap; }
+    .price-name { font-family:var(--font-display); font-size:1.1rem; font-weight:600; margin-bottom:8px; }
+    .price-amount { font-family:var(--font-display); font-size:2.4rem; font-weight:700; margin:16px 0 4px; }
+    .price-amount span { font-size:1rem; font-weight:400; }
+    .price-desc { font-size:0.82rem; color:var(--gray-500); margin-bottom:28px; line-height:1.6; }
+    .price-card.featured .price-desc { color:var(--gray-400); }
+    .price-features { list-style:none; display:flex; flex-direction:column; gap:10px; margin-bottom:32px; }
+    .price-features li { display:flex; align-items:flex-start; gap:10px; font-size:0.85rem; }
+    .price-features li i { color:#16a34a; margin-top:3px; flex-shrink:0; }
+    .price-card.featured .price-features li i { color:#86efac; }
+    .price-features li.disabled { opacity:0.4; }
+    .price-features li.disabled i { color:var(--gray-400); }
+    .btn-price { width:100%; padding:12px; border-radius:10px; font-size:0.9rem; font-family:var(--font-body); font-weight:500; cursor:pointer; border:1.5px solid var(--black); background:var(--black); color:var(--white); transition:all 0.2s; text-decoration:none; display:block; text-align:center; }
+    .btn-price:hover { background:var(--gray-600); }
+    .price-card.featured .btn-price { background:var(--white); color:var(--black); border-color:var(--white); }
+    .price-card.featured .btn-price:hover { background:var(--gray-100); }
+    .btn-price.outline { background:transparent; color:var(--black); }
+    .btn-price.outline:hover { background:var(--black); color:var(--white); }
+    .faq { max-width:760px; margin:0 auto 80px; }
+    .faq h2 { font-family:var(--font-display); font-size:clamp(1.4rem,3vw,2rem); font-weight:700; margin-bottom:40px; text-align:center; }
+    .faq-item { border-top:1px solid var(--gray-200); padding:20px 0; }
+    .faq-item:last-child { border-bottom:1px solid var(--gray-200); }
+    .faq-q { font-weight:600; font-size:0.95rem; cursor:pointer; display:flex; justify-content:space-between; align-items:center; gap:16px; }
+    .faq-a { font-size:0.88rem; color:var(--gray-500); line-height:1.8; max-height:0; overflow:hidden; transition:max-height 0.3s, padding 0.3s; }
+    .faq-item.open .faq-a { max-height:200px; padding-top:12px; }
+    .faq-item.open .faq-q i { transform:rotate(180deg); }
+    .faq-q i { transition:transform 0.3s; flex-shrink:0; color:var(--gray-400); }
+    @media(max-width:900px) { .pricing-grid { grid-template-columns:1fr; max-width:480px; margin:60px auto; } }
+  </style>
+</head>
+<body>
+<nav>
+  <a href="index.html" class="logo"><img src="images/logo.png" onerror="this.style.display='none'"><span class="logo-text">soma</span></a>
+  <ul class="nav-links">
+    <li>
+      <span class="nav-dropdown" onclick="toggleDropdown(this)">
+        Products <i class="fa-solid fa-chevron-down chevron"></i>
+        <div class="dropdown-menu">
+          <span class="dropdown-section-label">Software</span>
+          <a href="products.html#portal">Soma Portal</a>
+          <a href="products.html#connect">Soma Connect</a>
+          <a href="products.html#x">Soma X</a>
+          <a href="products.html#ai">Soma AI</a>
+          <div class="dropdown-divider"></div>
+          <span class="dropdown-section-label">Documentation</span>
+          <a href="terms.html">Terms of Service</a>
+          <a href="privacy.html">Privacy Policy</a>
+        </div>
+      </span>
+    </li>
+    <li>
+      <span class="nav-dropdown" onclick="toggleDropdown(this)">
+        Company <i class="fa-solid fa-chevron-down chevron"></i>
+        <div class="dropdown-menu">
+          <a href="about.html">About Soma</a>
+          <a href="founders.html">Founders</a>
+          <a href="blog.html">Blog</a>
+        </div>
+      </span>
+    </li>
+    <li><a href="solutions.html">Solutions</a></li>
+    <li><a href="pricing.html">Pricing</a></li>
+    <li><a href="contact.html">Contact</a></li>
+  </ul>
+  <div class="nav-right">
+    <a href="contact.html#demo" class="btn-demo"><i class="fa-regular fa-calendar"></i> Get a demo</a>
+    <a href="login.html" class="btn-login">Login →</a>
+    <div class="hamburger" onclick="document.querySelector('.mobile-nav').classList.add('open')"><span></span><span></span><span></span></div>
+  </div>
+</nav>
+<div class="mobile-nav">
+  <div class="mobile-nav-head"><a href="index.html" class="logo"><span class="logo-text">soma</span></a><button class="mobile-nav-close" onclick="document.querySelector('.mobile-nav').classList.remove('open')"><i class="fa-solid fa-xmark"></i></button></div>
+  <ul>
+    <li><a href="products.html">Products</a></li>
+    <li><a href="solutions.html">Solutions</a></li>
+    <li><a href="pricing.html">Pricing</a></li>
+    <li><a href="about.html">About</a></li>
+    <li><a href="founders.html">Founders</a></li>
+    <li><a href="contact.html">Contact</a></li>
+  </ul>
+  <div class="mobile-nav-btns"><a href="contact.html#demo" class="btn-demo"><i class="fa-regular fa-calendar"></i> Get a demo</a></div>
+</div>
+
+<div class="page-top-wrap">
+  <div class="page-top">
+    <div class="section-label"></div>
+    <h1></h1>
+    <p></p>
+  </div> 
+
+<div class="page-content">
+  <div class="pricing-grid">
+    <div class="price-card fade-in">
+      <div class="price-name">Starter</div>
+      <div class="price-amount">Free<span></span></div>
+      <div class="price-desc">For small schools getting started with digital management.</div>
+      <ul class="price-features">
+        <li><i class="fa-solid fa-check"></i> Up to 100 students</li>
+        <li><i class="fa-solid fa-check"></i> Soma Portal (web)</li>
+        <li><i class="fa-solid fa-check"></i> Basic results entry</li>
+        <li><i class="fa-solid fa-check"></i> Parent notifications (email)</li>
+        <li class="disabled"><i class="fa-solid fa-xmark"></i> Soma Connect parent app</li>
+        <li class="disabled"><i class="fa-solid fa-xmark"></i> Finance module</li>
+        <li class="disabled"><i class="fa-solid fa-xmark"></i> AI features</li>
+      </ul>
+      <a href="contact.html" class="btn-price outline">Get started free</a>
+    </div>
+
+    <div class="price-card featured fade-in">
+      <div class="price-badge">Most Popular</div>
+      <div class="price-name">School</div>
+      <div class="price-amount">$49<span>/month</span></div>
+      <div class="price-desc">The complete Soma platform for growing institutions.</div>
+      <ul class="price-features">
+        <li><i class="fa-solid fa-check"></i> Unlimited students</li>
+        <li><i class="fa-solid fa-check"></i> Soma Portal (desktop + web)</li>
+        <li><i class="fa-solid fa-check"></i> Soma Connect parent app</li>
+        <li><i class="fa-solid fa-check"></i> Full finance & fee module</li>
+        <li><i class="fa-solid fa-check"></i> AI-powered insights</li>
+        <li><i class="fa-solid fa-check"></i> ZIMSEC & Cambridge grading</li>
+        <li><i class="fa-solid fa-check"></i> Priority support</li>
+      </ul>
+      <a href="contact.html#demo" class="btn-price">Book a demo</a>
+    </div>
+
+    <div class="price-card fade-in">
+      <div class="price-name">District</div>
+      <div class="price-amount">Custom<span></span></div>
+      <div class="price-desc">For clusters of schools, government districts, or boards managing multiple institutions.</div>
+      <ul class="price-features">
+        <li><i class="fa-solid fa-check"></i> Multi-school management</li>
+        <li><i class="fa-solid fa-check"></i> Centralised reporting</li>
+        <li><i class="fa-solid fa-check"></i> All School features</li>
+        <li><i class="fa-solid fa-check"></i> Custom integrations</li>
+        <li><i class="fa-solid fa-check"></i> Dedicated onboarding</li>
+        <li><i class="fa-solid fa-check"></i> SLA-backed uptime</li>
+        <li><i class="fa-solid fa-check"></i> White-label options</li>
+      </ul>
+      <a href="contact.html" class="btn-price outline">Contact us</a>
+    </div>
+  </div>
+
+  <div class="faq fade-in">
+    <h2>Frequently asked questions</h2>
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggleFaq(this)">Is pricing in USD or ZiG? <i class="fa-solid fa-chevron-down"></i></div>
+      <div class="faq-a">Soma offers flexible billing in both USD and ZiG. We understand the realities of running a school in Zimbabwe. Talk to us about the option that works best for your institution.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggleFaq(this)">Can we migrate our existing data? <i class="fa-solid fa-chevron-down"></i></div>
+      <div class="faq-a">Yes. Our onboarding team helps import existing student records, historical results, and fee data. We've done this for schools moving from spreadsheets, SAGE, and other local systems.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggleFaq(this)">What internet connection do schools need? <i class="fa-solid fa-chevron-down"></i></div>
+      <div class="faq-a">Soma is optimised for Zimbabwe's connectivity reality. The desktop app works with intermittent internet and syncs when connected. Mobile apps support offline reading of key data.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggleFaq(this)">Do parents pay separately for Soma Connect? <i class="fa-solid fa-chevron-down"></i></div>
+      <div class="faq-a">No. Soma Connect is free for parents — the school's subscription covers all parent and student access. Parents just download the app and link their child's profile.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggleFaq(this)">How long does onboarding take? <i class="fa-solid fa-chevron-down"></i></div>
+      <div class="faq-a">Most schools are fully live within 2–5 business days. We handle the technical setup; we just need your staff and student data. Larger schools or complex data imports may take a week.</div>
+    </div>
+  </div>
+</div>
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-top">
+      <div class="footer-brand"><div class="logo-wrap"><a href="index.html" class="logo"><span class="logo-text" style="font-size:22px">soma</span></a></div><p>AI-powered school management built for Zimbabwean institutions.</p><div class="footer-zw-badge"><span class="flag">🇿🇼</span> Built in Zimbabwe, for Zimbabwe</div></div>
+      <div class="footer-col"><h4>Product</h4><ul><li><a href="products.html">All Products</a></li><li><a href="pricing.html">Pricing</a></li></ul></div>
+      <div class="footer-col"><h4>Company</h4><ul><li><a href="about.html">About</a></li><li><a href="founders.html">Founders</a></li></ul></div>
+      <div class="footer-col"><h4>Contact</h4><ul><li><a href="contact.html">Get in touch</a></li><li><a href="contact.html#demo">Book a demo</a></li></ul></div>
+    </div>
+    <div class="footer-bottom">
+      <p>© <span id="footerYear"></span> Soma Education Technologies. Harare, Zimbabwe.</p>
+      <div class="footer-socials"><a href="#"><i class="fa-brands fa-x-twitter"></i></a><a href="#"><i class="fa-brands fa-linkedin-in"></i></a></div>
+    </div>
+  </div>
+</footer>
+<script>
+  document.getElementById('footerYear').textContent = new Date().getFullYear();
+  function toggleFaq(el) {
+    const item = el.closest('.faq-item');
+    item.classList.toggle('open');
+  }
+  const obs = new IntersectionObserver(e=>e.forEach(x=>{if(x.isIntersecting)x.target.classList.add('visible')}),{threshold:0.1});
+  document.querySelectorAll('.fade-in').forEach(el=>obs.observe(el));
+</script>
+</body></html>

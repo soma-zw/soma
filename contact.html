@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Contact — Soma Education Technologies</title>
+  <link rel="icon" type="image/png" href="images/icon.png">
+  <link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;500;600;700&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+  <link rel="stylesheet" href="shared.css"/>
+  <style>
+    .contact-grid { display:grid; grid-template-columns:1fr 1.4fr; gap:60px; align-items:start; }
+    .contact-info h2 { font-family:var(--font-display); font-size:clamp(1.6rem,3vw,2.2rem); font-weight:700; letter-spacing:-0.03em; margin-bottom:16px; }
+    .contact-info p { color:var(--gray-500); font-size:0.95rem; line-height:1.85; margin-bottom:32px; }
+    .contact-cards { display:flex; flex-direction:column; gap:16px; }
+    .contact-card { display:flex; align-items:flex-start; gap:16px; background:var(--gray-50); border:1px solid var(--gray-200); border-radius:14px; padding:20px; text-decoration:none; color:inherit; transition:border-color 0.2s, box-shadow 0.2s; }
+    .contact-card:hover { border-color:var(--black); box-shadow:0 4px 20px rgba(0,0,0,0.06); }
+    .contact-card-icon { width:44px; height:44px; background:var(--white); border:1px solid var(--gray-200); border-radius:10px; display:flex; align-items:center; justify-content:center; color:var(--blue); font-size:1.1rem; flex-shrink:0; }
+    .contact-card-text h4 { font-family:var(--font-display); font-size:0.9rem; font-weight:600; margin-bottom:3px; }
+    .contact-card-text p { font-size:0.82rem; color:var(--gray-500); margin:0; }
+    .contact-form { background:var(--gray-50); border:1px solid var(--gray-200); border-radius:20px; padding:36px; }
+    .contact-form h3 { font-family:var(--font-display); font-size:1.2rem; font-weight:600; margin-bottom:24px; }
+    .form-group { margin-bottom:18px; }
+    .form-group label { display:block; font-size:0.8rem; font-weight:600; color:var(--gray-600); margin-bottom:7px; }
+    .form-group input, .form-group textarea, .form-group select { width:100%; border:1.5px solid var(--gray-200); border-radius:9px; padding:10px 14px; font-size:0.875rem; font-family:var(--font-body); color:var(--black); outline:none; transition:border-color 0.2s; background:var(--white); }
+    .form-group input:focus, .form-group textarea:focus, .form-group select:focus { border-color:var(--blue); }
+    .form-group textarea { resize:vertical; min-height:120px; }
+    .form-row { display:grid; grid-template-columns:1fr 1fr; gap:14px; }
+    .btn-submit-contact { width:100%; background:var(--black); color:var(--white); border:none; padding:14px; border-radius:10px; font-size:0.9rem; font-family:var(--font-body); font-weight:500; cursor:pointer; transition:background 0.2s; display:flex; align-items:center; justify-content:center; gap:8px; }
+    .btn-submit-contact:hover { background:var(--blue); }
+    .success-msg { display:none; background:#f0fff4; border:1px solid #86efac; border-radius:10px; padding:14px 18px; font-size:0.85rem; color:#15803d; margin-top:14px; align-items:center; gap:8px; }
+    .success-msg.show { display:flex; }
+    .demo-section { background:var(--black); color:var(--white); padding:80px 5%; margin-top:80px; }
+    .demo-inner { max-width:700px; margin:0 auto; text-align:center; }
+    .demo-inner h2 { font-family:var(--font-display); font-size:clamp(1.6rem,3vw,2.4rem); font-weight:700; margin-bottom:16px; }
+    .demo-inner p { color:var(--gray-400); max-width:500px; margin:0 auto 32px; font-size:0.9rem; line-height:1.8; }
+    .demo-bullets { display:flex; justify-content:center; gap:32px; flex-wrap:wrap; margin-bottom:40px; }
+    .demo-bullet { display:flex; align-items:center; gap:8px; font-size:0.85rem; color:var(--gray-400); }
+    .demo-bullet i { color:#86efac; }
+    @media(max-width:900px) { .contact-grid { grid-template-columns:1fr; } }
+    @media(max-width:600px) { .form-row { grid-template-columns:1fr; } .demo-bullets { flex-direction:column; align-items:center; } }
+  </style>
+</head>
+<body>
+<nav>
+  <a href="index.html" class="logo"><img src="images/logo.png" onerror="this.style.display='none'"><span class="logo-text">soma</span></a>
+  <ul class="nav-links">
+    <li>
+      <span class="nav-dropdown" onclick="toggleDropdown(this)">
+        Products <i class="fa-solid fa-chevron-down chevron"></i>
+        <div class="dropdown-menu">
+          <span class="dropdown-section-label">Software</span>
+          <a href="products.html#portal">Soma Portal</a>
+          <a href="products.html#connect">Soma Connect</a>
+          <a href="products.html#x">Soma X</a>
+          <a href="products.html#ai">Soma AI</a>
+          <div class="dropdown-divider"></div>
+          <span class="dropdown-section-label">Documentation</span>
+          <a href="terms.html">Terms of Service</a>
+          <a href="privacy.html">Privacy Policy</a>
+        </div>
+      </span>
+    </li>
+    <li>
+      <span class="nav-dropdown" onclick="toggleDropdown(this)">
+        Company <i class="fa-solid fa-chevron-down chevron"></i>
+        <div class="dropdown-menu">
+          <a href="about.html">About Soma</a>
+          <a href="founders.html">Founders</a>
+          <a href="blog.html">Blog</a>
+        </div>
+      </span>
+    </li>
+    <li><a href="solutions.html">Solutions</a></li>
+    <li><a href="pricing.html">Pricing</a></li>
+    <li><a href="contact.html">Contact</a></li>
+  </ul>
+  <div class="nav-right">
+    <a href="contact.html#demo" class="btn-demo"><i class="fa-regular fa-calendar"></i> Get a demo</a>
+    <a href="login.html" class="btn-login">Login →</a>
+    <div class="hamburger" onclick="document.querySelector('.mobile-nav').classList.add('open')"><span></span><span></span><span></span></div>
+  </div>
+</nav>
+<div class="mobile-nav">
+  <div class="mobile-nav-head"><a href="index.html" class="logo"><span class="logo-text">soma</span></a><button class="mobile-nav-close" onclick="document.querySelector('.mobile-nav').classList.remove('open')"><i class="fa-solid fa-xmark"></i></button></div>
+  <ul>
+    <li><a href="products.html">Products</a></li>
+    <li><a href="solutions.html">Solutions</a></li>
+    <li><a href="pricing.html">Pricing</a></li>
+    <li><a href="about.html">About</a></li>
+    <li><a href="founders.html">Founders</a></li>
+    <li><a href="contact.html">Contact</a></li>
+  </ul>
+  <div class="mobile-nav-btns"><a href="contact.html#demo" class="btn-demo"><i class="fa-regular fa-calendar"></i> Get a demo</a></div>
+</div>
+
+<div class="page-top-wrap">
+  <div class="page-top">
+    <div class="section-label"></div>
+    <h1></h1>
+    <p></p>
+  </div> 
+
+<div class="page-content">
+  <div class="contact-grid">
+    <div class="contact-info fade-in">
+      <h2>Get in touch</h2>
+      <p>We're a small team based in Harare. We respond quickly — usually within a few hours on weekdays.</p>
+      <div class="contact-cards">
+        <a href="mailto:tanatswachiyangwa0@gmail.com" class="contact-card">
+          <div class="contact-card-icon"><i class="fa-solid fa-envelope"></i></div>
+          <div class="contact-card-text">
+            <h4>Email us</h4>
+            <p>tanatswachiyangwa0@gmail.com</p>
+          </div>
+        </a>
+        <a href="#demo" class="contact-card">
+          <div class="contact-card-icon"><i class="fa-regular fa-calendar"></i></div>
+          <div class="contact-card-text">
+            <h4>Book a demo</h4>
+            <p>See Soma live — 30 minutes, no pressure</p>
+          </div>
+        </a>
+        <div class="contact-card">
+          <div class="contact-card-icon"><i class="fa-solid fa-location-dot"></i></div>
+          <div class="contact-card-text">
+            <h4>Based in</h4>
+            <p>Harare, Zimbabwe 🇿🇼</p>
+          </div>
+        </div>
+        <a href="index.html#suggestion" class="contact-card">
+          <div class="contact-card-icon"><i class="fa-solid fa-lightbulb"></i></div>
+          <div class="contact-card-text">
+            <h4>Suggestion Hub</h4>
+            <p>Report a bug or request a feature</p>
+          </div>
+        </a>
+      </div>
+    </div>
+
+    <div class="contact-form fade-in">
+      <h3>Send us a message</h3>
+      <div class="form-row">
+        <div class="form-group">
+          <label>Your Name</label>
+          <input type="text" id="ctName" placeholder="Tendai Moyo"/>
+        </div>
+        <div class="form-group">
+          <label>Your Email</label>
+          <input type="email" id="ctEmail" placeholder="tendai@school.co.zw"/>
+        </div>
+      </div>
+      <div class="form-group">
+        <label>School / Organisation</label>
+        <input type="text" id="ctSchool" placeholder="Harare Academy"/>
+      </div>
+      <div class="form-group">
+        <label>What are you enquiring about?</label>
+        <select id="ctType">
+          <option value="">Select a topic</option>
+          <option>I want to see a demo</option>
+          <option>Pricing & billing</option>
+          <option>Technical support</option>
+          <option>Partnership / integration</option>
+          <option>Media / press</option>
+          <option>General enquiry</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label>Message</label>
+        <textarea id="ctMsg" placeholder="Tell us about your school and what you're looking for..."></textarea>
+      </div>
+      <button class="btn-submit-contact" onclick="submitContact()">
+        <i class="fa-solid fa-paper-plane"></i> Send message
+      </button>
+      <div class="success-msg" id="ctSuccess">
+        <i class="fa-solid fa-circle-check"></i> Message sent! We'll get back to you shortly.
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="demo-section" id="demo">
+  <div class="demo-inner">
+    <div class="section-label" style="color:var(--gray-400);">Live Demo</div>
+    <h2>See Soma in action</h2>
+    <p>Book a 30-minute call with the founders. We'll walk you through the platform using real data from a live school deployment.</p>
+    <div class="demo-bullets">
+      <div class="demo-bullet"><i class="fa-solid fa-check"></i> No commitment required</div>
+      <div class="demo-bullet"><i class="fa-solid fa-check"></i> Live, real data walkthrough</div>
+      <div class="demo-bullet"><i class="fa-solid fa-check"></i> Tailored to your school size</div>
+    </div>
+    <a href="mailto:tanatswachiyangwa0@gmail.com?subject=Demo Request — Soma&body=Hi Tanatswa,%0A%0AI'd like to book a demo of Soma for [my school name].%0A%0ABest time for me: %0A%0ASchool size: %0A" class="btn-demo" style="display:inline-flex;font-size:1rem;padding:12px 28px;">
+      <i class="fa-regular fa-calendar"></i> Book a demo via email
+    </a>
+  </div>
+</div>
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-top">
+      <div class="footer-brand"><div class="logo-wrap"><a href="index.html" class="logo"><span class="logo-text" style="font-size:22px">soma</span></a></div><p>AI-powered school management built for Zimbabwean institutions.</p><div class="footer-zw-badge"><span class="flag">🇿🇼</span> Built in Zimbabwe, for Zimbabwe</div></div>
+      <div class="footer-col"><h4>Product</h4><ul><li><a href="products.html">All Products</a></li><li><a href="pricing.html">Pricing</a></li></ul></div>
+      <div class="footer-col"><h4>Company</h4><ul><li><a href="about.html">About</a></li><li><a href="founders.html">Founders</a></li></ul></div>
+      <div class="footer-col"><h4>Contact</h4><ul><li><a href="mailto:tanatswachiyangwa0@gmail.com">Email us</a></li><li><a href="index.html#suggestion">Feedback</a></li></ul></div>
+    </div>
+    <div class="footer-bottom">
+      <p>© <span id="footerYear"></span> Soma Education Technologies. Harare, Zimbabwe.</p>
+      <div class="footer-socials"><a href="#"><i class="fa-brands fa-x-twitter"></i></a><a href="#"><i class="fa-brands fa-linkedin-in"></i></a></div>
+    </div>
+  </div>
+</footer>
+<script>
+  document.getElementById('footerYear').textContent = new Date().getFullYear();
+  function submitContact() {
+    const name = document.getElementById('ctName').value.trim();
+    const email = document.getElementById('ctEmail').value.trim();
+    const school = document.getElementById('ctSchool').value.trim();
+    const type = document.getElementById('ctType').value;
+    const msg = document.getElementById('ctMsg').value.trim();
+    if (!name || !email || !msg) { alert('Please fill in your name, email, and message.'); return; }
+    const subject = encodeURIComponent('[Soma Enquiry] ' + (type || 'General') + ' — ' + (school || name));
+    const body = encodeURIComponent('From: ' + name + '\nEmail: ' + email + '\nSchool: ' + (school || 'N/A') + '\nType: ' + (type || 'General') + '\n\n' + msg);
+    window.location.href = 'mailto:tanatswachiyangwa0@gmail.com?subject=' + subject + '&body=' + body;
+    document.getElementById('ctSuccess').classList.add('show');
+  }
+  const obs = new IntersectionObserver(e=>e.forEach(x=>{if(x.isIntersecting)x.target.classList.add('visible')}),{threshold:0.1});
+  document.querySelectorAll('.fade-in').forEach(el=>obs.observe(el));
+</script>
+</body></html>

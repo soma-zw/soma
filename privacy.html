@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Privacy Policy — Soma Education Technologies</title>
+  <link rel="icon" type="image/png" href="images/icon.png">
+  <link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;500;600;700&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+  <link rel="stylesheet" href="shared.css"/>
+  <style>
+    .privacy-content { max-width:760px; margin:0 auto; padding:80px 5%; }
+    .privacy-content h2 { font-family:var(--font-display); font-size:1.3rem; font-weight:700; margin:40px 0 12px; }
+    .privacy-content p { color:var(--gray-500); font-size:0.92rem; line-height:1.9; margin-bottom:16px; }
+    .privacy-content ul { list-style:disc; padding-left:24px; color:var(--gray-500); font-size:0.92rem; line-height:1.9; margin-bottom:16px; }
+    .updated { background:var(--gray-50); border:1px solid var(--gray-200); border-radius:10px; padding:12px 18px; font-size:0.82rem; color:var(--gray-500); margin-bottom:40px; }
+  </style>
+</head>
+<body>
+<nav>
+  <a href="index.html" class="logo"><img src="images/logo.png" onerror="this.style.display='none'"><span class="logo-text">soma</span></a>
+  <ul class="nav-links">
+    <li>
+      <span class="nav-dropdown" onclick="toggleDropdown(this)">
+        Products <i class="fa-solid fa-chevron-down chevron"></i>
+        <div class="dropdown-menu">
+          <span class="dropdown-section-label">Software</span>
+          <a href="products.html#portal">Soma Portal</a>
+          <a href="products.html#connect">Soma Connect</a>
+          <a href="products.html#x">Soma X</a>
+          <a href="products.html#ai">Soma AI</a>
+          <div class="dropdown-divider"></div>
+          <span class="dropdown-section-label">Documentation</span>
+          <a href="terms.html">Terms of Service</a>
+          <a href="privacy.html">Privacy Policy</a>
+        </div>
+      </span>
+    </li>
+    <li>
+      <span class="nav-dropdown" onclick="toggleDropdown(this)">
+        Company <i class="fa-solid fa-chevron-down chevron"></i>
+        <div class="dropdown-menu">
+          <a href="about.html">About Soma</a>
+          <a href="founders.html">Founders</a>
+          <a href="blog.html">Blog</a>
+        </div>
+      </span>
+    </li>
+    <li><a href="solutions.html">Solutions</a></li>
+    <li><a href="pricing.html">Pricing</a></li>
+    <li><a href="contact.html">Contact</a></li>
+  </ul>
+  <div class="nav-right">
+    <a href="contact.html#demo" class="btn-demo"><i class="fa-regular fa-calendar"></i> Get a demo</a>
+    <a href="login.html" class="btn-login">Login →</a>
+    <div class="hamburger" onclick="document.querySelector('.mobile-nav').classList.add('open')"><span></span><span></span><span></span></div>
+  </div>
+</nav>
+<div class="mobile-nav">
+  <div class="mobile-nav-head"><a href="index.html" class="logo"><span class="logo-text">soma</span></a><button class="mobile-nav-close" onclick="document.querySelector('.mobile-nav').classList.remove('open')"><i class="fa-solid fa-xmark"></i></button></div>
+  <ul>
+    <li><a href="products.html">Products</a></li>
+    <li><a href="solutions.html">Solutions</a></li>
+    <li><a href="pricing.html">Pricing</a></li>
+    <li><a href="about.html">About</a></li>
+    <li><a href="founders.html">Founders</a></li>
+    <li><a href="contact.html">Contact</a></li>
+  </ul>
+  <div class="mobile-nav-btns"><a href="contact.html#demo" class="btn-demo"><i class="fa-regular fa-calendar"></i> Get a demo</a></div>
+</div>
+
+
+
+<div class="privacy-content">
+  <div class="updated"><i class="fa-solid fa-clock"></i> Last updated: April 2026</div>
+
+  <h2>1. Who we are</h2>
+  <p>Soma Education Technologies is a startup based in Harare, Zimbabwe. We build school management software for Zimbabwean educational institutions. When we say "Soma", "we", "our", or "us", we mean Soma Education Technologies.</p>
+
+  <h2>2. What data we collect</h2>
+  <p>Soma collects different types of data depending on your role:</p>
+  <ul>
+    <li><strong>Schools & Staff:</strong> School name, staff names, email addresses, and role information needed to operate the platform.</li>
+    <li><strong>Students:</strong> Student names, class enrolment, academic results, attendance records, and fee payment data — entered by authorised school staff.</li>
+    <li><strong>Parents:</strong> Name, email, phone number, and the student IDs of children linked to your account.</li>
+    <li><strong>Usage data:</strong> Standard logs including login times and feature usage to help us improve the platform.</li>
+  </ul>
+
+  <h2>3. How we use your data</h2>
+  <ul>
+    <li>To provide and operate the Soma platform</li>
+    <li>To enable school staff to manage student records and communicate with parents</li>
+    <li>To send notifications relevant to your school or child</li>
+    <li>To improve our products and fix bugs</li>
+  </ul>
+  <p>We do not sell your data. We do not use student data for advertising.</p>
+
+  <h2>4. Who can access your data</h2>
+  <p>Access within the Soma platform is strictly role-based. A class teacher can only see their class. A bursar sees financial data. A parent can only see their own child's data. Headmasters have full school-level access. These permissions are enforced at the database level using Supabase Row Level Security (RLS).</p>
+
+  <h2>5. Data storage</h2>
+  <p>Soma data is stored securely on Supabase infrastructure. Data is encrypted at rest and in transit. We take reasonable technical measures to protect against unauthorised access.</p>
+
+  <h2>6. Data retention</h2>
+  <p>We retain school data for as long as your school has an active Soma subscription. Upon termination, we can provide a data export and then delete your data on request within 30 days.</p>
+
+  <h2>7. Your rights</h2>
+  <p>You have the right to request access to, correction of, or deletion of your personal data. Contact us at tanatswachiyangwa0@gmail.com for any data requests.</p>
+
+  <h2>8. Changes to this policy</h2>
+  <p>We may update this policy from time to time. We'll notify schools via email if there are significant changes.</p>
+
+  <h2>9. Contact</h2>
+  <p>For any privacy-related questions, contact us at <a href="mailto:tanatswachiyangwa0@gmail.com" style="color:var(--blue)">tanatswachiyangwa0@gmail.com</a>.</p>
+</div>
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-top">
+      <div class="footer-brand"><div class="logo-wrap"><a href="index.html" class="logo"><span class="logo-text" style="font-size:22px">soma</span></a></div><p>AI-powered school management built for Zimbabwean institutions.</p><div class="footer-zw-badge"><span class="flag">🇿🇼</span> Built in Zimbabwe, for Zimbabwe</div></div>
+      <div class="footer-col"><h4>Product</h4><ul><li><a href="products.html">All Products</a></li><li><a href="pricing.html">Pricing</a></li></ul></div>
+      <div class="footer-col"><h4>Company</h4><ul><li><a href="about.html">About</a></li><li><a href="founders.html">Founders</a></li></ul></div>
+      <div class="footer-col"><h4>Contact</h4><ul><li><a href="contact.html">Get in touch</a></li></ul></div>
+    </div>
+    <div class="footer-bottom">
+      <p>© <span id="footerYear"></span> Soma Education Technologies. Harare, Zimbabwe.</p>
+    </div>
+  </div>
+</footer>
+<script>document.getElementById('footerYear').textContent = new Date().getFullYear();</script>
+</body></html>

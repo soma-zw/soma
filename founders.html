@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Founders — Soma Education Technologies</title>
+  <link rel="icon" type="image/png" href="images/icon.png">
+  <link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;500;600;700&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+  <link rel="stylesheet" href="shared.css"/>
+  <style>
+    .founders-grid { display:grid; grid-template-columns:1fr 1fr; gap:40px; margin:60px 0; }
+    .founder-card { background:var(--gray-50); border:1px solid var(--gray-200); border-radius:20px; padding:40px; }
+    .founder-avatar { width:80px; height:80px; border-radius:50%; background:var(--black); display:flex; align-items:center; justify-content:center; color:var(--white); font-size:1.8rem; font-family:var(--font-display); font-weight:700; margin-bottom:20px; }
+    .founder-name { font-family:var(--font-display); font-size:1.4rem; font-weight:700; margin-bottom:4px; }
+    .founder-role { font-size:0.85rem; color:var(--blue); font-weight:600; margin-bottom:16px; }
+    .founder-bio { font-size:0.9rem; color:var(--gray-500); line-height:1.85; margin-bottom:20px; }
+    .founder-tags { display:flex; flex-wrap:wrap; gap:8px; margin-bottom:20px; }
+    .founder-tag { background:var(--white); border:1px solid var(--gray-200); border-radius:20px; padding:4px 12px; font-size:0.75rem; color:var(--gray-600); }
+    .founder-links { display:flex; gap:12px; }
+    .founder-link { display:flex; align-items:center; gap:6px; font-size:0.82rem; color:var(--gray-500); text-decoration:none; transition:color 0.2s; }
+    .founder-link:hover { color:var(--black); }
+    .story-section { background:var(--black); color:var(--white); padding:80px 5%; }
+    .story-inner { max-width:760px; margin:0 auto; }
+    .story-inner h2 { font-family:var(--font-display); font-size:clamp(1.6rem,3vw,2.4rem); font-weight:700; margin-bottom:24px; line-height:1.3; }
+    .story-inner p { color:var(--gray-400); font-size:0.95rem; line-height:1.9; margin-bottom:20px; }
+    .story-inner p strong { color:var(--white); }
+    @media(max-width:700px) { .founders-grid { grid-template-columns:1fr; } }
+  </style>
+</head>
+<body>
+<nav>
+  <a href="index.html" class="logo"><img src="images/logo.png" onerror="this.style.display='none'"><span class="logo-text">soma</span></a>
+  <ul class="nav-links">
+    <li>
+      <span class="nav-dropdown" onclick="toggleDropdown(this)">
+        Products <i class="fa-solid fa-chevron-down chevron"></i>
+        <div class="dropdown-menu">
+          <span class="dropdown-section-label">Software</span>
+          <a href="products.html#portal">Soma Portal</a>
+          <a href="products.html#connect">Soma Connect</a>
+          <a href="products.html#x">Soma X</a>
+          <a href="products.html#ai">Soma AI</a>
+          <div class="dropdown-divider"></div>
+          <span class="dropdown-section-label">Documentation</span>
+          <a href="terms.html">Terms of Service</a>
+          <a href="privacy.html">Privacy Policy</a>
+        </div>
+      </span>
+    </li>
+    <li>
+      <span class="nav-dropdown" onclick="toggleDropdown(this)">
+        Company <i class="fa-solid fa-chevron-down chevron"></i>
+        <div class="dropdown-menu">
+          <a href="about.html">About Soma</a>
+          <a href="founders.html">Founders</a>
+          <a href="blog.html">Blog</a>
+        </div>
+      </span>
+    </li>
+    <li><a href="solutions.html">Solutions</a></li>
+    <li><a href="pricing.html">Pricing</a></li>
+    <li><a href="contact.html">Contact</a></li>
+  </ul>
+  <div class="nav-right">
+    <a href="contact.html#demo" class="btn-demo"><i class="fa-regular fa-calendar"></i> Get a demo</a>
+    <a href="login.html" class="btn-login">Login →</a>
+    <div class="hamburger" onclick="document.querySelector('.mobile-nav').classList.add('open')"><span></span><span></span><span></span></div>
+  </div>
+</nav>
+<div class="mobile-nav">
+  <div class="mobile-nav-head"><a href="index.html" class="logo"><span class="logo-text">soma</span></a><button class="mobile-nav-close" onclick="document.querySelector('.mobile-nav').classList.remove('open')"><i class="fa-solid fa-xmark"></i></button></div>
+  <ul>
+    <li><a href="products.html">Products</a></li>
+    <li><a href="solutions.html">Solutions</a></li>
+    <li><a href="pricing.html">Pricing</a></li>
+    <li><a href="about.html">About</a></li>
+    <li><a href="contact.html">Contact</a></li>
+  </ul>
+  <div class="mobile-nav-btns"><a href="contact.html#demo" class="btn-demo"><i class="fa-regular fa-calendar"></i> Get a demo</a></div>
+</div>
+
+<div class="page-top-wrap">
+  <div class="page-top">
+    <div class="section-label">The Team</div>
+    <h1>Meet the Founders</h1>
+    <p>Two young Zimbabweans building the digital future of African education — in public, from Harare.</p>
+  </div>
+</div>
+
+<div class="page-content">
+  <div class="founders-grid">
+    <div class="founder-card fade-in">
+      <div class="founder-avatar">TC</div>
+      <div class="founder-name">Tanatswa Chiyangwa</div>
+      <div class="founder-role">Co-Founder & Lead Developer</div>
+      <div class="founder-bio">
+        Tanatswa leads development at Soma. He works across the full stack — mobile, desktop, and web — with a focus on building software that fits how Zimbabwean schools actually operate. React Native, Electron, TypeScript, Supabase.
+      </div>
+      <div class="founder-tags">
+        <span class="founder-tag">React Native</span>
+        <span class="founder-tag">Electron</span>
+        <span class="founder-tag">Supabase</span>
+        <span class="founder-tag">TypeScript</span>
+        <span class="founder-tag">Python</span>
+        <span class="founder-tag">HTML</span>
+        <span class="founder-tag">C#</span>
+        <span class="founder-tag">Full-Stack</span>
+      </div>
+      <div class="founder-links">
+        <a href="mailto:tanatswachiyangwa0@gmail.com" class="founder-link"><i class="fa-solid fa-envelope"></i> Email</a>
+        <a href="#" class="founder-link"><i class="fa-brands fa-x-twitter"></i> Twitter</a>
+        <a href="#" class="founder-link"><i class="fa-brands fa-github"></i> GitHub</a>
+      </div>
+    </div>
+
+    <div class="founder-card fade-in">
+      <div class="founder-avatar" style="background:var(--blue);">AT</div>
+      <div class="founder-name">Arthur Tachiona</div>
+      <div class="founder-role">Co-Founder & Strategy</div>
+      <div class="founder-bio">
+        Arthur handles strategy, partnerships, and hardware at Soma. Alongside school growth, he leads the development of Soma's tablet line and works in robotics and embedded systems. He bridges the software and physical sides of what Soma is building.
+      </div>
+      <div class="founder-tags">
+        <span class="founder-tag">Product Strategy</span>
+        <span class="founder-tag">Partnerships</span>
+        <span class="founder-tag">Robotics</span>
+        <span class="founder-tag">C#</span>
+        <span class="founder-tag">Python</span>
+        <span class="founder-tag">Web</span>
+        <span class="founder-tag">Hardware</span>
+      </div>
+      <div class="founder-links">
+        <a href="contact.html" class="founder-link"><i class="fa-solid fa-envelope"></i> Get in touch</a>
+        <a href="#" class="founder-link"><i class="fa-brands fa-linkedin-in"></i> LinkedIn</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="story-section">
+  <div class="story-inner">
+    <div class="section-label" style="color:var(--gray-400)">Our Founding Story</div>
+    <h2>We didn't wait for someone else to build this.</h2>
+    <p>We're young. We're Zimbabwean. And we got tired of watching schools in our country struggle with problems that have already been solved elsewhere — but not <strong>here</strong>, not <strong>for us</strong>.</p>
+    <p>Most edtech products are built in the US or UK, then adapted (poorly) for African markets. They don't understand our grading systems. They don't know what a "term" means here. They charge in USD for infrastructure that doesn't match our reality.</p>
+    <p><strong>Soma is different.</strong> It was designed from day one for Zimbabwe. ZIMSEC Primary, O-Level, A-Level, Cambridge IGCSE grading — all built in. Fee structures in ZiG and USD — all built in. The school hierarchy, the parent-teacher dynamic, the headmaster's reporting needs — we know these because we grew up here.</p>
+    <p>We build in public. Every new school that signs up teaches us something. We ship, we learn, we improve. That's how Soma keeps getting better — and that's how it'll eventually serve every school in Africa.</p>
+    <a href="about.html" class="btn-cta-outline" style="border-color:var(--gray-400);color:var(--gray-300);">Read more about Soma <i class="fa-solid fa-arrow-right"></i></a>
+  </div>
+</div>
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-top">
+      <div class="footer-brand"><div class="logo-wrap"><a href="index.html" class="logo"><span class="logo-text" style="font-size:22px">soma</span></a></div><p>AI-powered school management built for Zimbabwean institutions.</p><div class="footer-zw-badge"><span class="flag">🇿🇼</span> Built in Zimbabwe, for Zimbabwe</div></div>
+      <div class="footer-col"><h4>Company</h4><ul><li><a href="about.html">About Soma</a></li><li><a href="founders.html">Founders</a></li><li><a href="blog.html">Blog</a></li></ul></div>
+      <div class="footer-col"><h4>Product</h4><ul><li><a href="products.html">Products</a></li><li><a href="pricing.html">Pricing</a></li></ul></div>
+      <div class="footer-col"><h4>Contact</h4><ul><li><a href="contact.html">Get in touch</a></li><li><a href="mailto:tanatswachiyangwa0@gmail.com">Email us</a></li></ul></div>
+    </div>
+    <div class="footer-bottom">
+      <p>© <span id="footerYear"></span> Soma Education Technologies. Harare, Zimbabwe.</p>
+      <div class="footer-socials"><a href="#"><i class="fa-brands fa-x-twitter"></i></a><a href="#"><i class="fa-brands fa-linkedin-in"></i></a><a href="#"><i class="fa-brands fa-instagram"></i></a></div>
+    </div>
+  </div>
+</footer>
+<script>
+  document.getElementById('footerYear').textContent = new Date().getFullYear();
+  const obs = new IntersectionObserver(e=>e.forEach(x=>{if(x.isIntersecting)x.target.classList.add('visible')}),{threshold:0.1});
+  document.querySelectorAll('.fade-in').forEach(el=>obs.observe(el));
+  function toggleDropdown(el) {
+    const isOpen = el.classList.contains('open');
+    document.querySelectorAll('.nav-dropdown.open').forEach(d => d.classList.remove('open'));
+    if (!isOpen) el.classList.add('open');
+  }
+  document.addEventListener('click', function(e) {
+    if (!e.target.closest('.nav-dropdown')) {
+      document.querySelectorAll('.nav-dropdown.open').forEach(d => d.classList.remove('open'));
+    }
+  });
+</script>
+</body></html>
