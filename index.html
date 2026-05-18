@@ -10,6 +10,7 @@
   <link rel="stylesheet" href="shared.css"/>
   <style>
     /* ── HERO ── */
+    
     .hero {
       background:var(--gray-50); padding:96px 5% 80px;
       text-align:center; position:relative; overflow:hidden;
@@ -30,14 +31,7 @@
       margin: 0 auto 20px;
     }
     .hero-sub { font-size:1rem; color:var(--gray-500); max-width:500px; margin:0 auto 36px; font-weight:300; position:relative; }
-    .tags { display:flex; justify-content:center; gap:10px; flex-wrap:wrap; margin-bottom:30px; position:relative; }
-    .tags span { padding:6px 14px; border-radius:10px; font-size:.8rem; }
-    .tag1 { color:#000; background:#f894f3; }
-    .tag2 { color:#0d0d0e; background:#1693a3; }
-    .tag3 { color:#0b0b0c; background:#a39516; }
-    .tag4 { color:#1b1b1d; background:#16a34a; }
-    .tag5 { color:#1e1f20; background:#a31697; }
-    .hero-search {
+     .hero-search {
       display:flex; align-items:center;
       background:var(--white); border:1.5px solid var(--gray-200); border-radius:12px;
       padding:6px 6px 6px 18px; max-width:480px; margin:0 auto 16px;
@@ -55,33 +49,334 @@
     .hero-hint { font-size:0.78rem; color:var(--gray-400); margin-bottom:60px; position:relative; }
     .hero-hint i { font-size:0.7rem; margin:0 2px; }
 
-    /* CARDS */
-    .cards-row { display:flex; gap:16px; justify-content:center; max-width:760px; margin:0 auto; padding:0 16px; flex-wrap:wrap; }
-    .dash-card {
-      background:var(--white); border:1px solid var(--gray-200); border-radius:14px;
-      padding:18px 20px; width:200px; box-shadow:0 2px 16px rgba(0,0,0,0.05);
-      text-align:left; transition:transform 0.2s, box-shadow 0.2s;
-      animation:floatCard 5s ease-in-out infinite;
-    }
-    .dash-card:nth-child(2) { animation-delay:-1.5s; }
-    .dash-card:nth-child(3) { animation-delay:-3s; }
-    @keyframes floatCard { 0%,100% { transform:translateY(0); } 50% { transform:translateY(-6px); } }
-    .dash-card:hover { transform:translateY(-8px) !important; box-shadow:0 12px 40px rgba(0,0,0,0.1); }
-    .card-header { display:flex; align-items:center; gap:8px; margin-bottom:12px; }
-    .card-icon { width:28px; height:28px; border-radius:6px; display:flex; align-items:center; justify-content:center; font-size:0.85rem; }
-    .icon-admin { background:#f0f4ff; color:var(--blue); }
-    .icon-finance { background:#f0fff4; color:#16a34a; }
-    .icon-student { background:#fff7f0; color:#ea580c; }
-    .card-title { font-size:0.75rem; font-weight:600; color:var(--gray-600); font-family:var(--font-display); }
-    .card-lines { display:flex; flex-direction:column; gap:5px; }
-    .card-line { height:7px; background:var(--gray-100); border-radius:4px; }
-    .card-line.short { width:60%; }
-    .card-line.med { width:80%; }
-    .card-line.full { width:100%; }
-    .mini-chart { margin-top:10px; height:32px; position:relative; }
-    .mini-chart svg { width:100%; height:100%; }
+    /* OVERVIEW SECTION */
+.platform-overview {
+  padding: 0 0 60px;
+  background: var(--gray-50);
+}
 
-    /* SECTION NOTE */
+.platform-shell {
+  width: 100%;
+  border-radius: 8px;
+  padding: 56px 5%;
+  position: relative;
+  overflow: hidden;
+  min-height: 640px;
+
+  background:
+    linear-gradient(
+      rgba(255,255,255,0.72),
+      rgba(255,255,255,0.82)
+    ),
+    url('images/sky-bg.jpg');
+
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+
+  border: 1px solid rgba(255,255,255,0.65);
+
+  box-shadow:
+    0 20px 60px rgba(0,0,0,0.05),
+    inset 0 1px 0 rgba(255,255,255,0.5);
+}
+
+.platform-shell::before {
+  content:'';
+  position:absolute;
+  inset:0;
+
+  background-image:
+    radial-gradient(rgba(30,30,30,0.06) 1px, transparent 1px);
+
+  background-size: 18px 18px;
+  opacity:0.3;
+  pointer-events:none;
+}
+
+.platform-top {
+  display:flex;
+  justify-content:space-between;
+  align-items:flex-start;
+  gap:40px;
+  margin-bottom:42px;
+  position:relative;
+  z-index:2;
+}
+
+.platform-copy h2 {
+  font-family: var(--font-display);
+  font-size: clamp(2rem,4vw,3.2rem);
+  line-height:1;
+  letter-spacing:-0.06em;
+  margin-bottom:18px;
+  max-width:620px;
+}
+
+.platform-copy p {
+  max-width:580px;
+  color:var(--gray-500);
+  font-size:0.95rem;
+  line-height:1.8;
+}
+
+.platform-actions {
+  display:flex;
+  flex-direction:column;
+  align-items:flex-end;
+  gap:18px;
+}
+
+.demo-chip {
+  background: rgba(0,0,0,0.88);
+  color: white;
+  padding: 13px 20px;
+  border-radius: 999px;
+  text-decoration:none;
+  font-size:0.84rem;
+  font-weight:500;
+  display:flex;
+  align-items:center;
+  gap:10px;
+  backdrop-filter: blur(10px);
+  transition: all 0.2s ease;
+}
+
+.demo-chip:hover {
+  transform: translateY(-2px);
+}
+
+.feature-pills {
+  display:flex;
+  flex-wrap:wrap;
+  justify-content:flex-end;
+  gap:10px;
+}
+
+.feature-pill {
+  padding:8px 14px;
+  border-radius:999px;
+  font-size:0.76rem;
+  font-weight:600;
+  backdrop-filter: blur(10px);
+  border:1px solid rgba(255,255,255,0.6);
+}
+
+.pill-admin {
+  background:#edf4ff;
+  color:#2563eb;
+}
+
+.pill-finance {
+  background:#ebfff4;
+  color:#16a34a;
+}
+
+.pill-communication {
+  background:#fff3e7;
+  color:#ea580c;
+}
+
+.pill-academics {
+  background:#f3ecff;
+  color:#7c3aed;
+}
+
+.pill-sports {
+  background:#ffe9f0;
+  color:#db2777;
+}
+
+/* CARDS */
+.overview-grid {
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:20px;
+  position:relative;
+  z-index:2;
+}
+
+.overview-card {
+  background: rgba(255,255,255,0.78);
+  border:1px solid rgba(255,255,255,0.7);
+  backdrop-filter: blur(18px);
+
+  border-radius:8px;
+  padding:24px;
+
+  box-shadow:
+    0 10px 40px rgba(0,0,0,0.04);
+}
+
+.overview-head {
+  display:flex;
+  justify-content:space-between;
+  align-items:flex-start;
+  margin-bottom:18px;
+}
+
+.overview-icon {
+  width:42px;
+  height:42px;
+  border-radius:8px;
+
+  display:flex;
+  align-items:center;
+  justify-content:center;
+
+  font-size:0.95rem;
+}
+
+.admin-icon {
+  background:#edf4ff;
+  color:#2563eb;
+}
+
+.finance-icon {
+  background:#ebfff4;
+  color:#16a34a;
+}
+
+.activity-icon {
+  background:#ffeaf1;
+  color:#db2777;
+}
+
+.overview-tag {
+  font-size:0.72rem;
+  font-weight:600;
+  color:var(--gray-400);
+}
+
+.overview-card h3 {
+  font-size:1rem;
+  font-weight:600;
+  margin-bottom:10px;
+}
+
+.overview-card p {
+  color:var(--gray-500);
+  font-size:0.84rem;
+  line-height:1.75;
+  margin-bottom:24px;
+}
+
+/* TRANSFORMATION METRICS */
+.metric-row {
+  display:flex;
+  justify-content:space-between;
+  align-items:flex-end;
+  margin-bottom:18px;
+}
+
+.metric-value {
+  font-size:2rem;
+  font-weight:700;
+  letter-spacing:-0.06em;
+  line-height:1;
+}
+
+.metric-label {
+  font-size:0.76rem;
+  color:var(--gray-400);
+  margin-top:6px;
+}
+
+.metric-growth {
+  font-size:0.76rem;
+  font-weight:600;
+  padding:6px 10px;
+  border-radius:999px;
+}
+
+.growth-up {
+  background:#ebfff4;
+  color:#16a34a;
+}
+
+/* GRAPH */
+.mini-graph {
+  display:flex;
+  align-items:flex-end;
+  gap:8px;
+  height:90px;
+}
+
+.graph-bar {
+  flex:1;
+  border-radius:999px 999px 4px 4px;
+  background:
+    linear-gradient(
+      180deg,
+      rgba(37,99,235,0.95),
+      rgba(37,99,235,0.15)
+    );
+}
+
+.finance-card .graph-bar {
+  background:
+    linear-gradient(
+      180deg,
+      rgba(22,163,74,0.95),
+      rgba(22,163,74,0.15)
+    );
+}
+
+.activity-card .graph-bar {
+  background:
+    linear-gradient(
+      180deg,
+      rgba(219,39,119,0.95),
+      rgba(219,39,119,0.15)
+    );
+}
+
+.overview-footer {
+  margin-top:18px;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+
+  font-size:0.76rem;
+  color:var(--gray-400);
+}
+
+.overview-footer span {
+  display:flex;
+  align-items:center;
+  gap:6px;
+}
+
+@media(max-width:980px) {
+
+  .overview-grid {
+    grid-template-columns:1fr;
+  }
+
+  .platform-top {
+    flex-direction:column;
+  }
+
+  .platform-actions {
+    align-items:flex-start;
+  }
+
+  .feature-pills {
+    justify-content:flex-start;
+  }
+}
+
+@media(max-width:640px) {
+
+  .platform-shell {
+    padding:40px 5%;
+  }
+
+  .metric-value {
+    font-size:1.6rem;
+  }
+}
+  /* SECTION NOTE */
     .section-note { text-align:center; padding:60px 5% 20px; font-size:0.85rem; color:var(--gray-400); max-width:560px; margin:0 auto; }
     .section-note p { line-height:1.8; }
 
@@ -141,7 +436,7 @@
     .product-card { border:1.5px solid var(--gray-200); border-radius:16px; overflow:hidden; transition:transform 0.2s,box-shadow 0.2s; cursor:pointer; background:var(--white); }
     .product-card:hover { transform:translateY(-4px); box-shadow:0 12px 40px rgba(0,0,0,0.08); }
     .product-img { background:var(--gray-50); height:200px; display:flex; align-items:center; justify-content:center; color:var(--gray-300); font-size:3rem; border-bottom:1px solid var(--gray-100); }
-    .product-img img { height:200px; object-fit:cover; width:100%; }
+    .product-img img { height: 190px; }
     .product-info { padding:16px 18px; }
     .product-name { font-family:var(--font-display); font-size:0.95rem; font-weight:600; color:var(--black); margin-bottom:4px; }
     .product-desc { font-size:0.78rem; color:var(--gray-500); margin-bottom:14px; }
@@ -228,11 +523,11 @@
       <span class="nav-dropdown" onclick="toggleDropdown(this)">
         Products <i class="fa-solid fa-chevron-down chevron"></i>
         <div class="dropdown-menu"> 
-          <a href="products.html#portal">Software</a> 
+          <a href="products/index.html#portal">Software</a> 
           <div class="dropdown-divider"></div>
           <span class="dropdown-section-label">Documentation</span>
-          <a href="terms.html">Terms of Service</a>
-          <a href="privacy.html">Privacy Policy</a>
+          <a href="terms/index.html">Terms of Service</a>
+          <a href="privacy/index.html">Privacy Policy</a>
         </div>
       </span>
     </li>
@@ -240,19 +535,20 @@
       <span class="nav-dropdown" onclick="toggleDropdown(this)">
         Company <i class="fa-solid fa-chevron-down chevron"></i>
         <div class="dropdown-menu">
-          <a href="about.html">About Soma</a>
-          <a href="founders.html">Founders</a>
-          <a href="blog.html">Blog</a>
+          <a href="about/index.html">About Soma</a>
+          <a href="founders/index.html">Founders</a>
+          <a href="blog/index.html">Blog</a>
         </div>
       </span>
     </li>
-    <li><a href="solutions.html">Solutions</a></li>
-    <li><a href="pricing.html">Pricing</a></li>
-    <li><a href="contact.html">Contact</a></li>
+    <li><a href="solutions/index.html">Solutions</a></li>
+    <li><a href="pricing/index.html">Pricing</a></li>
+    <li><a href="contact/index.html">Contact</a></li>
+    <li><a href="/index.html">Download</a></li>
   </ul>
   <div class="nav-right">
-    <a href="contact.html#demo" class="btn-demo"><i class="fa-regular fa-calendar"></i> Get a demo</a>
-    <a href="login.html" class="btn-login">Login →</a>
+    <a href="contact/index.html#demo" class="btn-demo"><i class="fa-regular fa-calendar"></i> Get a demo</a>
+    <a href="login/index.html" class="btn-login">Login →</a>
     <div class="hamburger" onclick="document.querySelector('.mobile-nav').classList.add('open')">
       <span></span><span></span><span></span>
     </div>
@@ -268,16 +564,16 @@
     </button>
   </div>
   <ul>
-    <li><a href="products.html" onclick="document.querySelector('.mobile-nav').classList.remove('open')">Products</a></li>
-    <li><a href="solutions.html" onclick="document.querySelector('.mobile-nav').classList.remove('open')">Solutions</a></li>
-    <li><a href="pricing.html" onclick="document.querySelector('.mobile-nav').classList.remove('open')">Pricing</a></li>
-    <li><a href="about.html" onclick="document.querySelector('.mobile-nav').classList.remove('open')">About</a></li>
-    <li><a href="founders.html" onclick="document.querySelector('.mobile-nav').classList.remove('open')">Founders</a></li>
-    <li><a href="contact.html" onclick="document.querySelector('.mobile-nav').classList.remove('open')">Contact</a></li>
+    <li><a href="products/index.html" onclick="document.querySelector('.mobile-nav').classList.remove('open')">Products</a></li>
+    <li><a href="solutions/index.html" onclick="document.querySelector('.mobile-nav').classList.remove('open')">Solutions</a></li>
+    <li><a href="pricing/index.html" onclick="document.querySelector('.mobile-nav').classList.remove('open')">Pricing</a></li>
+    <li><a href="about/index.html" onclick="document.querySelector('.mobile-nav').classList.remove('open')">About</a></li>
+    <li><a href="founders/index.html" onclick="document.querySelector('.mobile-nav').classList.remove('open')">Founders</a></li>
+    <li><a href="contact/index.html" onclick="document.querySelector('.mobile-nav').classList.remove('open')">Contact</a></li>
     <li><a href="#shop" onclick="document.querySelector('.mobile-nav').classList.remove('open')">Shop</a></li>
   </ul>
   <div class="mobile-nav-btns">
-    <a href="contact.html#demo" class="btn-demo"><i class="fa-regular fa-calendar"></i> Get a demo</a>
+    <a href="contact/index.html#demo" class="btn-demo"><i class="fa-regular fa-calendar"></i> Get a demo</a>
   </div>
 </div>
 
@@ -294,63 +590,185 @@
     <button class="btn-try" onclick="handleAsk()">Ask Soma</button>
   </div>
   <p class="hero-hint"><i class="fa-solid fa-star"></i> Access real-time data across your entire school <i class="fa-solid fa-star"></i></p>
-  <div class="cards-row">
-    <div class="dash-card">
-      <div class="card-header">
-        <div class="card-icon icon-admin"><i class="fa-solid fa-building-columns"></i></div>
-        <span class="card-title">Admin Management</span>
-      </div>
-      <div class="card-lines">
-        <div class="card-line full"></div><div class="card-line med"></div>
-        <div class="card-line short"></div><div class="card-line full"></div><div class="card-line med"></div>
-      </div>
-    </div>
-    <div class="dash-card">
-      <div class="card-header">
-        <div class="card-icon icon-finance"><i class="fa-solid fa-chart-line"></i></div>
-        <span class="card-title">Finance Overview</span>
-      </div>
-      <div class="card-lines">
-        <div class="card-line med"></div><div class="card-line full"></div><div class="card-line short"></div>
-      </div>
-      <div class="mini-chart">
-        <svg viewBox="0 0 160 40" preserveAspectRatio="none">
-          <polyline points="0,32 20,28 40,22 60,26 80,14 100,18 120,10 140,16 160,8" fill="none" stroke="#16a34a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-          <circle cx="140" cy="16" r="3" fill="#16a34a"/>
-        </svg>
-      </div>
-    </div>
-    <div class="dash-card">
-      <div class="card-header">
-        <div class="card-icon icon-student"><i class="fa-solid fa-user-graduate"></i></div>
-        <span class="card-title">Student Activity</span>
-      </div>
-      <div class="card-lines">
-        <div class="card-line full"></div><div class="card-line short"></div><div class="card-line med"></div>
-      </div>
-      <div class="mini-chart">
-        <svg viewBox="0 0 160 40" preserveAspectRatio="none">
-          <polyline points="0,30 20,22 40,26 60,16 80,20 100,12 120,18 140,10 160,14" fill="none" stroke="#2563eb" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-          <circle cx="140" cy="10" r="3" fill="#2563eb"/>
-        </svg>
-      </div>
-    </div>
-  </div>
 </section>
-<div class="tags">
-    <span class="tag1">Admin</span>
-    <span class="tag2">Finance</span>
-    <span class="tag5">Communication</span>
-    <span class="tag4">Academics</span>
-    <span class="tag3">Sports</span>
+<!-- PLATFORM OVERVIEW -->
+<section class="platform-overview fade-in">
+  <div class="platform-shell">
+
+    <div class="platform-top">
+
+      <div class="platform-copy">
+        <div class="section-label">Inside Soma</div>
+        <h2>Every department.<br>One intelligent dashboard.</h2>
+        <p>
+          From administration to finance and student engagement,
+          Soma gives your school a real-time operational overview
+          with intelligent reporting and analytics.
+        </p>
+      </div>
+
+      <div class="platform-actions">
+
+        <a href="contact.html#demo" class="demo-chip">
+          <i class="fa-regular fa-calendar"></i>
+          Book a demo
+        </a>
+
+        <div class="feature-pills">
+          <div class="feature-pill pill-admin">Admin</div>
+          <div class="feature-pill pill-finance">Finance</div>
+          <div class="feature-pill pill-communication">Communication</div>
+          <div class="feature-pill pill-academics">Academics</div>
+          <div class="feature-pill pill-sports">Sports</div>
+        </div>
+
+      </div>
+
+    </div>
+
+    <div class="overview-grid">
+
+      <!-- ADMIN -->
+      <div class="overview-card">
+        <div class="overview-head">
+          <div class="overview-icon admin-icon">
+            <i class="fa-solid fa-user-shield"></i>
+          </div>
+
+          <div class="overview-tag">
+            Admin Management
+          </div>
+        </div>
+
+        <h3>Staff & Operations</h3>
+
+        <p>
+          Manage teachers, timetables, departments,
+          leave requests, and operational workflows in one place.
+        </p>
+
+       <!-- ADMIN -->
+<div class="metric-row">
+  <div>
+    <div class="metric-value">92%</div>
+    <div class="metric-label">Workflow efficiency</div>
   </div>
-<!-- NOTE -->
-<div class="section-note fade-in">
-  <p>The answers to your staff's daily questions are scattered across registers, spreadsheets, and filing cabinets. Soma brings it all into one intelligent platform for your school.</p>
-  <a href="contact.html#demo" class="btn-cta-outline"><i class="fa-regular fa-calendar"></i> Get a demo</a>
+
+  <div class="metric-growth growth-up">
+    +Smooth
+  </div>
 </div>
 
+        <div class="mini-graph">
+          <div class="graph-bar" style="height:34%"></div>
+          <div class="graph-bar" style="height:52%"></div>
+          <div class="graph-bar" style="height:48%"></div>
+          <div class="graph-bar" style="height:70%"></div>
+          <div class="graph-bar" style="height:92%"></div>
+        </div>
+
+        <div class="overview-footer">
+          <span><i class="fa-solid fa-circle-check"></i> Active staff</span>
+          <span>Updated live</span>
+        </div>
+      </div>
+
+      <!-- FINANCE -->
+      <div class="overview-card finance-card">
+        <div class="overview-head">
+          <div class="overview-icon finance-icon">
+            <i class="fa-solid fa-wallet"></i>
+          </div>
+
+          <div class="overview-tag">
+            Finance Overview
+          </div>
+        </div>
+
+        <h3>Revenue & Fees</h3>
+
+        <p>
+          Track fee payments, balances, budgets,
+          and automated reminders across the institution.
+        </p>
+
+       <!-- FINANCE -->
+<div class="metric-row">
+  <div>
+    <div class="metric-value">3.1x</div>
+    <div class="metric-label">Faster operations</div>
+  </div>
+
+  <div class="metric-growth growth-up">
+    Optimized
+  </div>
+</div>
+
+        <div class="mini-graph">
+          <div class="graph-bar" style="height:24%"></div>
+          <div class="graph-bar" style="height:44%"></div>
+          <div class="graph-bar" style="height:68%"></div>
+          <div class="graph-bar" style="height:74%"></div>
+          <div class="graph-bar" style="height:95%"></div>
+        </div>
+
+        <div class="overview-footer">
+          <span><i class="fa-solid fa-chart-line"></i> Revenue growth</span>
+          <span>Term 2</span>
+        </div>
+      </div>
+
+      <!-- ACTIVITY -->
+      <div class="overview-card activity-card">
+        <div class="overview-head">
+          <div class="overview-icon activity-icon">
+            <i class="fa-solid fa-graduation-cap"></i>
+          </div>
+
+          <div class="overview-tag">
+            Student Activity
+          </div>
+        </div>
+
+        <h3>Attendance & Engagement</h3>
+
+        <p>
+          Monitor attendance, participation,
+          academics, and extracurricular performance in real time.
+        </p>
+
+       <!-- STUDENT -->
+<div class="metric-row">
+  <div>
+    <div class="metric-value">99%</div>
+    <div class="metric-label">System fluidity</div>
+  </div>
+
+  <div class="metric-growth growth-up">
+    Real-time
+  </div>
+</div>
+
+        <div class="mini-graph">
+          <div class="graph-bar" style="height:40%"></div>
+          <div class="graph-bar" style="height:58%"></div>
+          <div class="graph-bar" style="height:64%"></div>
+          <div class="graph-bar" style="height:80%"></div>
+          <div class="graph-bar" style="height:100%"></div>
+        </div>
+
+        <div class="overview-footer">
+          <span><i class="fa-solid fa-bolt"></i> Student engagement</span>
+          <span>This week</span>
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+</section>
 <!-- TRUSTED -->
+ <section>
 <div class="trusted fade-in">
   <p>Trusted by 10+ schools in Zimbabwe</p>
   <div class="trust-badges">
@@ -361,7 +779,7 @@
     <div class="trust-badge"><i class="fa-solid fa-school"></i> + 6 more</div>
   </div>
 </div>
-
+</section>
 <!-- WHAT IS SOMA -->
 <section class="what-soma fade-in">
   <div class="what-soma-text">
@@ -556,11 +974,11 @@
       <div class="form-row">
         <div class="form-group">
           <label>Your Name</label>
-          <input type="text" id="sugName" placeholder="Tinashe Moyo"/>
+          <input type="text" id="sugName" placeholder="Tanatswa Chiyangwa"/>
         </div>
         <div class="form-group">
           <label>Your Email</label>
-          <input type="email" id="sugEmail" placeholder="tinashe@school.co.zw"/>
+          <input type="email" id="sugEmail" placeholder="tanatswa@email.com"/>
         </div>
       </div>
       <div class="form-group">
