@@ -3,10 +3,10 @@
 <head>
   <meta charset="UTF-8"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Contact — Soma Education Technologies</title>
-  <link rel="icon" type="image/png" href="../images/icon.png">
+  <link rel="icon" type="image/png" href="images/icon.png">
   <link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;500;600;700&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet"/>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
-  <link rel="stylesheet" href="../shared.css"/>
+  <link rel="stylesheet" href="shared.css"/>
   <style>
     .contact-grid { display:grid; grid-template-columns:1fr 1.4fr; gap:60px; align-items:start; }
     .contact-info h2 { font-family:var(--font-display); font-size:clamp(1.6rem,3vw,2.2rem); font-weight:700; letter-spacing:-0.03em; margin-bottom:16px; }
@@ -41,22 +41,22 @@
   </style>
 </head>
 <body>
-<!-- NAV -->
 <nav>
-  <a href="../index.html" class="logo">
-    <img src="../images/logo.png" onerror="this.style.display='none'">
-    <span class="logo-text">soma</span>
-  </a>
+  <a href="index.html" class="logo"><img src="images/logo.png" onerror="this.style.display='none'"><span class="logo-text">soma</span></a>
   <ul class="nav-links">
     <li>
       <span class="nav-dropdown" onclick="toggleDropdown(this)">
         Products <i class="fa-solid fa-chevron-down chevron"></i>
-        <div class="dropdown-menu"> 
-          <a href="../products/index.html#portal">Software</a> 
+        <div class="dropdown-menu">
+          <span class="dropdown-section-label">Software</span>
+          <a href="products.html#portal">Soma Portal</a>
+          <a href="products.html#connect">Soma Connect</a>
+          <a href="products.html#x">Soma X</a>
+          <a href="products.html#ai">Soma AI</a>
           <div class="dropdown-divider"></div>
           <span class="dropdown-section-label">Documentation</span>
-          <a href="../terms/index.html">Terms of Service</a>
-          <a href="../privacy/index.html">Privacy Policy</a>
+          <a href="terms.html">Terms of Service</a>
+          <a href="privacy.html">Privacy Policy</a>
         </div>
       </span>
     </li>
@@ -64,59 +64,35 @@
       <span class="nav-dropdown" onclick="toggleDropdown(this)">
         Company <i class="fa-solid fa-chevron-down chevron"></i>
         <div class="dropdown-menu">
-          <a href="../about/index.html">About Soma</a>
-          <a href="../founders/index.html">Founders</a>
-          <a href="../blog/index.html">Blog</a>
+          <a href="about.html">About Soma</a>
+          <a href="founders.html">Founders</a>
+          <a href="blog.html">Blog</a>
         </div>
       </span>
     </li>
-    <li><a href="../solutions/index.html">Solutions</a></li>
-    <li><a href="../pricing/index.html">Pricing</a></li>
-    <li><a href="../contact/index.html">Contact</a></li>
-    <li><a href="../download/index.html">Download</a></li>
+    <li><a href="solutions.html">Solutions</a></li>
+    <li><a href="pricing.html">Pricing</a></li>
+    <li><a href="contact.html">Contact</a></li>
   </ul>
   <div class="nav-right">
-    <a href="../contact/index.html#demo" class="btn-demo"><i class="fa-regular fa-calendar"></i> Get a demo</a>
-    <a href="../login/index.html" class="btn-login">Login →</a>
-    <div class="hamburger" onclick="document.querySelector('.mobile-nav').classList.add('open')">
-      <span></span><span></span><span></span>
-    </div>
+    <a href="contact.html#demo" class="btn-demo"><i class="fa-regular fa-calendar"></i> Get a demo</a>
+    <a href="login.html" class="btn-login">Login →</a>
+    <div class="hamburger" onclick="document.querySelector('.mobile-nav').classList.add('open')"><span></span><span></span><span></span></div>
   </div>
 </nav>
-
-<!-- MOBILE NAV -->
 <div class="mobile-nav">
-  <div class="mobile-nav-head">
-    <a href="../index.html" class="logo"><span class="logo-text">soma</span></a>
-    <button class="mobile-nav-close" onclick="document.querySelector('.mobile-nav').classList.remove('open')">
-      <i class="fa-solid fa-xmark"></i>
-    </button>
-  </div>
+  <div class="mobile-nav-head"><a href="index.html" class="logo"><span class="logo-text">soma</span></a><button class="mobile-nav-close" onclick="document.querySelector('.mobile-nav').classList.remove('open')"><i class="fa-solid fa-xmark"></i></button></div>
   <ul>
-    <li><a href="../products/index.html" onclick="document.querySelector('.mobile-nav').classList.remove('open')">Products</a></li>
-    <li><a href="../solutions/index.html" onclick="document.querySelector('.mobile-nav').classList.remove('open')">Solutions</a></li>
-    <li><a href="../pricing/index.html" onclick="document.querySelector('.mobile-nav').classList.remove('open')">Pricing</a></li>
-    <li><a href="../about/index.html" onclick="document.querySelector('.mobile-nav').classList.remove('open')">About</a></li>
-    <li><a href="../founders/index.html" onclick="document.querySelector('.mobile-nav').classList.remove('open')">Founders</a></li>
-    <li><a href="../contact/index.html" onclick="document.querySelector('.mobile-nav').classList.remove('open')">Contact</a></li>
-    <li><a href="#shop" onclick="document.querySelector('.mobile-nav').classList.remove('open')">Shop</a></li>
+    <li><a href="products.html">Products</a></li>
+    <li><a href="solutions.html">Solutions</a></li>
+    <li><a href="pricing.html">Pricing</a></li>
+    <li><a href="about.html">About</a></li>
+    <li><a href="founders.html">Founders</a></li>
+    <li><a href="contact.html">Contact</a></li>
   </ul>
-  <div class="mobile-nav-btns">
-    <a href="../contact/index.html#demo" class="btn-demo"><i class="fa-regular fa-calendar"></i> Get a demo</a>
-  </div>
+  <div class="mobile-nav-btns"><a href="contact.html#demo" class="btn-demo"><i class="fa-regular fa-calendar"></i> Get a demo</a></div>
 </div>
 
-<div class="mobile-nav">
-  <div class="mobile-nav-head"><a href="../index.html" class="logo"><span class="logo-text">soma</span></a><button class="mobile-nav-close" onclick="document.querySelector('.mobile-nav').classList.remove('open')"><i class="fa-solid fa-xmark"></i></button></div>
-  <ul>
-    <li><a href="../products/index.html">Products</a></li>
-    <li><a href="../solutions/index.html">Solutions</a></li>
-    <li><a href="../pricing/index.html">Pricing</a></li>
-    <li><a href="../about/index.html">About</a></li>
-    <li><a href="../contact/index.html">Contact</a></li>
-  </ul>
-  <div class="mobile-nav-btns"><a href="../contact/index.html#demo" class="btn-demo"><i class="fa-regular fa-calendar"></i> Get a demo</a></div>
-</div>
 <div class="page-top-wrap">
   <div class="page-top">
     <div class="section-label"></div>
@@ -166,11 +142,11 @@
       <div class="form-row">
         <div class="form-group">
           <label>Your Name</label>
-          <input type="text" id="ctName" placeholder="Tendai Moyo"/>
+          <input type="text" id="ctName" placeholder="Tanatswa Chiyangwa"/>
         </div>
         <div class="form-group">
           <label>Your Email</label>
-          <input type="email" id="ctEmail" placeholder="tendai@school.co.zw"/>
+          <input type="email" id="ctEmail" placeholder="tanatswa@school.co.zw"/>
         </div>
       </div>
       <div class="form-group">
@@ -235,52 +211,17 @@
 </footer>
 <script>
   document.getElementById('footerYear').textContent = new Date().getFullYear();
-  async function submitContact() {
+  function submitContact() {
     const name = document.getElementById('ctName').value.trim();
     const email = document.getElementById('ctEmail').value.trim();
     const school = document.getElementById('ctSchool').value.trim();
     const type = document.getElementById('ctType').value;
     const msg = document.getElementById('ctMsg').value.trim();
-    
-    if (!name || !email || !msg) { 
-      alert('Please fill in your name, email, and message.'); 
-      return; 
-    }
-    
-    const submitBtn = document.querySelector('.btn-submit-contact');
-    submitBtn.disabled = true;
-    submitBtn.innerHTML = '<i class="fa-solid fa-spinner"></i> Sending...';
-    
-    try {
-      const response = await fetch('https://formspree.io/f/xeedlakk', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          name: name,
-          email: email,
-          school: school,
-          type: type || 'General',
-          message: msg
-        })
-      });
-
-      if (response.ok) {
-        document.getElementById('ctSuccess').classList.add('show');
-        document.getElementById('ctName').value = '';
-        document.getElementById('ctEmail').value = '';
-        document.getElementById('ctSchool').value = '';
-        document.getElementById('ctType').value = '';
-        document.getElementById('ctMsg').value = '';
-        submitBtn.disabled = false;
-        submitBtn.innerHTML = '<i class="fa-solid fa-paper-plane"></i> Send message';
-      } else {
-        throw new Error('Failed to send');
-      }
-    } catch (error) {
-      alert('Error sending message. Please try again or email us directly.');
-      submitBtn.disabled = false;
-      submitBtn.innerHTML = '<i class="fa-solid fa-paper-plane"></i> Send message';
-    }
+    if (!name || !email || !msg) { alert('Please fill in your name, email, and message.'); return; }
+    const subject = encodeURIComponent('[Soma Enquiry] ' + (type || 'General') + ' — ' + (school || name));
+    const body = encodeURIComponent('From: ' + name + '\nEmail: ' + email + '\nSchool: ' + (school || 'N/A') + '\nType: ' + (type || 'General') + '\n\n' + msg);
+    window.location.href = 'mailto:tanatswachiyangwa0@gmail.com?subject=' + subject + '&body=' + body;
+    document.getElementById('ctSuccess').classList.add('show');
   }
   const obs = new IntersectionObserver(e=>e.forEach(x=>{if(x.isIntersecting)x.target.classList.add('visible')}),{threshold:0.1});
   document.querySelectorAll('.fade-in').forEach(el=>obs.observe(el));
