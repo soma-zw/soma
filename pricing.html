@@ -1,0 +1,746 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pricing — Soma Tech</title>
+<link rel="icon" type="image/png" href="images/icon.png">
+<meta name="description" content="Soma costs $1 per student, per term. Full system, every app included. Your first term is free — cancel anytime.">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,300;0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400;1,6..72,500&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+<style>
+  :root{
+    --ink: #1d160e;
+    --paper: #f7f2e7;
+    --paper-2: #efe7d6;
+    --dusk: #7c8a96;
+    --dusk-deep: #56646f;
+    --umber: #3c2f23;
+    --gold: #ab8a52;
+    --line: rgba(29,22,14,0.14);
+    --line-on-dark: rgba(247,242,231,0.18);
+    --max: 1220px;
+  }
+
+  *{ margin:0; padding:0; box-sizing:border-box; }
+
+  html{ scroll-behavior:smooth; }
+
+  body{
+    background:var(--paper);
+    color:var(--ink);
+    font-family:'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    font-size:16px;
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+  }
+
+  a{ color:inherit; text-decoration:none; }
+  img{ max-width:100%; display:block; }
+
+  .wrap{
+    max-width:var(--max);
+    margin:0 auto;
+    padding:0 16px;
+  }
+
+  .eyebrow{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:12.5px;
+    letter-spacing:0.08em;
+    text-transform:uppercase;
+    color:var(--dusk-deep);
+  }
+
+  .serif{ font-family:'Newsreader', serif; }
+
+  h1,h2,h3,h4{
+    font-family:'Newsreader', serif;
+    font-weight:500;
+    letter-spacing:-0.01em;
+    line-height:1.08;
+  }
+
+  /* ---------------- HEADER ---------------- */
+
+  header{
+    position:fixed;
+    top:0; left:0; right:0;
+    z-index:100;
+    padding:20px 0;
+    transition:background 0.35s ease, border-color 0.35s ease, padding 0.35s ease;
+    background:rgba(247,242,231,0.92);
+    -webkit-backdrop-filter:blur(10px);
+    backdrop-filter:blur(10px);
+    border-bottom:1px solid var(--line);
+  }
+
+  header .wrap{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:16px;
+  }
+
+  .logo-container { display:flex; align-items:center; gap:10px; text-decoration:none; }
+  .logo-img { height:50px; width:auto; }
+
+  .logo{
+    font-family:'Newsreader', serif;
+    font-style:italic;
+    font-weight:600;
+    font-size:20px;
+    color:var(--ink);
+  }
+
+  nav.primary{ display:flex; align-items:center; gap:28px; }
+
+  nav.primary a:not(.btn){
+    font-size:14.5px;
+    color:var(--ink);
+    opacity:0.92;
+    transition:color 0.35s ease, opacity 0.2s ease;
+    position:relative;
+  }
+  nav.primary a:not(.btn):hover{ opacity:1; }
+
+  .has-drop{ display:flex; align-items:center; gap:5px; cursor:default; }
+  .has-drop svg{ width:9px; height:9px; opacity:0.8; transition:transform 0.2s ease; }
+  .has-drop:hover svg{ transform:rotate(180deg); }
+
+  .dropdown{ position:relative; }
+  .dropdown-panel{
+    position:absolute;
+    top:28px; left:50%;
+    transform:translateX(-50%) translateY(4px);
+    background:var(--paper);
+    border:1px solid var(--line);
+    border-radius:3px;
+    padding:6px;
+    min-width:148px;
+    opacity:0;
+    visibility:hidden;
+    transition:opacity 0.18s ease, transform 0.18s ease;
+  }
+  .dropdown:hover .dropdown-panel{ opacity:1; visibility:visible; transform:translateX(-50%) translateY(0); }
+  .dropdown-panel a{ display:block; padding:9px 12px; font-size:13.5px; border-radius:2px; color:var(--ink) !important; opacity:0.78 !important; }
+  .dropdown-panel a:hover{ background:var(--paper-2); opacity:1 !important; }
+
+  .actions{ display:flex; align-items:center; gap:12px; }
+
+  .btn{
+    font-family:'Inter', sans-serif;
+    font-size:13.5px;
+    font-weight:500;
+    padding:10px 16px;
+    border-radius:3px;
+    display:flex;
+    align-items:center;
+    white-space:nowrap;
+    transition:background 0.25s ease, color 0.25s ease, border-color 0.25s ease, opacity 0.25s ease;
+    height:40px;
+  }
+  .btn-ghost{ border:1px solid var(--line); color:var(--ink); }
+  .btn-ghost:hover{ border-color:var(--ink); }
+  .btn-solid{ background:var(--ink); color:var(--paper); }
+  .btn-solid:hover{ background:var(--umber); }
+
+  .menu-toggle{ display:none; }
+
+  /* ---------------- PAGE HERO ---------------- */
+
+  .pricing-hero{
+    padding:168px 0 64px;
+    text-align:center;
+  }
+
+  .pricing-hero .eyebrow{ display:block; margin-bottom:16px; }
+
+  .pricing-hero h1{
+    font-size:clamp(32px, 5vw, 54px);
+    max-width:16ch;
+    margin:0 auto 18px;
+  }
+
+  .pricing-hero h1 em{
+    font-style:italic;
+    color:var(--gold);
+    font-weight:500;
+  }
+
+  .pricing-hero p{
+    max-width:56ch;
+    margin:0 auto;
+    color:var(--dusk-deep);
+    font-size:17px;
+  }
+
+  /* ---------------- PRICING CARDS ---------------- */
+
+  .pricing-grid-section{ padding:8px 0 30px; }
+
+  .pricing-grid{
+    display:grid;
+    grid-template-columns:repeat(3, 1fr);
+    gap:24px;
+    max-width:1080px;
+    margin:0 auto;
+    align-items:start;
+  }
+
+  .price-card{
+    background:#ffffff;
+    border:1px solid var(--line);
+    border-radius:16px;
+    padding:38px 30px;
+    text-align:center;
+    position:relative;
+  }
+
+  .price-card.featured{
+    background:var(--ink);
+    color:var(--paper);
+    border-color:var(--ink);
+    transform:translateY(-16px);
+    box-shadow:0 26px 60px rgba(29,22,14,0.18);
+  }
+
+  .plan-tag{
+    position:absolute;
+    top:-14px;
+    left:50%;
+    transform:translateX(-50%);
+    background:var(--gold);
+    color:var(--ink);
+    font-family:'IBM Plex Mono', monospace;
+    font-size:10.5px;
+    letter-spacing:0.06em;
+    text-transform:uppercase;
+    padding:7px 16px;
+    border-radius:999px;
+    white-space:nowrap;
+  }
+
+  .price-card h3{
+    font-family:'Inter', sans-serif;
+    font-weight:600;
+    font-size:19px;
+    letter-spacing:-0.01em;
+    margin-bottom:20px;
+    color:inherit;
+  }
+
+  .price-card .price{
+    font-family:'Inter', sans-serif;
+    font-weight:600;
+    font-size:46px;
+    letter-spacing:-0.02em;
+    line-height:1;
+  }
+
+  .price-card .price sup{
+    font-size:20px;
+    font-weight:500;
+    top:-0.6em;
+  }
+
+  .price-card .price-caption{
+    font-size:13px;
+    color:var(--dusk-deep);
+    margin:8px 0 26px;
+  }
+  .price-card.featured .price-caption{ color:rgba(247,242,231,0.65); }
+
+  .price-card .btn{
+    width:100%;
+    justify-content:center;
+    border-radius:999px;
+    margin-bottom:24px;
+  }
+
+  .price-card hr{
+    border:none;
+    border-top:1px solid var(--line);
+    margin-bottom:22px;
+  }
+  .price-card.featured hr{ border-top-color:var(--line-on-dark); }
+
+  .feature-list{
+    display:flex;
+    flex-direction:column;
+    gap:13px;
+    text-align:left;
+  }
+  .feature-list p{ font-size:14px; color:var(--dusk-deep); }
+  .price-card.featured .feature-list p{ color:rgba(247,242,231,0.82); }
+
+  .pricing-note{
+    text-align:center;
+    max-width:600px;
+    margin:42px auto 0;
+    font-size:13.5px;
+    color:var(--dusk-deep);
+    font-style:italic;
+  }
+
+  /* ---------------- WHY CHOOSE US ---------------- */
+
+  .why-section{ padding:96px 0 120px; }
+
+  .why-head{
+    display:flex;
+    justify-content:space-between;
+    align-items:flex-end;
+    gap:24px;
+    flex-wrap:wrap;
+    margin-bottom:48px;
+  }
+
+  .why-head h2{ font-size:clamp(28px, 4vw, 40px); }
+
+  .why-head p{
+    color:var(--dusk-deep);
+    font-size:15px;
+    max-width:56ch;
+    margin-top:12px;
+  }
+
+  .why-head .btn{ border-radius:999px; flex-shrink:0; }
+
+  .why-grid{
+    display:grid;
+    grid-template-columns:repeat(4, 1fr);
+    gap:18px;
+  }
+
+  .why-card{
+    border-radius:16px;
+    padding:28px 24px;
+    display:flex;
+    flex-direction:column;
+    gap:16px;
+    min-height:240px;
+  }
+  .why-card.dark{ background:var(--ink); color:var(--paper); }
+  .why-card.light{ background:var(--paper-2); color:var(--ink); }
+
+  .why-icon{
+    width:42px;
+    height:42px;
+    border-radius:11px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+  }
+  .why-card.dark .why-icon{ background:rgba(247,242,231,0.1); color:var(--paper); }
+  .why-card.light .why-icon{ background:rgba(29,22,14,0.06); color:var(--ink); }
+  .why-icon svg{ width:21px; height:21px; }
+
+  .why-card h4{
+    font-family:'Inter', sans-serif;
+    font-weight:600;
+    font-size:17px;
+    letter-spacing:-0.01em;
+  }
+
+  .why-card p{ font-size:13.5px; line-height:1.6; flex:1; }
+  .why-card.dark p{ color:rgba(247,242,231,0.75); }
+  .why-card.light p{ color:var(--dusk-deep); }
+
+  .btn-mini{
+    align-self:flex-start;
+    font-family:'Inter', sans-serif;
+    font-size:13px;
+    font-weight:500;
+    padding:9px 18px;
+    border-radius:999px;
+    transition:opacity 0.2s ease;
+  }
+  .why-card.dark .btn-mini{ background:var(--paper); color:var(--ink); }
+  .why-card.light .btn-mini{ background:var(--ink); color:var(--paper); }
+  .btn-mini:hover{ opacity:0.82; }
+
+  /* ---------------- CLOSING BAND ---------------- */
+
+  .pricing-cta{
+    background:var(--gold);
+    padding:80px 0;
+    text-align:center;
+  }
+  .pricing-cta h3{
+    font-size:clamp(26px, 4vw, 38px);
+    color:var(--umber);
+    margin-bottom:12px;
+  }
+  .pricing-cta p{
+    color:var(--umber);
+    opacity:0.8;
+    margin-bottom:28px;
+    font-size:15.5px;
+  }
+  .pricing-cta .btn{
+    display:inline-flex;
+    border-radius:999px;
+    background:var(--ink);
+    color:var(--paper);
+    margin:0 auto;
+  }
+  .pricing-cta .btn:hover{ background:var(--umber); }
+
+  /* ---------------- FOOTER ---------------- */
+  footer{
+    background:var(--ink);
+    color:var(--paper);
+    padding:90px 0 0;
+  }
+  .footer-top{
+    display:grid;
+    grid-template-columns:1.4fr 1fr 1fr 1fr;
+    gap:40px;
+    padding-bottom:70px;
+    border-bottom:1px solid var(--line-on-dark);
+  }
+  .footer-brand .logo{ color:var(--paper); }
+  .footer-brand p{
+    margin-top:16px;
+    color:rgba(247,242,231,0.6);
+    font-size:14px;
+    max-width:30ch;
+  }
+  .footer-col h4{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:11.5px;
+    letter-spacing:0.05em;
+    text-transform:uppercase;
+    color:rgba(247,242,231,0.45);
+    margin-bottom:18px;
+    font-weight:400;
+  }
+  .footer-col a{
+    display:block;
+    font-size:14.5px;
+    color:rgba(247,242,231,0.82);
+    margin-bottom:13px;
+    transition:color 0.2s ease;
+  }
+  .footer-col a:hover{ color:var(--paper); }
+  .footer-bottom{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:28px 0 36px;
+    font-size:13px;
+    color:rgba(247,242,231,0.55);
+    flex-wrap:wrap;
+    gap:16px;
+  }
+  .footer-bottom-links{ display:flex; align-items:center; flex-wrap:wrap; gap:20px; }
+  .footer-bottom-links a{ font-size:13.5px; color:rgba(247,242,231,0.55); transition:color 0.2s ease; }
+  .footer-bottom-links a:hover{ color:var(--paper); }
+
+  .brand-banner-texture{
+    height:clamp(120px, 18vw, 220px);
+    background-image:url('images/back.jpg');
+    background-size:cover;
+    background-position:center;
+    background-color:var(--gold);
+    background-blend-mode:multiply;
+  }
+  .brand-banner-word{
+    text-align:center;
+    padding:8px 16px clamp(20px, 4vw, 44px);
+    overflow:hidden;
+    background:var(--gold);
+  }
+  .brand-banner-word span{
+    display:block;
+    font-family:'Newsreader', serif;
+    font-style:italic;
+    font-weight:600;
+    letter-spacing:-0.02em;
+    line-height:0.9;
+    color:var(--umber);
+    font-size:clamp(72px, 17vw, 220px);
+    white-space:nowrap;
+  }
+
+  /* ---------------- RESPONSIVE ---------------- */
+
+  @media (max-width:1024px){
+    .why-grid{ grid-template-columns:repeat(2, 1fr); }
+  }
+
+  @media (max-width:900px){
+    .pricing-grid{ grid-template-columns:1fr; max-width:420px; }
+    .price-card.featured{ transform:none; order:-1; }
+    .footer-top{ grid-template-columns:1fr 1fr; gap:36px; }
+  }
+
+  @media (max-width:760px){
+    nav.primary{
+      position:fixed;
+      top:0; right:0; bottom:0;
+      width:78%;
+      max-width:320px;
+      background:var(--ink);
+      flex-direction:column;
+      align-items:flex-start;
+      justify-content:flex-start;
+      gap:0;
+      padding:90px 32px 32px;
+      transform:translateX(100%);
+      transition:transform 0.35s ease;
+    }
+    nav.primary.open{ transform:translateX(0); }
+    nav.primary a:not(.btn){ color:var(--paper) !important; width:100%; padding:16px 0; border-bottom:1px solid var(--line-on-dark); }
+    .dropdown{ width:100%; }
+    .dropdown-panel{ position:static; opacity:1; visibility:visible; transform:none; background:transparent; border:none; padding:0 0 0 14px; display:none; }
+    .dropdown.open .dropdown-panel{ display:block; }
+    .actions .btn-ghost{ display:none; }
+    .menu-toggle{
+      display:flex; flex-direction:column; gap:5px; width:22px; cursor:pointer;
+      z-index:101; background:none; border:none; padding:6px 0;
+    }
+    .menu-toggle span{ display:block; height:1.5px; width:100%; background:var(--ink); }
+
+    .pricing-hero{ padding:140px 0 48px; }
+    .why-head{ flex-direction:column; align-items:flex-start; }
+    .why-grid{ grid-template-columns:1fr; }
+    .footer-top{ grid-template-columns:1fr; gap:40px; }
+  }
+</style>
+</head>
+<body>
+
+<header id="site-header">
+  <div class="wrap">
+    <a href="index.html#top" class="logo-container">
+      <img src="images/logo.png" alt="Soma Logo" class="logo-img">
+      <span class="logo">soma</span>
+    </a>
+
+    <nav class="primary" id="primary-nav">
+      <a href="products.html">Products</a>
+      <div class="dropdown" id="company-dropdown">
+        <a href="#" class="has-drop" id="company-toggle">Company <svg viewBox="0 0 10 6" fill="none"><path d="M1 1L5 5L9 1" stroke="currentColor" stroke-width="1.4"/></svg></a>
+        <div class="dropdown-panel">
+          <a href="about.html">About</a>
+          <a href="blog.html">Blog</a>
+        </div>
+      </div>
+      <a href="pricing.html">Pricing</a>
+      <a href="contact.html">Contact</a>
+      <a href="docs.html">Docs</a>
+    </nav>
+
+    <div class="actions">
+      <a href="contact.html#demo" class="btn btn-ghost">Book a demo</a>
+      <a href="download.html" class="btn btn-solid">Download</a>
+      <button class="menu-toggle" id="menu-toggle" aria-label="Open menu"><span></span><span></span><span></span></button>
+    </div>
+  </div>
+</header>
+
+<main>
+
+  <!-- ---------------- PAGE HERO ---------------- -->
+  <section class="pricing-hero"> 
+  </section>
+
+  <!-- ---------------- PRICING CARDS ---------------- -->
+  <section class="pricing-grid-section">
+    <div class="wrap">
+      <div class="pricing-grid">
+
+        <!-- Free Trial -->
+        <div class="price-card">
+          <h3>Free Trial Term</h3>
+          <div class="price">$0</div>
+          <p class="price-caption">per student, first term</p>
+          <a href="contact.html" class="btn btn-ghost">Start Free Term</a>
+          <hr>
+          <div class="feature-list">
+            <p>Full Soma system, every app included</p>
+            <p>Unlimited students, staff &amp; parents</p>
+            <p>Soma ID issued for every learner</p>
+            <p>Cancel anytime, no card required</p>
+            <p>Keep your data even if you don't continue</p>
+          </div>
+        </div>
+
+        <!-- Standard Plan (featured) -->
+        <div class="price-card featured">
+          <span class="plan-tag">Most schools choose this</span>
+          <h3>Standard Plan</h3>
+          <div class="price">$1</div>
+          <p class="price-caption">per student, per term</p>
+          <a href="contact.html" class="btn btn-solid" style="background:var(--paper); color:var(--ink);">Get Started →</a>
+          <hr>
+          <div class="feature-list">
+            <p>Everything in the free term, ongoing</p>
+            <p>Soma Portal, Connect, Finance &amp; Browser</p>
+            <p>Unlimited admins, teachers &amp; parent accounts</p>
+            <p>Priority WhatsApp &amp; email support</p>
+            <p>Every future update, at no extra cost</p>
+          </div>
+        </div>
+
+        <!-- Setup add-on -->
+        <div class="price-card">
+          <h3>School Setup</h3>
+          <div class="price">Custom</div>
+          <p class="price-caption">one-time, only if you need it</p>
+          <a href="contact.html" class="btn btn-ghost">Talk to Us</a>
+          <hr>
+          <div class="feature-list">
+            <p>Student &amp; staff data migration</p>
+            <p>Dedicated onboarding specialist</p>
+            <p>On-site or virtual staff training</p>
+            <p>Network &amp; device readiness check</p>
+            <p>Most schools never need this</p>
+          </div>
+        </div>
+
+      </div>
+
+      <p class="pricing-note">* Billed per active student, per term — add or remove seats as enrollment changes. Setup fees are optional and only apply if you'd like migration or onboarding support.</p>
+    </div>
+  </section>
+
+  <!-- ---------------- WHY CHOOSE US ---------------- -->
+  <section class="why-section">
+    <div class="wrap">
+      <div class="why-head">
+        <div>
+          <h2>Why Choose Us?</h2>
+          <p>Our pricing isn't the only thing that's simple. Here's what every school gets, on every plan, with no fine print.</p>
+        </div>
+        <a href="contact.html" class="btn btn-solid">Get Started</a>
+      </div>
+
+      <div class="why-grid">
+
+        <div class="why-card dark">
+          <div class="why-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 7 13.5 15.5 8.5 10.5 2 17"/><polyline points="16 7 22 7 22 13"/></svg>
+          </div>
+          <h4>Pay As You Grow</h4>
+          <p>Only pay for the students active this term. Add or remove seats anytime as enrollment changes — no annual lock-in.</p>
+          <a href="contact.html" class="btn-mini">Get Started</a>
+        </div>
+
+        <div class="why-card light">
+          <div class="why-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 2 7 12 12 22 7 12 2"/><polyline points="2 17 12 22 22 17"/><polyline points="2 12 12 17 22 12"/></svg>
+          </div>
+          <h4>Full System, No Add-ons</h4>
+          <p>Soma Portal, Connect, Finance and Browser are all included from day one. No premium tiers, no feature paywalls.</p>
+          <a href="contact.html" class="btn-mini">Get Started</a>
+        </div>
+
+        <div class="why-card light">
+          <div class="why-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/><path d="m9 16 2 2 4-4"/></svg>
+          </div>
+          <h4>Free First Term</h4>
+          <p>Try the entire platform with your real students and staff for one full term before you spend a single dollar.</p>
+          <a href="contact.html" class="btn-mini">Get Started</a>
+        </div>
+
+        <div class="why-card light">
+          <div class="why-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 13c0 5-3.5 7.5-7.5 9-4-1.5-7.5-4-7.5-9V5l7.5-3 7.5 3z"/><path d="m9 12 2 2 4-4"/></svg>
+          </div>
+          <h4>Transparent Setup</h4>
+          <p>If you ever need onboarding help, you'll know the exact cost upfront. No surprise invoices, ever.</p>
+          <a href="contact.html" class="btn-mini">Get Started</a>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ---------------- CLOSING BAND ---------------- -->
+  <section class="pricing-cta">
+    <div class="wrap">
+      <h3>Your first term is on us</h3>
+      <p>Set up your school, invite your staff, and try the full system — risk free.</p>
+      <a href="contact.html" class="btn">Start Your Free Term →</a>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <a href="index.html#top" class="logo">soma</a>
+        <p>One ID, every school. Built in Zimbabwe, for Zimbabwean schools.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Product</h4>
+        <a href="products.html">Soma Portal</a>
+        <a href="products.html#connect">Soma Connect</a>
+        <a href="products.html#browser">Soma Browser</a>
+        <a href="pricing.html">Pricing</a>
+      </div>
+      <div class="footer-col">
+        <h4>Company</h4>
+        <a href="about.html">About</a>
+        <a href="founders.html">Founders</a>
+        <a href="blog.html">Blog</a>
+      </div>
+      <div class="footer-col">
+        <h4>Resources</h4>
+        <a href="docs.html">Docs</a>
+        <a href="contact.html">Contact</a>
+        <a href="terms.html">Terms</a>
+        <a href="privacy.html">Privacy</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>Soma Education Technologies. Harare, Zimbabwe. · © 2026</span>
+      <nav class="footer-bottom-links">
+        <a href="products.html">Product</a>
+        <a href="blog.html">Journal</a>
+        <a href="about.html">About</a>
+        <a href="founders.html">Careers</a>
+        <a href="contact.html">Get started</a>
+      </nav>
+    </div>
+  </div>
+  <div class="brand-banner-texture" aria-hidden="true"></div>
+  <div class="brand-banner-word"><span>soma</span></div>
+</footer>
+
+<script>
+  // header scroll state (kept for consistency with the rest of the site)
+  const header = document.getElementById('site-header');
+  const onScroll = () => {
+    if(window.scrollY > 40){ header.classList.add('scrolled'); }
+    else{ header.classList.remove('scrolled'); }
+  };
+  window.addEventListener('scroll', onScroll, { passive:true });
+  onScroll();
+
+  // mobile menu
+  const menuToggle = document.getElementById('menu-toggle');
+  const nav = document.getElementById('primary-nav');
+  menuToggle.addEventListener('click', () => nav.classList.toggle('open'));
+
+  const companyToggle = document.getElementById('company-toggle');
+  const companyDropdown = document.getElementById('company-dropdown');
+  companyToggle.addEventListener('click', (e) => {
+    if(window.innerWidth <= 760){
+      e.preventDefault();
+      companyDropdown.classList.toggle('open');
+    }
+  });
+</script>
+
+</body>
+</html>

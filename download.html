@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Download — Soma</title>
+<link rel="icon" type="image/png" href="images/icon.png">
+<meta name="description" content="Download the Soma desktop suite, access the Soma Connect mobile app on the Play Store, and download the latest documentation for schools.">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,300;0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400;1,6..72,500&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+<style>
+  :root{
+    --ink: #1d160e;
+    --paper: #f7f2e7;
+    --paper-2: #efe7d6;
+    --dusk: #7c8a96;
+    --dusk-deep: #56646f;
+    --umber: #3c2f23;
+    --gold: #ab8a52;
+    --line: rgba(29,22,14,0.14);
+    --line-on-dark: rgba(247,242,231,0.18);
+    --max: 1220px;
+  }
+
+  *{ margin:0; padding:0; box-sizing:border-box; }
+  html{ scroll-behavior:smooth; }
+
+  body{
+    background:#ffffff;
+    color:var(--ink);
+    font-family:'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    font-size:16px;
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+  }
+
+  a{ color:inherit; text-decoration:none; }
+  img{ max-width:100%; display:block; }
+  button{ font:inherit; cursor: pointer; }
+
+  .wrap{ max-width:var(--max); margin:0 auto; padding:0 16px; }
+
+  .eyebrow{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:12.5px;
+    letter-spacing:0.08em;
+    text-transform:uppercase;
+    color:var(--dusk-deep);
+  }
+
+  h1,h2,h3{
+    font-family:'Newsreader', serif;
+    font-weight:500;
+    letter-spacing:-0.01em;
+    line-height:1.08;
+  }
+
+  /* ---------------- HEADER & FOOTER (Matches docs_2.html) ---------------- */
+  header{
+    position:fixed; top:0; left:0; right:0; z-index:100; padding:14px 0;
+    background:rgba(247,242,231,0.92); -webkit-backdrop-filter:blur(10px); backdrop-filter:blur(10px); border-bottom:1px solid var(--line);
+  }
+  header .wrap{ display:flex; align-items:center; justify-content:space-between; gap:16px; }
+  .logo-container{ display:flex; align-items:center; gap:10px; }
+  .logo-img{ height:50px; width:auto; }
+  .logo{ font-family:'Newsreader', serif; font-style:italic; font-weight:600; font-size:20px; color:var(--ink); }
+
+  nav.primary{ display:flex; align-items:center; gap:28px; }
+  nav.primary a:not(.btn){ font-size:14.5px; color:var(--ink); opacity:0.92; transition:opacity 0.2s ease; }
+  nav.primary a:not(.btn):hover{ opacity:1; } 
+
+  .actions{ display:flex; align-items:center; gap:12px; }
+  .btn{
+    font-family:'Inter', sans-serif; font-size:13.5px; font-weight:500; padding:10px 16px; border-radius:3px;
+    display:flex; align-items:center; justify-content: center; transition:all 0.25s ease; height:40px;
+  }
+  .btn-ghost{ border:1px solid var(--ink); color:var(--ink); }
+  .btn-ghost:hover{ background:var(--ink); color:var(--paper); }
+  .btn-solid{ background:var(--ink); color:var(--paper); border: 1px solid var(--ink); }
+  .btn-solid:hover{ background:var(--umber); }
+
+  footer{ background:var(--ink); color:var(--paper); padding:90px 0 0; }
+  .footer-top{ display:grid; grid-template-columns:1.4fr 1fr 1fr 1fr; gap:40px; padding-bottom:70px; border-bottom:1px solid var(--line-on-dark); }
+  .footer-brand .logo{ color:var(--paper); }
+  .footer-brand p{ margin-top:16px; color:rgba(247,242,231,0.6); font-size:14px; max-width:30ch; }
+  .footer-col h4{ font-family:'IBM Plex Mono', monospace; font-size:11.5px; letter-spacing:0.05em; text-transform:uppercase; color:rgba(247,242,231,0.45); margin-bottom:18px; font-weight:400; }
+  .footer-col a{ display:block; font-size:14.5px; color:rgba(247,242,231,0.82); margin-bottom:13px; }
+  .footer-col a:hover{ color:var(--paper); }
+  .footer-bottom{ display:flex; justify-content:space-between; align-items:center; padding:28px 0 36px; font-size:13px; color:rgba(247,242,231,0.55); }
+  .brand-banner-word{ text-align:center; padding:8px 16px 44px; overflow:hidden; background:var(--gold); }
+  .brand-banner-word span{ display:block; font-family:'Newsreader', serif; font-style:italic; font-weight:600; font-size:220px; color:var(--umber); }
+
+  /* ---------------- PAGE CONTENT ---------------- */
+  .download-hero { padding: 180px 0 80px; text-align: center; }
+  .download-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 40px; padding-bottom: 120px; }
+  .dl-section-head { margin-bottom: 40px; }
+  
+  .dl-card { border: 1px solid var(--line); border-radius: 8px; padding: 32px; background: #fafbfc; }
+  .dl-card h3 { font-family: 'Inter', sans-serif; font-size: 18px; margin-bottom: 16px; }
+  .dl-card p { font-size: 14.5px; color: var(--dusk-deep); margin-bottom: 24px; }
+
+  .dl-item { display: flex; align-items: center; justify-content: space-between; padding: 16px 0; border-bottom: 1px solid var(--line); }
+  .dl-item:last-child { border: none; }
+  .dl-meta { font-family: 'IBM Plex Mono', monospace; font-size: 12px; color: var(--dusk); }
+  
+  @media (max-width: 760px) {
+    .download-grid { grid-template-columns: 1fr; }
+    .footer-top { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<header id="site-header">
+  <div class="wrap">
+    <a href="index.html#top" class="logo-container">
+      <img src="images/logo.png" alt="Soma Logo" class="logo-img">
+      <span class="logo">soma</span>
+    </a>
+    <nav class="primary">
+      <a href="products.html">Products</a>
+      <a href="about.html">About</a>
+      <a href="pricing.html">Pricing</a>
+      <a href="docs.html">Docs</a>
+    </nav>
+    <div class="actions">
+      <a href="download.html" class="btn btn-solid">Download</a>
+    </div>
+  </div>
+</header>
+
+<main>
+  <section class="download-hero">
+    <div class="wrap">
+      <h1>Get the software</h1>
+      <p>Download the latest desktop releases or find our mobile applications on the store.</p>
+    </div>
+  </section>
+
+  <div class="wrap">
+    <div class="download-grid">
+      
+      <!-- Desktop Apps -->
+      <div class="dl-section">
+        <div class="dl-section-head">
+          <h2>Desktop Apps</h2>
+        </div>
+        <div class="dl-card">
+          <div class="dl-item">
+            <div><h3>Soma Portal</h3><div class="dl-meta">v1.2.0 for Windows/macOS</div></div>
+            <a href="downloads/soma-portal-installer.exe" class="btn btn-ghost">Download</a>
+          </div>
+          <div class="dl-item">
+            <div><h3>Soma Browser</h3><div class="dl-meta">v0.9.5 for Windows/macOS</div></div>
+            <a href="downloads/soma-browser-installer.exe" class="btn btn-ghost">Download</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Mobile & Docs -->
+      <div class="dl-section">
+        <div class="dl-section-head">
+          <h2>Mobile & Docs</h2>
+        </div>
+        <div class="dl-card">
+          <div class="dl-item">
+            <div><h3>Soma Connect (Mobile)</h3><div class="dl-meta">Available on Google Play</div></div>
+            <a href="https://play.google.com/store/apps" class="btn btn-ghost">View on Store</a>
+          </div>
+          <div class="dl-item">
+            <div><h3>Admin User Guide</h3><div class="dl-meta">PDF · Updated Jun 2026</div></div>
+            <a href="documents/soma-admin-guide.pdf" class="btn btn-ghost">Download</a>
+          </div>
+          <div class="dl-item">
+            <div><h3>Parent User Guide</h3><div class="dl-meta">PDF · Updated May 2026</div></div>
+            <a href="documents/soma-parent-guide.pdf" class="btn btn-ghost">Download</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <a href="index.html#top" class="logo">soma</a>
+        <p>One ID, every school. Built in Zimbabwe, for Zimbabwean schools.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Product</h4>
+        <a href="products.html">Soma Portal</a>
+        <a href="pricing.html">Pricing</a>
+      </div>
+      <div class="footer-col">
+        <h4>Company</h4>
+        <a href="about.html">About</a>
+        <a href="blog.html">Blog</a>
+      </div>
+      <div class="footer-col">
+        <h4>Resources</h4>
+        <a href="docs.html">Docs</a>
+        <a href="contact.html">Contact</a>
+      </div>
+    </div>
+  </div>
+  <div class="brand-banner-word"><span>soma</span></div>
+</footer>
+
+</body>
+</html>
