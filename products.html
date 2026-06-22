@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Soma Tech</title>
+<title>Soma Tech & Products</title>
 <link rel="icon" type="image/png" href="images/icon.png">
 <meta name="description" content="Soma gives every learner one ID that carries their record from Grade 1 to Form 4, through every school that runs Soma.">
 
@@ -504,16 +504,25 @@
   .admin-demo-header { text-align: center; max-width: 600px; margin: 0 auto 64px; }
   .admin-demo-header h2 { font-family: 'Inter', sans-serif; font-weight: 600; font-size: clamp(28px, 3.5vw, 42px); margin-bottom: 16px; letter-spacing: -0.02em; }
   .admin-demo-header p { color: var(--dusk-deep); font-size: 16px; }
-  .app-window { background: #ffffff; border-radius: 12px; border: 1px solid #e2e8f0; box-shadow: 0 20px 60px rgba(0,0,0,0.05); overflow: hidden; font-family: 'Inter', sans-serif; }
-  .app-nodes-container { padding: 32px 0 0; background-image: radial-gradient(#e2e8f0 1px, transparent 1px); background-size: 16px 16px; border-bottom: 1px solid #e2e8f0; position: relative; }
+  
+  /* OVERFLOW HIDDEN REMOVED - This is required for position: sticky to work */
+  .app-window { background: #ffffff; border-radius: 12px; border: 1px solid #e2e8f0; box-shadow: 0 20px 60px rgba(0,0,0,0.05); font-family: 'Inter', sans-serif; }
+  
+  .app-nodes-container { border-top-left-radius: 12px; border-top-right-radius: 12px; padding: 32px 0 0; background-image: radial-gradient(#e2e8f0 1px, transparent 1px); background-size: 16px 16px; border-bottom: 1px solid #e2e8f0; position: relative; }
   .app-nodes { display: flex; justify-content: center; gap: 24px; margin-bottom: 32px; position: relative; z-index: 2; }
   .app-node { background: #ffffff; border: 1px solid #e2e8f0; border-radius: 20px; padding: 8px 16px; font-size: 13px; font-weight: 500; color: var(--dusk-deep); display: flex; align-items: center; gap: 8px; cursor: pointer; transition: all 0.2s; box-shadow: 0 2px 8px rgba(0,0,0,0.02); }
   .app-node:hover, .app-node.active { border-color: var(--ink); color: var(--ink); box-shadow: 0 4px 12px rgba(0,0,0,0.05); }
   .app-node svg { width: 14px; height: 14px; }
   .tree-lines { position: absolute; bottom: 0; left: 50%; transform: translateX(-50%); width: 600px; height: 40px; z-index: 1; }
   .tree-lines path { fill: none; stroke: #e2e8f0; stroke-width: 1.5; }
-  .app-split { display: grid; grid-template-columns: 320px 1fr; }
-  .app-profile { padding: 32px; border-right: 1px solid #e2e8f0; background: #fafbfc; }
+  
+  /* Scroll track for scrub distance */
+  .scroll-track { height: 450vh; position: relative; }
+
+  /* UPDATED: Locks 80px from the top so it doesn't hide behind your site's <header> */
+  .app-split { position: sticky; top: 80px; display: grid; grid-template-columns: 320px 1fr; }
+  
+  .app-profile { border-bottom-left-radius: 12px; padding: 32px; border-right: 1px solid #e2e8f0; background: #fafbfc; }
   .profile-header { display: flex; flex-direction: column; gap: 12px; margin-bottom: 24px; }
   .avatar { width: 64px; height: 64px; border-radius: 50%; background: var(--ink); color: #fff; display: flex; align-items: center; justify-content: center; font-size: 22px; font-weight: 600; }
   .profile-name { font-size: 18px; font-weight: 600; color: var(--ink); line-height: 1.2; }
@@ -528,7 +537,21 @@
   .detail-label svg { width: 14px; height: 14px; }
   .detail-value { color: var(--ink); font-weight: 500; }
   .detail-value.link { color: #2563eb; cursor: pointer; }
-  .app-content { padding: 32px; background: #ffffff; }
+
+  /* Notification Stack Styles */
+  .notification-pile { 
+    position: relative; 
+    height: 90px; 
+    /* Negative margin pulls it up physically */
+    margin-top: -16px; 
+    perspective: 1000px; 
+  }
+  .login-notification { position: absolute; bottom: 0; left: 0; right: 0; background: #ffffff; border: 1px solid #e2e8f0; box-shadow: 0 8px 20px rgba(0,0,0,0.06); padding: 12px 14px; border-radius: 12px; display: flex; align-items: center; gap: 12px; opacity: 0; transform-origin: bottom center; will-change: transform, opacity; }
+  .notif-avatar { width: 34px; height: 34px; border-radius: 50%; flex-shrink: 0; color: #fff; display: flex; align-items: center; justify-content: center; font-size: 14px; font-weight: 600; }
+  .notif-text { font-size: 13px; color: #1d160e; line-height: 1.4; }
+  .notif-text b { font-weight: 600; }
+
+  .app-content { border-bottom-right-radius: 12px; padding: 32px; background: #ffffff; }
   .content-section-title { font-size: 15px; font-weight: 600; color: var(--ink); margin-bottom: 16px; display: flex; align-items: center; gap: 8px; }
   .content-section-title svg { width: 16px; height: 16px; color: var(--dusk); }
   .cards-grid { display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 16px; margin-bottom: 32px; }
@@ -540,20 +563,68 @@
   .event-title { font-weight: 600; }
   .event-time { font-size: 12px; color: var(--dusk); }
   .event-date-badge { background: #f1f5f9; border: 1px solid #e2e8f0; border-radius: 4px; padding: 4px; text-align: center; font-size: 10px; font-weight: 600; width: 36px; height: 36px; display: flex; flex-direction: column; justify-content: center; }
+  
+  /* Intersecting Avatars Stack */
+  .avatar-stack { display: flex; align-items: center; margin-left: 12px; }
+  .mini-avatar { width: 22px; height: 22px; border-radius: 50%; border: 2px solid #ffffff; background: var(--dusk); color: #fff; display: flex; align-items: center; justify-content: center; font-size: 9px; font-weight: 700; margin-left: -8px; opacity: 0; transform: scale(0.5); transition: all 0.3s ease; }
+  .mini-avatar:first-child { margin-left: 0; }
+  .mini-avatar.more { background: #f1f5f9; color: var(--dusk-deep); border-color: #e2e8f0; }
+
+  /* Progress Bar */
   .progress-track { height: 4px; background: #e2e8f0; border-radius: 2px; margin-top: 12px; overflow: hidden; }
-  .progress-fill { height: 100%; background: #10b981; width: 65%; }
-  .activity-feed { border-top: 1px solid #e2e8f0; padding-top: 24px; }
-  .activity-item { display: flex; gap: 16px; margin-bottom: 24px; position: relative; cursor: pointer; }
-  .activity-item::before { content: ''; position: absolute; left: 15px; top: 32px; bottom: -24px; width: 1px; background: #e2e8f0; }
+  .progress-fill { height: 100%; background: #f59e0b; width: 35%; transition: background-color 0.4s ease; will-change: width, background-color; }
+  
+  .activity-feed { border-top: 1px solid #e2e8f0; padding-top: 24px; display: flex; align-items: stretch; gap: 40px; flex-wrap: wrap; }
+  .activity-feed-main { flex: 1 1 320px; min-width: 240px; }
+  .activity-blocks { flex: 1 1 360px; min-width: 280px; min-height: 300px; position: relative; }
+  .activity-blocks svg { width: 100%; height: 100%; display: block; overflow: visible; }
+  .blocks-ground { stroke: rgba(29,22,14,0.16); stroke-width: 1; }
+  .plate-group { transform-box: fill-box; transform-origin: 50% 100%; animation-name: plate-cycle; animation-timing-function: ease-in-out; animation-iteration-count: infinite; }
+  .plate-top { fill: #ffffff; stroke: rgba(29,22,14,0.36); stroke-width: 1; }
+  .plate-left { fill: #ffffff; stroke: rgba(29,22,14,0.26); stroke-width: 1; }
+  .plate-right { fill: #ffffff; stroke: rgba(29,22,14,0.30); stroke-width: 1; }
+  .plate-arc { fill: none; stroke: rgba(171,138,82,0.55); stroke-width: 1; }
+  @keyframes plate-cycle {
+    0%   { opacity: 0; transform: translateY(7px) scaleY(0.82); }
+    12%  { opacity: 1; transform: translateY(0) scaleY(1); }
+    70%  { opacity: 1; transform: translateY(0) scaleY(1); }
+    86%  { opacity: 0; transform: translateY(-5px) scaleY(0.9); }
+    100% { opacity: 0; transform: translateY(7px) scaleY(0.82); }
+  }
+  
+  .activity-item { display: flex; gap: 16px; margin-bottom: 24px; position: relative; cursor: pointer; transition: all 0.3s ease; }
+  .activity-item::before { content: ''; position: absolute; left: 15px; top: 32px; bottom: -24px; width: 1px; background: #e2e8f0; transition: background 0.3s ease; }
   .activity-item:last-child::before { display: none; }
-  .activity-icon { width: 32px; height: 32px; border-radius: 50%; background: #f8fafc; border: 1px solid #e2e8f0; display: flex; align-items: center; justify-content: center; z-index: 2; }
-  .activity-icon svg { width: 14px; height: 14px; color: var(--dusk-deep); }
+  .activity-icon { width: 32px; height: 32px; border-radius: 50%; background: #f8fafc; border: 1px solid #e2e8f0; display: flex; align-items: center; justify-content: center; z-index: 2; transition: all 0.3s ease; }
+  .activity-icon svg { width: 14px; height: 14px; color: var(--dusk-deep); transition: all 0.3s ease; }
   .activity-details { flex: 1; padding-top: 6px; }
   .activity-text { font-size: 14px; color: var(--ink); }
   .activity-text b { font-weight: 600; }
-  .activity-time { font-size: 12px; color: var(--dusk); margin-top: 4px; }
+  .activity-time { font-size: 12px; color: var(--dusk); margin-top: 4px; transition: all 0.3s ease; }
+  
   .activity-item:hover .activity-icon { border-color: var(--ink); color: var(--ink); }
   .activity-item:hover .activity-text { color: #2563eb; }
+  
+  /* Completed state for Background AI items */
+  .activity-item.completed .activity-icon { border-color: #10b981; color: #10b981; background: #ecfdf5; }
+  .activity-item.completed .activity-icon svg { color: #10b981; }
+  .activity-item.completed .activity-time { color: #10b981; font-weight: 600; }
+  .activity-item.completed::before { background: #10b981; }
+
+  .sync-spin { transform-origin: 50% 50%; animation: sync-rotate 2.2s linear infinite; }
+  @keyframes sync-rotate { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+
+  @media (max-width:900px){
+    .app-split { grid-template-columns: 1fr; }
+    .app-profile { border-right: none; border-bottom: 1px solid #e2e8f0; border-bottom-left-radius: 0; }
+    .cards-grid { grid-template-columns: 1fr; }
+    .app-card.col-span-2 { grid-column: span 1; }
+  }
+
+  @media (max-width:760px){
+    .app-nodes { flex-wrap: wrap; }
+    .activity-blocks { display: none; }
+  }
 
   /* ---------------- FOOTER & OTHERS ---------------- */
   footer { background:var(--ink); color:var(--paper); padding:90px 0 0; }
@@ -675,7 +746,7 @@
   <section class="hero" style="padding:0;">
     <div class="hero-inner">
       <div class="wrap">
-        <h1>The AI backbone for african schools</h1>
+        <h1>The AI backbone for African schools</h1>
         <p class="hero-sub">One platform connecting students, parents, teachers and schools through every stage of the educational journey.</p>
         
         <div class="ai-chat-box">
@@ -1003,10 +1074,12 @@
     </div>
   </section>
 
-  <section class="admin-demo-wrapper">
+<section class="admin-demo-wrapper">
     <div class="wrap">
       
       <div class="admin-demo-header">  
+        <h2>The Unified Admin Experience</h2>
+        <p>Soma brings everything together in real-time. Scroll down to see how data flows and updates instantly.</p>
       </div>
 
       <div class="app-window">
@@ -1035,137 +1108,169 @@
           </svg>
         </div>
 
-        <div class="app-split">
-          <div class="app-profile">
-            <div class="profile-header">
-              <div class="avatar">TC</div>
-              <div>
-                <div class="profile-name">Mr Chiyangwa</div>
-                <div class="profile-title">Headmaster at St Bernard's School</div>
+        <div class="scroll-track">
+          <div class="app-split">
+            <div class="app-profile">
+              <div class="profile-header">
+                <div class="avatar">TC</div>
+                <div>
+                  <div class="profile-name">Mr Chiyangwa</div>
+                  <div class="profile-title">Headmaster at St Bernard's School</div>
+                </div>
+              </div>
+
+              <div class="profile-actions">
+                <button class="btn-outline">
+                  <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+                  Compose Update
+                </button>
+                <button class="btn-outline btn-icon"><svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg></button>
+                <button class="btn-outline btn-icon"><svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="1"/><circle cx="19" cy="12" r="1"/><circle cx="5" cy="12" r="1"/></svg></button>
+              </div>
+
+              <div class="details-list">
+                <div class="content-section-title" style="margin-bottom: 8px;">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg> Details
+                </div>
+                <div class="detail-item">
+                  <div class="detail-label"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg> Name</div>
+                  <div class="detail-value">Tanatswa Chiyangwa</div>
+                </div>
+                <div class="detail-item">
+                  <div class="detail-label"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg> Role</div>
+                  <div class="detail-value">Headmaster</div>
+                </div>
+                <div class="detail-item">
+                  <div class="detail-label"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg> Email</div>
+                  <div class="detail-value link">head@stbernards.ac.zw</div>
+                </div>
+                <div class="detail-item">
+                  <div class="detail-label"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg> Location</div>
+                  <div class="detail-value">Harare, Zimbabwe</div>
+                </div>
+                <div class="detail-item">
+                  <div class="detail-label"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg> Last Login</div>
+                  <div class="detail-value">Just now</div>
+                </div>
+              </div>
+
+              <div class="notification-pile" id="notif-pile">
+                <div class="login-notification"><div class="notif-avatar" style="background: #3b82f6;">MT</div><div class="notif-text"><b>Mr Tachiona</b> sent a new sports email.</div></div>
+                <div class="login-notification"><div class="notif-avatar" style="background: #ec4899;">MM</div><div class="notif-text"><b>Mrs Masusa</b> confirmed meeting attendance.</div></div>
+                <div class="login-notification"><div class="notif-avatar" style="background: #10b981;">MS</div><div class="notif-text"><b>Mr Shamu</b> updated class grades.</div></div>
+                <div class="login-notification"><div class="notif-avatar" style="background: #f59e0b;">MK</div><div class="notif-text"><b>Mr Kasirori</b> approved attendance.</div></div>
+                <div class="login-notification"><div class="notif-avatar" style="background: #6366f1;">MN</div><div class="notif-text"><b>Mr Ndandazi</b> approved attendance.</div></div>
+                <div class="login-notification"><div class="notif-avatar" style="background: #ef4444;">MM</div><div class="notif-text"><b>Mrs Mashanda</b> approved attendance.</div></div>
+                <div class="login-notification"><div class="notif-avatar" style="background: #1d160e;">NH</div><div class="notif-text">Email from <b>NAPH Harare</b>.</div></div>
               </div>
             </div>
 
-            <div class="profile-actions">
-              <button class="btn-outline">
-                <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
-                Compose Update
-              </button>
-              <button class="btn-outline btn-icon"><svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg></button>
-              <button class="btn-outline btn-icon"><svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="1"/><circle cx="19" cy="12" r="1"/><circle cx="5" cy="12" r="1"/></svg></button>
-            </div>
+            <div class="app-content">
+              <div class="content-section-title" style="margin-bottom: 24px;">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg> Highlights Showing Connections For Admin App
+              </div>
 
-            <div class="details-list">
-              <div class="content-section-title" style="margin-bottom: 8px;">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg> Details
-              </div>
-              <div class="detail-item">
-                <div class="detail-label"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg> Name</div>
-                <div class="detail-value">Tanatswa Chiyangwa</div>
-              </div>
-              <div class="detail-item">
-                <div class="detail-label"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg> Role</div>
-                <div class="detail-value">Headmaster</div>
-              </div>
-              <div class="detail-item">
-                <div class="detail-label"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg> Email</div>
-                <div class="detail-value link">head@stbernards.ac.zw</div>
-              </div>
-              <div class="detail-item">
-                <div class="detail-label"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg> Location</div>
-                <div class="detail-value">Harare, Zimbabwe</div>
-              </div>
-              <div class="detail-item">
-                <div class="detail-label"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg> Last Login</div>
-                <div class="detail-value">Just now</div>
-              </div>
-            </div>
-          </div>
-
-          <div class="app-content">
-            <div class="content-section-title" style="margin-bottom: 24px;">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg> Highlights Showing Connections For Admin App
-            </div>
-
-            <div class="cards-grid">
-              <div class="app-card col-span-2">
-                <div class="card-header">
-                  Summary <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="#b088f9" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+              <div class="cards-grid">
+                <div class="app-card col-span-2">
+                  <div class="card-header">
+                    Summary <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="#b088f9" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+                  </div>
+                  <div class="card-body" id="dynamic-summary">
+                    Tanatswa Chiyangwa is overseeing the end-of-term reporting and final fee collections. 92% of students have perfect attendance this week.
+                  </div>
                 </div>
-                <div class="card-body" id="dynamic-summary">
-                  Tanatswa Chiyangwa is overseeing the end-of-term reporting and final fee collections. 92% of students have perfect attendance this week.
+                <div class="app-card">
+                  <div class="card-header">
+                    Data Sync <svg class="sync-spin" viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="#2563eb" stroke-width="2"><path d="M21.5 2v6h-6M2.5 22v-6h6M2 11.5a10 10 0 0 1 18.8-4.3M22 12.5a10 10 0 0 1-18.8 4.2"/></svg>
+                  </div>
+                  <div class="card-body">
+                    <span style="color:#2563eb; font-weight:500;">Live via Soma</span>
+                  </div>
                 </div>
-              </div>
-              <div class="app-card">
-                <div class="card-header">
-                  Data Sync <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="#2563eb" stroke-width="2"><path d="M21.5 2v6h-6M2.5 22v-6h6M2 11.5a10 10 0 0 1 18.8-4.3M22 12.5a10 10 0 0 1-18.8 4.2"/></svg>
-                </div>
-                <div class="card-body">
-                  <span style="color:#2563eb; font-weight:500;">Live via Soma</span>
-                </div>
-              </div>
-              <div class="app-card">
-                <div class="card-header">Upcoming Event</div>
-                <div class="card-body card-event">
-                  <div style="display:flex; gap:10px; align-items:center;">
-                    <div class="event-date-badge"><span>29</span><span>NOV</span></div>
-                    <div>
-                      <div class="event-title">Staff Assembly</div>
-                      <div class="event-time">10:40 AM</div>
+                
+                <div class="app-card">
+                  <div class="card-header">Upcoming Event</div>
+                  <div class="card-body card-event">
+                    <div style="display:flex; gap:10px; align-items:center;">
+                      <div class="event-date-badge"><span>29</span><span>NOV</span></div>
+                      <div>
+                        <div class="event-title" style="display:flex; align-items:center;">
+                          Staff Assembly
+                          <div class="avatar-stack">
+                            <div class="mini-avatar" id="av-1" style="background:#ec4899;">MM</div>
+                            <div class="mini-avatar" id="av-2" style="background:#f59e0b;">MK</div>
+                            <div class="mini-avatar" id="av-3" style="background:#6366f1;">MN</div>
+                            <div class="mini-avatar more" id="av-4">+1</div>
+                          </div>
+                        </div>
+                        <div class="event-time">10:40 AM</div>
+                      </div>
                     </div>
                   </div>
                 </div>
-              </div>
-              <div class="app-card">
-                <div class="card-header">Institution</div>
-                <div class="card-body card-event" style="display:flex; flex-direction:row; justify-content:space-between; align-items:center;">
-                  <div>
-                    <div class="event-title">St Bernard's</div>
-                    <div class="event-time">Harare, ZW</div>
+                
+                <div class="app-card">
+                  <div class="card-header">Institution</div>
+                  <div class="card-body card-event" style="display:flex; flex-direction:row; justify-content:space-between; align-items:center;">
+                    <div>
+                      <div class="event-title">St Bernard's</div>
+                      <div class="event-time">Harare, ZW</div>
+                    </div>
+                    <div style="width:24px; height:24px; background:#10b981; border-radius:4px;"></div>
                   </div>
-                  <div style="width:24px; height:24px; background:#10b981; border-radius:4px;"></div>
+                </div>
+                
+                <div class="app-card">
+                  <div class="card-header">Term Progress <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"><polygon points="5 3 19 12 5 21 5 3"/></svg></div>
+                  <div class="card-body">
+                    <div class="event-title">Grading Phase</div>
+                    <div class="progress-track"><div class="progress-fill" id="term-progress"></div></div>
+                  </div>
                 </div>
               </div>
-              <div class="app-card">
-                <div class="card-header">Term Progress <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"><polygon points="5 3 19 12 5 21 5 3"/></svg></div>
-                <div class="card-body">
-                  <div class="event-title">Grading Phase</div>
-                  <div class="progress-track"><div class="progress-fill"></div></div>
-                </div>
-              </div>
-            </div>
 
-            <div class="activity-feed">
-              <div class="content-section-title">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg> Activity
-              </div>
-              
-              <div class="activity-item" onclick="this.querySelector('.activity-text').style.color='#2563eb'">
-                <div class="activity-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg></div>
-                <div class="activity-details">
-                  <div class="activity-text"><b>Mrs. Mutasa</b> submitted Grade 4 Math results for review.</div>
-                  <div class="activity-time">2 hours ago</div>
-                </div>
-              </div>
-              
-              <div class="activity-item" onclick="this.querySelector('.activity-text').style.color='#2563eb'">
-                <div class="activity-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="6" width="20" height="12" rx="2"/><path d="M12 12h.01"/><path d="M17 12h.01"/><path d="M7 12h.01"/></svg></div>
-                <div class="activity-details">
-                  <div class="activity-text">Fee payment of <b>$150</b> received via Soma Connect for Learner ID #8492.</div>
-                  <div class="activity-time">5 hours ago</div>
-                </div>
-              </div>
-              
-              <div class="activity-item" onclick="this.querySelector('.activity-text').style.color='#2563eb'">
-                <div class="activity-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg></div>
-                <div class="activity-details">
-                  <div class="activity-text"><b>Tanatswa</b> approved a student transfer request to Kutama College.</div>
-                  <div class="activity-time">1 day ago</div>
-                </div>
-              </div>
-            </div>
+              <div class="activity-feed">
+                <div class="activity-feed-main">
+                  <div class="content-section-title">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg> Background AI
+                  </div>
 
+                  <div class="activity-item" id="ai-task-1">
+                    <div class="activity-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg></div>
+                    <div class="activity-details">
+                      <div class="activity-text">Summarizing recent emails.</div>
+                      <div class="activity-time" id="ai-status-1">In progress</div>
+                    </div>
+                  </div>
+
+                  <div class="activity-item" id="ai-task-2">
+                    <div class="activity-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg></div>
+                    <div class="activity-details">
+                      <div class="activity-text">Updating calendar.</div>
+                      <div class="activity-time" id="ai-status-2">Up next</div>
+                    </div>
+                  </div>
+
+                  <div class="activity-item" id="ai-task-3">
+                    <div class="activity-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></div>
+                    <div class="activity-details">
+                      <div class="activity-text">Waiting for confirmation.</div>
+                      <div class="activity-time" id="ai-status-3">Pending</div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="activity-blocks" aria-hidden="true">
+                  <svg id="ai-blocks-svg" viewBox="0 0 420 270" xmlns="http://www.w3.org/2000/svg">
+                    <line class="blocks-ground" x1="20" y1="251" x2="400" y2="251"/>
+                  </svg>
+                </div>
+              </div>
+
+            </div>
           </div>
         </div>
+
       </div>
 
     </div>
@@ -1468,11 +1573,10 @@
       });
     });
   });
-
-  // Admin Demo Interactivity
+// Admin Demo Interactivity
   const appNodes = document.querySelectorAll('.app-node');
   const dynamicSummary = document.getElementById('dynamic-summary');
-  
+
   const nodeSummaries = {
     'node-attendance': 'Tanatswa Chiyangwa is overseeing the end-of-term reporting and final fee collections. 92% of students have perfect attendance this week.',
     'node-fees': 'Fee collection is currently at 84% for Term 2. Soma Finance has automatically sent 45 payment reminders to parents.',
@@ -1492,6 +1596,184 @@
       }, 150);
     });
   });
+
+  // Build the layered-plate "AI working" illustration
+  (function() {
+    const svg = document.getElementById('ai-blocks-svg');
+    if (!svg) return;
+    const NS = 'http://www.w3.org/2000/svg';
+
+    function buildTower(cx, baseY, pw, ph, t, count, duration, stagger, phase, topArc) {
+      for (let i = 0; i < count; i++) {
+        const plateTopY = baseY - (i + 1) * t;
+        const g = document.createElementNS(NS, 'g');
+        g.setAttribute('class', 'plate-group');
+        g.style.animationDuration = duration + 's';
+        g.style.animationDelay = (phase - i * stagger) + 's';
+
+        const top = document.createElementNS(NS, 'polygon');
+        top.setAttribute('class', 'plate-top');
+        top.setAttribute('points',
+          `${cx},${plateTopY - ph} ${cx + pw},${plateTopY} ${cx},${plateTopY + ph} ${cx - pw},${plateTopY}`);
+
+        const left = document.createElementNS(NS, 'polygon');
+        left.setAttribute('class', 'plate-left');
+        left.setAttribute('points',
+          `${cx - pw},${plateTopY} ${cx},${plateTopY + ph} ${cx},${plateTopY + ph + t} ${cx - pw},${plateTopY + t}`);
+
+        const right = document.createElementNS(NS, 'polygon');
+        right.setAttribute('class', 'plate-right');
+        right.setAttribute('points',
+          `${cx},${plateTopY + ph} ${cx + pw},${plateTopY} ${cx + pw},${plateTopY + t} ${cx},${plateTopY + ph + t}`);
+
+        g.appendChild(left);
+        g.appendChild(right);
+        g.appendChild(top);
+
+        if (topArc && i === count - 1) {
+          const arc = document.createElementNS(NS, 'path');
+          arc.setAttribute('class', 'plate-arc');
+          arc.setAttribute('d',
+            `M ${cx - pw * 0.55} ${plateTopY + ph * 0.2} Q ${cx} ${plateTopY + ph * 0.7} ${cx + pw * 0.55} ${plateTopY + ph * 0.2}`);
+          g.appendChild(arc);
+        }
+
+        svg.appendChild(g);
+      }
+    }
+
+    buildTower(95, 251, 26, 14, 8, 6, 7.5, 0.55, 0, false);
+    buildTower(232, 251, 35, 19, 9, 10, 10, 0.5, -3.2, true);
+    buildTower(355, 251, 24, 13, 7, 5, 6.4, 0.55, -1.3, false);
+  })();
+
+  // Advanced Scroll Scrubbing Logic for Notification Pile & UI Elements
+  (function() {
+    const track = document.querySelector('.scroll-track');
+    const split = document.querySelector('.app-split');
+    const notifs = document.querySelectorAll('.notification-pile .login-notification');
+    
+    // UI Elements to animate
+    const av1 = document.getElementById('av-1');
+    const av2 = document.getElementById('av-2');
+    const av3 = document.getElementById('av-3');
+    const av4 = document.getElementById('av-4');
+    const progressBar = document.getElementById('term-progress');
+    
+    // AI Task Elements
+    const aiTask1 = document.getElementById('ai-task-1');
+    const aiStatus1 = document.getElementById('ai-status-1');
+    const aiTask2 = document.getElementById('ai-task-2');
+    const aiStatus2 = document.getElementById('ai-status-2');
+    const aiTask3 = document.getElementById('ai-task-3');
+    const aiStatus3 = document.getElementById('ai-status-3');
+
+    const totalSteps = notifs.length; // We have 7 notifications
+
+    window.addEventListener('scroll', () => {
+      if (!track || !split) return;
+      
+      const rect = track.getBoundingClientRect();
+      
+      // IMPORTANT: Adjust this offset to exactly match your <header> height 
+      // so the math syncs up perfectly when the container gets stuck.
+      const stickyTopOffset = 80; 
+      
+      const scrollDistance = rect.height - split.offsetHeight;
+      
+      // Progress from 0.0 to 1.0 inside the locked zone
+      let progress = (stickyTopOffset - rect.top) / scrollDistance;
+      progress = Math.max(0, Math.min(1, progress));
+
+      // Map progress to a "reveal index" (0 to 7)
+      let revealIndex = progress * totalSteps;
+
+      // 1. Handle the Notification Card Pile
+      notifs.forEach((notif, i) => {
+        let depth = revealIndex - i;
+        
+        if (depth < 0) {
+          notif.style.opacity = 0;
+          notif.style.transform = `translateY(20px) scale(0.95)`;
+          notif.style.zIndex = i; 
+        } else {
+          let opacity = 1;
+          let y = 0;
+          let scale = 1;
+
+          if (depth < 1) {
+            opacity = depth;
+            y = (1 - depth) * 20; 
+            scale = 0.95 + (depth * 0.05);
+          } else {
+            let pushBack = depth - 1; 
+            y = -(pushBack * 12);
+            scale = 1 - (pushBack * 0.05);
+            
+            if (pushBack > 2.5) {
+              opacity = Math.max(0, 1 - (pushBack - 2.5));
+            }
+          }
+
+          notif.style.opacity = opacity;
+          notif.style.transform = `translateY(${y}px) scale(${scale})`;
+          notif.style.zIndex = i;
+        }
+      });
+
+      // 2. Map specific notifications to UI updates
+      let av1Prog = Math.min(1, Math.max(0, revealIndex - 1));
+      av1.style.opacity = av1Prog;
+      av1.style.transform = `scale(${0.5 + (av1Prog * 0.5)})`;
+
+      let barProg = Math.min(1, Math.max(0, revealIndex - 2));
+      if (barProg > 0) {
+        progressBar.style.width = (35 + (barProg * 50)) + '%';
+        progressBar.style.backgroundColor = barProg > 0.4 ? '#10b981' : '#f59e0b';
+      } else {
+        progressBar.style.width = '35%';
+        progressBar.style.backgroundColor = '#f59e0b';
+      }
+
+      let av2Prog = Math.min(1, Math.max(0, revealIndex - 3));
+      av2.style.opacity = av2Prog;
+      av2.style.transform = `scale(${0.5 + (av2Prog * 0.5)})`;
+
+      let av3Prog = Math.min(1, Math.max(0, revealIndex - 4));
+      av3.style.opacity = av3Prog;
+      av3.style.transform = `scale(${0.5 + (av3Prog * 0.5)})`;
+
+      let av4Prog = Math.min(1, Math.max(0, revealIndex - 5));
+      av4.style.opacity = av4Prog;
+      av4.style.transform = `scale(${0.5 + (av4Prog * 0.5)})`;
+
+      // 3. Background AI Sequential Updates
+      if (revealIndex >= 4) {
+        aiTask1.classList.add('completed');
+        aiStatus1.innerText = 'Done';
+      } else {
+        aiTask1.classList.remove('completed');
+        aiStatus1.innerText = 'In progress';
+      }
+
+      if (revealIndex >= 5.5) {
+        aiTask2.classList.add('completed');
+        aiStatus2.innerText = 'Done';
+      } else {
+        aiTask2.classList.remove('completed');
+        aiStatus2.innerText = 'Up next';
+      }
+
+      if (revealIndex >= 6.5) {
+        aiTask3.classList.add('completed');
+        aiStatus3.innerText = 'Done';
+      } else {
+        aiTask3.classList.remove('completed');
+        aiStatus3.innerText = 'Pending';
+      }
+
+    }, { passive: true });
+  })();
 
 </script>
 
