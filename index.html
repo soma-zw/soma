@@ -1464,6 +1464,23 @@
 
   // AI Searchbar Typing Effect
   const aiInput = document.getElementById('ai-input');
+
+  // Send the homepage AI chatbar prompt to Soma Chat
+  const aiChatSubmit = document.querySelector('.ai-chat-submit');
+  function goToSomaChat(){
+    const value = aiInput.value.trim();
+    if(value.length > 0){
+      window.location.href = 'chat.html?q=' + encodeURIComponent(value);
+    }
+  }
+  if(aiChatSubmit) aiChatSubmit.addEventListener('click', goToSomaChat);
+  aiInput.addEventListener('keydown', (e) => {
+    if(e.key === 'Enter'){
+      e.preventDefault();
+      goToSomaChat();
+    }
+  });
+
   const phrases = [
     "How many students have outstanding fees?",
     "Show me the Grade 4 attendance report.",
